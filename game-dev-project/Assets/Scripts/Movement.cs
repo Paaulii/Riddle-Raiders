@@ -37,14 +37,12 @@ public class Movement : MonoBehaviour
         // Get the PolygonCollider2D component attached to the player object
         PolygonCollider2D playerCollider = GetComponent<PolygonCollider2D>();
 
-        // Calculate the position of the ground check ray
-        Vector2 checkPos = (Vector2)transform.position + playerCollider.offset - Vector2.up * (playerCollider.bounds.extents.y + groundedLeeway);
+        // Calculate the position of the ground check points
+        Vector2 bottomLeft = new Vector2(playerCollider.bounds.min.x, playerCollider.bounds.min.y);
+        Vector2 bottomRight = new Vector2(playerCollider.bounds.max.x, playerCollider.bounds.min.y);
 
-        // Cast a ray downwards to check for ground contact
-        RaycastHit2D hit = Physics2D.Raycast(checkPos, -Vector2.up, groundedLeeway * 2f, LayerMask.GetMask("Ground"));
-
-        // If the ray hits a collider on the "Ground" layer, the player is considered grounded
-        return hit.collider != null;
+        // Check if the player collider overlaps with any colliders on the "Ground" layer
+        return Physics2D.OverlapArea(bottomLeft, bottomRight, LayerMask.GetMask("Ground"));
     }
 
     void Update()
