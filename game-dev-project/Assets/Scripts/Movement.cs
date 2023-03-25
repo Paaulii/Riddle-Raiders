@@ -34,7 +34,17 @@ public class Movement : MonoBehaviour
 
     private bool CheckGrounded()
     {
-        return Physics2D.Raycast(transform.position, -Vector2.up, groundedLeeway);
+        // Get the PolygonCollider2D component attached to the player object
+        PolygonCollider2D playerCollider = GetComponent<PolygonCollider2D>();
+
+        // Calculate the position of the ground check ray
+        Vector2 checkPos = (Vector2)transform.position + playerCollider.offset - Vector2.up * (playerCollider.bounds.extents.y + groundedLeeway);
+
+        // Cast a ray downwards to check for ground contact
+        RaycastHit2D hit = Physics2D.Raycast(checkPos, -Vector2.up, groundedLeeway * 2f, LayerMask.GetMask("Ground"));
+
+        // If the ray hits a collider on the "Ground" layer, the player is considered grounded
+        return hit.collider != null;
     }
 
     void Update()
@@ -76,6 +86,7 @@ public class Movement : MonoBehaviour
 
     private void HandleJump() //TODO
     {
+       // Debug.Log(CheckGrounded());
         if (attemptJump && CheckGrounded())
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
