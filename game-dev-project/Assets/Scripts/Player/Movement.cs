@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
     [Header("Movement")]
     public float speed = 100f;
     public float jumpForce = 6f;
-    public float groundedLeeway = 0.1f;
+    public float groundDistance = 0.1f;
 
     public KeyCode jumpKey = KeyCode.W;
     public KeyCode leftMove = KeyCode.A;
@@ -15,7 +15,6 @@ public class Movement : MonoBehaviour
 
     private Rigidbody2D rb = null;
     private Animator animator = null;
-
     private bool attemptJump = false;
     private bool attemptLeftMove = false;
     private bool attemptRightMove = false;
@@ -30,19 +29,11 @@ public class Movement : MonoBehaviour
             animator = GetComponent<Animator>();
     }
 
-
-
     private bool CheckGrounded()
     {
-        // Get the PolygonCollider2D component attached to the player object
-        PolygonCollider2D playerCollider = GetComponent<PolygonCollider2D>();
-
-        // Calculate the position of the ground check points
-        Vector2 bottomLeft = new Vector2(playerCollider.bounds.min.x, playerCollider.bounds.min.y);
-        Vector2 bottomRight = new Vector2(playerCollider.bounds.max.x, playerCollider.bounds.min.y);
-
-        // Check if the player collider overlaps with any colliders on the "Ground" layer
-        return Physics2D.OverlapArea(bottomLeft, bottomRight, LayerMask.GetMask("Ground"));
+        Bounds bounds = GetComponent<Collider2D>().bounds;
+        Vector2 bottomCenter = new Vector2(bounds.center.x, bounds.min.y);
+        return Physics2D.Raycast(bottomCenter, -Vector2.up, groundDistance);
     }
 
     void Update()
@@ -52,6 +43,7 @@ public class Movement : MonoBehaviour
         RunAnimation();
         HandleRun();
     }
+
 
     private void GetInput()
     {
@@ -82,9 +74,8 @@ public class Movement : MonoBehaviour
 
     }
 
-    private void HandleJump() //TODO
+    private void HandleJump()
     {
-       // Debug.Log(CheckGrounded());
         if (attemptJump && CheckGrounded())
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
