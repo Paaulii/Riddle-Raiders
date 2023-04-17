@@ -13,7 +13,6 @@ public class Geyser : MonoBehaviour
 
     private void AddForce(Collider2D collision)
     {
-        Debug.Log(collision.name);
         if (collision.name == "Small Player" || collision.name == "Big Player")
         {
             position = new(0, power);
