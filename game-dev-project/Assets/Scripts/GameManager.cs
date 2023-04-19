@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("Players")]
-    public GameObject bigPlayerObject;
-    public GameObject smallPlayerObject;
+    [SerializeField] private GameObject bigPlayerObject;
+    [SerializeField] private GameObject smallPlayerObject;
 
     [Header("UI objects")]
     public TextMeshProUGUI endText;
@@ -18,11 +18,10 @@ public class GameManager : MonoBehaviour
         {
             endText.text = "You Lost";
             endText.gameObject.SetActive(true);
-            StartCoroutine(WaitForSeconds());
+            StartCoroutine(LoadLevel());
         }
     }
-
-    private IEnumerator WaitForSeconds()
+    private IEnumerator LoadLevel()
     {
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

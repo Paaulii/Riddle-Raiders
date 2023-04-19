@@ -5,13 +5,13 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [Header("Movement")]
-    public float speed = 100f;
-    public float jumpForce = 6f;
-    public float groundDistance = 0.1f;
+    [SerializeField] private float speed = 100f;
+    [SerializeField] private float jumpForce = 6f;
+    [SerializeField] private float groundDistance = 0.1f;
 
-    public KeyCode jumpKey = KeyCode.W;
-    public KeyCode leftMove = KeyCode.A;
-    public KeyCode rightMove = KeyCode.D;
+    [SerializeField] private KeyCode jumpKey = KeyCode.W;
+    [SerializeField] private KeyCode leftMove = KeyCode.A;
+    [SerializeField] private KeyCode rightMove = KeyCode.D;
 
     private Rigidbody2D rb = null;
     private Animator animator = null;

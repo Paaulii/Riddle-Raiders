@@ -11,9 +11,9 @@ public class HealthManager : MonoBehaviour
     public int health=3;
 
     [Header("UI objects")]
-    public Image heart1;
-    public Image heart2;
-    public Image heart3;
+    [SerializeField] private Image heart1;
+    [SerializeField] private Image heart2;
+    [SerializeField] private Image heart3;
 
     private void Update()
     {
