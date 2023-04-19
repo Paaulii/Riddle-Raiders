@@ -5,7 +5,7 @@ using UnityEngine;
 public class Geyser : MonoBehaviour
 {
     [Header("Jump settings")]
-    public float power;
+    [SerializeField] private float power;
 
     private Rigidbody2D rb;
     private Vector2 position;
