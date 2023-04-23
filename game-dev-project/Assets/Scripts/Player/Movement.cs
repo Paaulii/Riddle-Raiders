@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class Movement : MonoBehaviour
 {
     [Header("Movement")]
@@ -9,34 +10,31 @@ public class Movement : MonoBehaviour
     [SerializeField] private float jumpForce = 6f;
     [SerializeField] private float groundDistance = 0.1f;
 
+    [SerializeField] private string horizontalAxis;
     [SerializeField] private KeyCode jumpKey = KeyCode.W;
-    [SerializeField] private KeyCode leftMove = KeyCode.A;
-    [SerializeField] private KeyCode rightMove = KeyCode.D;
 
+    [SerializeField] private Collider2D collider;
+    
     private Rigidbody2D rb = null;
     private Animator animator = null;
     private bool attemptJump = false;
-    private bool attemptLeftMove = false;
-    private bool attemptRightMove = false;
-    private float moveIntentionX = 0;
-
+    
+    private float horizontal;
+    
     private void Awake()
     {
-        if (GetComponent<Rigidbody2D>())
-            rb = GetComponent<Rigidbody2D>();
-
-        if (GetComponent<Animator>())
-            animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private bool CheckGrounded()
     {
-        Bounds bounds = GetComponent<Collider2D>().bounds;
+        Bounds bounds = collider.bounds;
         Vector2 bottomCenter = new Vector2(bounds.center.x, bounds.min.y);
         return Physics2D.Raycast(bottomCenter, -Vector2.up, groundDistance);
     }
 
-    void Update()
+    private void Update()
     {
         GetInput();
         HandleJump();
@@ -47,29 +45,18 @@ public class Movement : MonoBehaviour
 
     private void GetInput()
     {
-        attemptLeftMove = Input.GetKeyDown(leftMove);
-        attemptRightMove = Input.GetKeyDown(rightMove);
+        horizontal = Input.GetAxisRaw(horizontalAxis);
         attemptJump = Input.GetKeyDown(jumpKey);
     }
 
     private void HandleRun()
     {
-        rb.velocity = new Vector2(moveIntentionX * speed, rb.velocity.y);
-
-        if (attemptLeftMove)
-            moveIntentionX = -1;
-
-        else if (attemptRightMove)
-            moveIntentionX = 1;
-
-        if(Input.GetKeyUp(leftMove) || Input.GetKeyUp(rightMove))
-            moveIntentionX = 0;
-
-
-        if (moveIntentionX > 0 && transform.rotation.y == 0)
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        
+        if (horizontal > 0 && transform.rotation.y == 0)
             transform.rotation = Quaternion.Euler(0, 180f, 0);
 
-        else if (moveIntentionX < 0 && transform.rotation.y != 0)
+        else if (horizontal < 0 && transform.rotation.y != 0)
             transform.rotation = Quaternion.Euler(0, 0, 0);
 
     }
@@ -82,7 +69,7 @@ public class Movement : MonoBehaviour
 
     private void RunAnimation()
     {
-        if (moveIntentionX != 0)
+        if (horizontal != 0)
             animator.SetBool("isMoving", true);
         else
             animator.SetBool("isMoving", false);
