@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformController: {fileID: 1332228293264248838}
-  shiftController: {fileID: 1624481881835966534}
+  platformActivatorsController: {fileID: 1624481881835966534}
 --- !u!1001 &641535594437660704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4102863988875781942, guid: aed88bbebab30f841b0a8b00020f94a8, type: 3}
       propertyPath: m_Name
-      value: LeverShiftController
+      value: ActivatorsController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed88bbebab30f841b0a8b00020f94a8, type: 3}

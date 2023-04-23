@@ -237,3 +237,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 1
   movement: {fileID: 799507798}
+  healthManager: {fileID: 526853667583535797}
+--- !u!114 &526853667583535797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5503595213375055802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d274833e1a9f198449a30f94ca8de720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

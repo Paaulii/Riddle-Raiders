@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,29 +8,29 @@ using TMPro;
 
 public class HealthManager : MonoBehaviour
 {
+    public Action onPlayersDeath;
+    public Action onPlayerHit;
+    
     [Header("Health value")]
-    public int health=3;
-
-    [Header("UI objects")]
-    [SerializeField] private Image heart1;
-    [SerializeField] private Image heart2;
-    [SerializeField] private Image heart3;
-
-    private void Update()
+    private int health = 3;
+    
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        switch (health)
+        Spikes spikes = col.GetComponent<Spikes>();
+
+        if (spikes)
         {
-            case 2:
-                heart1.enabled = false;
-                break;
-            case 1:
-                heart2.enabled = false;
-                break;
-            case 0:
-                heart3.enabled = false;
-                break;
-            default:
-                break;
-        }           
+            DecreaseHeath();
+        }
+    }
+
+    private void DecreaseHeath()
+    {
+        if (--health == 0)
+        {
+            onPlayersDeath?.Invoke();
+        }
+
+        onPlayerHit?.Invoke();
     }
 }
