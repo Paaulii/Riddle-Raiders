@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1332228293304311323}
   - component: {fileID: 1332228293304311320}
   m_Layer: 0
-  m_Name: LevelController
+  m_Name: LeverPlatformMover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformController: {fileID: 1332228293264248838}
-  leverController: {fileID: 1332228294365405679}
+  shiftController: {fileID: 1624481881835966534}
 --- !u!1001 &641535594437660704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4102863988875781942, guid: aed88bbebab30f841b0a8b00020f94a8, type: 3}
       propertyPath: m_Name
-      value: LeverController
+      value: LeverShiftController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed88bbebab30f841b0a8b00020f94a8, type: 3}
@@ -183,14 +183,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4102863988875781940, guid: aed88bbebab30f841b0a8b00020f94a8, type: 3}
   m_PrefabInstance: {fileID: 3066190055232046810}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1332228294365405679 stripped
+--- !u!114 &1624481881835966534 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4102863988875781941, guid: aed88bbebab30f841b0a8b00020f94a8, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4325173312324179612, guid: aed88bbebab30f841b0a8b00020f94a8, type: 3}
   m_PrefabInstance: {fileID: 3066190055232046810}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 940b70a9ff0c47641bb77fbc61349013, type: 3}
+  m_Script: {fileID: 11500000, guid: b98596bbde17c2941a861356daf93eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

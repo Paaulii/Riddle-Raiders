@@ -12,11 +12,11 @@ public class PlatformController : MonoBehaviour
         platforms = GetComponentsInChildren<Platform>(true);
     }
 
-    public void MovePlatforms(Lever.LeverState leverState, Platform.PlatformColor color)
+    public void MovePlatforms(Lever.State state, Platform.PlatformColor color)
     {
         IEnumerable<Platform> sameColorPlatform = platforms.Where(x => x.Color == color);
 
-        bool inShiftState = InShiftingState(leverState);
+        bool inShiftState = state == Lever.State.On;
         
         foreach (var platform in sameColorPlatform)
         {
@@ -29,10 +29,5 @@ public class PlatformController : MonoBehaviour
                 platform.StopShifting();
             }
         }
-    }
-
-    private bool InShiftingState(Lever.LeverState leverState)
-    {
-        return leverState == Lever.LeverState.On;
     }
 }

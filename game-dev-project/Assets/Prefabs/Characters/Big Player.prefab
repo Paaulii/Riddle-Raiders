@@ -226,10 +226,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 8
-  groundedLeeway: 0.1
+  groundDistance: 0.1
   jumpKey: 273
   leftMove: 276
   rightMove: 275
+--- !u!114 &2350048302865948547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3734142118793364512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61dde07b9484b1d44a40ad749efbc92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Type>k__BackingField: 0
+  movement: {fileID: 1486613342}
 --- !u!4 &3734142118793364513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
