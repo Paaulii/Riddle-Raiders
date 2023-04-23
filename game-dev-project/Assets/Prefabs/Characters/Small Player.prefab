@@ -221,6 +221,7 @@ MonoBehaviour:
   jumpForce: 9
   groundDistance: 0.1
   horizontalAxis: Horizontal_P2
+  verticalAxis: Vertical_P2
   jumpKey: 32
   collider: {fileID: 799507800}
 --- !u!114 &526853667583535797

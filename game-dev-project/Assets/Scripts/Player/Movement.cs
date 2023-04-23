@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float groundDistance = 0.1f;
 
     [SerializeField] private string horizontalAxis;
+    [SerializeField] private string verticalAxis;
     [SerializeField] private KeyCode jumpKey = KeyCode.W;
 
     [SerializeField] private Collider2D collider;
@@ -20,11 +22,16 @@ public class Movement : MonoBehaviour
     private bool attemptJump = false;
     
     private float horizontal;
-    
+    private float vertical;
+    private float beginGravity;
+
+    private bool isNearbyLadder = false;
+    private bool isClimbing = false;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        beginGravity = rb.gravityScale;
     }
 
     private bool CheckGrounded()
@@ -37,9 +44,23 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         GetInput();
+        MoveOnLadder();
         HandleJump();
         RunAnimation();
         HandleRun();
+    }
+
+    private void MoveOnLadder()
+    {
+        if (isClimbing)
+        {
+            rb.gravityScale = 0f;
+            rb.velocity = new Vector2(rb.velocity.x, vertical * speed);
+        }
+        else
+        {
+            rb.gravityScale = beginGravity;
+        }
     }
 
 
@@ -47,6 +68,12 @@ public class Movement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw(horizontalAxis);
         attemptJump = Input.GetKeyDown(jumpKey);
+        vertical = Input.GetAxis(verticalAxis);
+        
+        if (isNearbyLadder && Mathf.Abs(vertical) > 0f)
+        {
+            isClimbing = true;
+        }
     }
 
     private void HandleRun()
@@ -73,5 +100,24 @@ public class Movement : MonoBehaviour
             animator.SetBool("isMoving", true);
         else
             animator.SetBool("isMoving", false);
+    }
+    
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        Ladder ladder = col.GetComponent<Ladder>();
+        if (ladder)
+        {
+            isNearbyLadder = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        Ladder ladder = other.GetComponent<Ladder>();
+        if (ladder)
+        {
+            isNearbyLadder = false;
+            isClimbing = false;
+        }
     }
 }
