@@ -12,15 +12,25 @@ public class GameManager : MonoBehaviour
 
     [Header("UI objects")]
     public TextMeshProUGUI endText;
-    void Update()
+
+    private int smallPlayerHealth;
+    private int bigPlayerHealth;
+
+    private void Start()
     {
-        if(bigPlayerObject.GetComponent<HealthManager>().health == 0 || smallPlayerObject.GetComponent<HealthManager>().health == 0)
-        {
-            endText.text = "You Lost";
-            endText.gameObject.SetActive(true);
-            StartCoroutine(LoadLevel());
-        }
+        smallPlayerHealth = smallPlayerObject.GetComponent<HealthManager>().health;
+        bigPlayerHealth = bigPlayerObject.GetComponent<HealthManager>().health;
+        endText.gameObject.SetActive(false);
     }
+
+    public void PlayerDied()
+    {
+       // if (bigPlayerHealth == 0 || smallPlayerHealth == 0)
+        endText.text = "YOU LOST";
+        endText.gameObject.SetActive(true);
+        StartCoroutine(LoadLevel());
+    }
+
     private IEnumerator LoadLevel()
     {
         yield return new WaitForSeconds(3);
