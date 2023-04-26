@@ -12,11 +12,12 @@ public class EnterEndDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.name == "Small Player")
+        Character character = col.GetComponent<Character>();
+        if (character.Type == Character.CharacterType.Small)
         {
             smallPlayerAtDoor = true;
         }
-        else if (col.name == "Big Player")
+        else if (character.Type == Character.CharacterType.Big)
         {
             bigPlayerAtDoor = true;
         }
@@ -29,11 +30,12 @@ public class EnterEndDoor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.name == "Small Player")
+        Character character = col.GetComponent<Character>();
+        if (character.Type == Character.CharacterType.Small)
         {
             smallPlayerAtDoor = false;
         }
-        else if (col.name == "Big Player")
+        else if (character.Type == Character.CharacterType.Big)
         {
             bigPlayerAtDoor = false;
         }
