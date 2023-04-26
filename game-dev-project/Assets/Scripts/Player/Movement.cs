@@ -9,8 +9,8 @@ public class Movement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float speed = 100f;
     [SerializeField] private float jumpForce = 6f;
+    [SerializeField] private float slideForce = 1f;
     [SerializeField] private float groundDistance = 0.1f;
-
     [SerializeField] private string horizontalAxis;
     [SerializeField] private string verticalAxis;
     [SerializeField] private KeyCode jumpKey = KeyCode.W;
@@ -27,6 +27,8 @@ public class Movement : MonoBehaviour
 
     private bool isNearbyLadder = false;
     private bool isClimbing = false;
+
+    private bool isSliding = false;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -78,8 +80,15 @@ public class Movement : MonoBehaviour
 
     private void HandleRun()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        
+        if (isSliding)
+        {
+            rb.AddForce(new Vector2(horizontal * slideForce, 0f));
+        }
+        else
+        {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        }
+
         if (horizontal > 0 && transform.rotation.y == 0)
             transform.rotation = Quaternion.Euler(0, 180f, 0);
 
@@ -104,6 +113,12 @@ public class Movement : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D col)
     {
+        Ice ice = col.GetComponent<Ice>();
+        if (ice)
+        {
+            isSliding = true;
+        }
+
         Ladder ladder = col.GetComponent<Ladder>();
         if (ladder)
         {
@@ -113,6 +128,11 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        Ice ice = other.GetComponent<Ice>();
+        if (ice)
+        {
+            isSliding = false;
+        }
         Ladder ladder = other.GetComponent<Ladder>();
         if (ladder)
         {
