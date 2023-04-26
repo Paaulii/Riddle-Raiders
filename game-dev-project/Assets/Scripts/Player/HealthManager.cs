@@ -30,7 +30,7 @@ public class HealthManager : MonoBehaviour
         {
             onPlayersDeath?.Invoke();
         }
-
+        gameObject.GetComponent<Animator>().SetTrigger("attack");
         onPlayerHit?.Invoke();
     }
 }
