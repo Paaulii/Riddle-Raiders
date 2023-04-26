@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [Header("UI objects")] 
     [SerializeField] private UIController uiController;
 
+    [Header("End level")]
+    [SerializeField] private EnterEndDoor endDoor;
     private void Start()
     {
         BindToEvents();
@@ -32,8 +34,10 @@ public class GameManager : MonoBehaviour
         
         smallPlayer.onPlayersDeath += HandleGameOverState;
         smallPlayer.onPlayerHit += DecreaseUIHearts;
+
+        endDoor.onEnterEndDoor += EndOfLevel;
     }
-    
+
     private void UnbindFromEvents()
     {
         bigPlayer.onPlayersDeath -= HandleGameOverState;
@@ -41,8 +45,16 @@ public class GameManager : MonoBehaviour
         
         smallPlayer.onPlayersDeath -= HandleGameOverState;
         smallPlayer.onPlayerHit -= DecreaseUIHearts;
+
+        endDoor.onEnterEndDoor -= EndOfLevel;
     }
-    
+
+    private void EndOfLevel()
+    {
+        Debug.Log("Next Level");
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
+
     private void DecreaseUIHearts(Character character)
     {
         uiController.DecreasePlayersHealth(character.Type);
@@ -53,11 +65,5 @@ public class GameManager : MonoBehaviour
         uiController.SetActiveGameOverText(true);
         bigPlayer.Movement.enabled = false;
         smallPlayer.Movement.enabled = false;
-    }
-    
-    private IEnumerator LoadLevel()
-    {
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
