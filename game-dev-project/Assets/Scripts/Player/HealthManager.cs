@@ -17,10 +17,18 @@ public class HealthManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         Spikes spikes = col.GetComponent<Spikes>();
+        Lava lava = col.GetComponent<Lava>();
 
         if (spikes)
         {
             DecreaseHeath();
+        }
+        if (lava)
+        {
+            while(health > 0)
+            {
+                DecreaseHeath();
+            }
         }
     }
 
