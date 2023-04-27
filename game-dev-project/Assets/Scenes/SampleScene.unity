@@ -123,6 +123,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &419678343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1219804753305795435, guid: 2cf5911bad72c1946965290ad0e69d9c, type: 3}
+  m_PrefabInstance: {fileID: 4664254931790333715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &419678350
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419678343}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 100
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +800,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5479016187082054959, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
+      value: -0.28098375
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479016187082054959, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
+      value: -0.25068116
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479016187082054959, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
+      value: 0.24350739
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479016187082054959, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
+      value: 0.2061472
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
 --- !u!4 &1049023303014305125 stripped
@@ -1113,7 +1155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1219804753305795434, guid: 2cf5911bad72c1946965290ad0e69d9c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.13
+      value: 5.15
       objectReference: {fileID: 0}
     - target: {fileID: 1219804753305795434, guid: 2cf5911bad72c1946965290ad0e69d9c, type: 3}
       propertyPath: m_LocalPosition.y

@@ -14,21 +14,26 @@ public class Movement : MonoBehaviour
     [SerializeField] private string horizontalAxis;
     [SerializeField] private string verticalAxis;
     [SerializeField] private KeyCode jumpKey = KeyCode.W;
+    [SerializeField] private KeyCode catchKey = KeyCode.E;
 
     [SerializeField] private Collider2D collider;
     
     private Rigidbody2D rb = null;
     private Animator animator = null;
     private bool attemptJump = false;
-    
+    private bool attemptCatch = false;
+
     private float horizontal;
     private float vertical;
     private float beginGravity;
 
     private bool isNearbyLadder = false;
     private bool isClimbing = false;
-
     private bool isSliding = false;
+
+    private bool isNextToBox = false;
+    public bool isCatchingBox = false;
+    private Box boxObject = null;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -50,6 +55,7 @@ public class Movement : MonoBehaviour
         HandleJump();
         RunAnimation();
         HandleRun();
+        HandleCatch();
     }
 
     private void MoveOnLadder()
@@ -69,8 +75,9 @@ public class Movement : MonoBehaviour
     private void GetInput()
     {
         horizontal = Input.GetAxisRaw(horizontalAxis);
-        attemptJump = Input.GetKeyDown(jumpKey);
         vertical = Input.GetAxis(verticalAxis);
+        attemptJump = Input.GetKeyDown(jumpKey);
+        attemptCatch = Input.GetKeyDown(catchKey);
         
         if (isNearbyLadder && Mathf.Abs(vertical) > 0f)
         {
@@ -97,6 +104,30 @@ public class Movement : MonoBehaviour
 
     }
 
+    private void HandleCatch()
+    {
+        if (isCatchingBox)
+        {
+            if (transform.eulerAngles.y == 180f)
+            {
+                boxObject.transform.position = transform.position + new Vector3(1f, 0f, 0f);
+            }
+            else
+            {
+                boxObject.transform.position = transform.position + new Vector3(-1f, 0f, 0f);
+            }
+            
+        }
+        if (attemptCatch && isNextToBox && !isCatchingBox)
+        {
+            isCatchingBox = true;
+        }
+        else if (attemptCatch && isCatchingBox)
+        {
+            isCatchingBox = false;
+        }
+    }
+
     private void HandleJump()
     {
         if (attemptJump && CheckGrounded())
@@ -113,6 +144,12 @@ public class Movement : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D col)
     {
+        boxObject = col.GetComponent<Box>();
+        if (boxObject)
+        {
+            isNextToBox = true;
+        }
+
         Ice ice = col.GetComponent<Ice>();
         if (ice)
         {
@@ -128,6 +165,12 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        boxObject = other.GetComponent<Box>();
+        if (boxObject)
+        {
+            isNextToBox = false;
+        }
+
         Ice ice = other.GetComponent<Ice>();
         if (ice)
         {

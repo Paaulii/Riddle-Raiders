@@ -21,18 +21,18 @@ public class HealthManager : MonoBehaviour
 
         if (spikes)
         {
-            DecreaseHeath();
+            DecreaseHealth();
         }
         if (lava)
         {
             while(health > 0)
             {
-                DecreaseHeath();
+                DecreaseHealth();
             }
         }
     }
 
-    private void DecreaseHeath()
+    private void DecreaseHealth()
     {
         if (--health == 0)
         {
