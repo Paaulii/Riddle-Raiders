@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Character bigPlayer;
     [SerializeField] private Character smallPlayer;
 
+    [Header("Items")] 
+    [SerializeField] private StarCollectDetector starCollectDetector;
+    
     [Header("UI objects")] 
     [SerializeField] private UIController uiController;
 
@@ -35,7 +38,14 @@ public class GameManager : MonoBehaviour
         smallPlayer.onPlayersDeath += HandleGameOverState;
         smallPlayer.onPlayerHit += DecreaseUIHearts;
 
+        starCollectDetector.onStarCollected += HandleStarCollecting;
+
         endDoor.onEnterEndDoor += EndOfLevel;
+    }
+
+    private void HandleStarCollecting()
+    {
+        uiController.IncreaseStarAmount();
     }
 
     private void UnbindFromEvents()
@@ -45,7 +55,9 @@ public class GameManager : MonoBehaviour
         
         smallPlayer.onPlayersDeath -= HandleGameOverState;
         smallPlayer.onPlayerHit -= DecreaseUIHearts;
-
+        
+        starCollectDetector.onStarCollected -= HandleStarCollecting;
+        
         endDoor.onEnterEndDoor -= EndOfLevel;
     }
 

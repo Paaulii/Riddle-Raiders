@@ -8,8 +8,11 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     [Header("UI objects")]
+    
+    [Header("Top info")]
     [SerializeField] private PlayerStateController smallPlayerStateController;
     [SerializeField] private PlayerStateController bigPlayerStateController;
+    [SerializeField] private StarDisplayer starDisplayer;
     [SerializeField] private GameObject gameOverText;
 
     private void Start()
@@ -33,5 +36,10 @@ public class UIController : MonoBehaviour
     public void SetActiveGameOverText(bool isActive)
     {
         gameOverText.SetActive(isActive);
+    }
+
+    public void IncreaseStarAmount()
+    {
+        starDisplayer.ChangeStarsNumber();
     }
 }
