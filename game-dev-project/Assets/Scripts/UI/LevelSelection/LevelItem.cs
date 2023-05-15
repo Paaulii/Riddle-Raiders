@@ -11,25 +11,26 @@ public class LevelItem : MonoBehaviour
     [SerializeField] private Image starsImage;
     [SerializeField] private TextMeshProUGUI levelNumberText;
     [SerializeField] private Sprite[] stars;
+    [SerializeField] private Image lockedLevelCover;
     [SerializeField] private UnityEngine.UI.Button button;
 
-    bool isLevelBlocked = false;
+    bool isLevelLocked = false;
     int levelNumber; 
     private void Awake()
     {
         button.onClick.AddListener(() => onLevelClicked?.Invoke(this));
     }
 
-    public void SetData(int starsAmount, int levelNumber, bool isBlocked)
+    public void SetData(int starsAmount, int levelNumber, bool isLocked)
     {
         levelNumberText.text = levelNumber.ToString();
         starsImage.sprite = stars[starsAmount];
-        isLevelBlocked = isBlocked;
+        isLevelLocked = isLocked;
         this.levelNumber = levelNumber;
         
-        if (isLevelBlocked)
+        if (isLevelLocked)
         {
-            
+            lockedLevelCover.gameObject.SetActive(true);
         }
     }
 }
