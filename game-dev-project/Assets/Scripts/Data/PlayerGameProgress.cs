@@ -5,17 +5,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class PlayerLevelProgress
+public class PlayerGameProgress
 {
     public List<LevelData> LevelsData => levelsData;
     [SerializeField] private List<LevelData> levelsData;
 
-    public PlayerLevelProgress()
+    public PlayerGameProgress()
     {
         levelsData = new List<LevelData>();
     }
     
-    public PlayerLevelProgress(List<LevelData> levelsData)
+    public PlayerGameProgress(List<LevelData> levelsData)
     {
         this.levelsData = levelsData;
     }
@@ -25,11 +25,16 @@ public class PlayerLevelProgress
         levelsData = new List<LevelData>();
         for (int i = 0; i < levelPaths.Length; i++)
         {
-            levelsData.Add(new LevelData(levelPaths[i], i + 1, 0, i != 0));
+            levelsData.Add(new LevelData(levelPaths[i], i, 0, i != 0));
         }
     }
 
-    public void ChangeLevelData(LevelData levelData, int levelNumber) {
-        levelsData[levelNumber] = new LevelData(levelData);
+    public void ChangeStarsNumber(int starsAmount, int levelNumber) {
+        levelsData[levelNumber].StarsAmount = starsAmount;
+    }
+
+    public void UnlockLevel(int levelNumber)
+    {
+        levelsData[levelNumber].UnlockLevel();
     }
 }

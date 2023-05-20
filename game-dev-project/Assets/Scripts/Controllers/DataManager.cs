@@ -4,37 +4,43 @@ using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "DataManager", menuName = "ScriptableObjects/DataManager", order = 1)]
 public class DataManager : ScriptableObject {
-    public int CurrentLVL { get; set; }
-    string PLAYER_DATA_KEY = "playerLevelProgress";
-    public string[] levelPaths;
-    
-    public void SaveData(LevelData levelData, int levelNumber)
+    public int CurrentLvl { get; set; }
+    [SerializeField] private string[] levelPaths;
+    private string PLAYER_DATA_KEY = "playerLevelProgress";
+
+    public void SaveData(int starsAmount, int levelNumber)
     {
-        PlayerLevelProgress playerLevelProgress = LoadData();
-        playerLevelProgress.ChangeLevelData(levelData, levelNumber);
-        SaveDataToPlayerPrefs(playerLevelProgress);
+        PlayerGameProgress playerGameProgress = LoadData();
+        playerGameProgress.ChangeStarsNumber(starsAmount, levelNumber);
+        
+        if (levelNumber + 1 < playerGameProgress.LevelsData.Count)
+        {
+            playerGameProgress.UnlockLevel(levelNumber + 1);
+        }
+        
+        SaveDataToPlayerPrefs(playerGameProgress);
     }
     
-    public PlayerLevelProgress LoadData()
+    public PlayerGameProgress LoadData()
     {
-        PlayerLevelProgress playerLevelProgress = new PlayerLevelProgress();
+        PlayerGameProgress playerGameProgress = new PlayerGameProgress();
         
         if (PlayerPrefs.HasKey(PLAYER_DATA_KEY))
         {
-            playerLevelProgress = JsonUtility.FromJson<PlayerLevelProgress>(PlayerPrefs.GetString(PLAYER_DATA_KEY));
+            playerGameProgress = JsonUtility.FromJson<PlayerGameProgress>(PlayerPrefs.GetString(PLAYER_DATA_KEY));
         }
         else 
         {
-            playerLevelProgress.InitLevels(levelPaths);
-            SaveDataToPlayerPrefs(playerLevelProgress);
+            playerGameProgress.InitLevels(levelPaths);
+            SaveDataToPlayerPrefs(playerGameProgress);
         }
 
-        return playerLevelProgress;
+        return playerGameProgress;
     }
 
-    void SaveDataToPlayerPrefs(PlayerLevelProgress playerLevelProgress) 
+    void SaveDataToPlayerPrefs(PlayerGameProgress playerGameProgress) 
     {
-        string json = JsonUtility.ToJson(playerLevelProgress);
+        string json = JsonUtility.ToJson(playerGameProgress);
         PlayerPrefs.SetString(PLAYER_DATA_KEY, json);
     }
 }

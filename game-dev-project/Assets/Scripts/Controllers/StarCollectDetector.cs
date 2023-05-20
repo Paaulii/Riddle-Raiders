@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class StarCollectDetector : MonoBehaviour
 {
+    public int StarsAmount = 0;
+    public Action onStarCollected;
+    
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip collectSound;
     
-    public Action onStarCollected;
     private Star[] stars;
     void Start()
     {
@@ -30,6 +32,7 @@ public class StarCollectDetector : MonoBehaviour
 
     private void HandleStarCollection() {
         audioSource.PlayOneShot(collectSound);
+        StarsAmount++;
         onStarCollected?.Invoke();
     }
 }

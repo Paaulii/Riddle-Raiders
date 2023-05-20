@@ -20,9 +20,14 @@ public class GameManager : MonoBehaviour
 
     [Header("End level")]
     [SerializeField] private EnterEndDoor endDoor;
-    private void Start()
+
+    [SerializeField] private DataManager dataManager;
+    
+    PlayerGameProgress playerGameProgress;
+    private void Start() 
     {
         BindToEvents();
+        playerGameProgress = dataManager.LoadData();
     }
 
     private void OnDestroy()
@@ -64,7 +69,17 @@ public class GameManager : MonoBehaviour
     private void EndOfLevel()
     {
         Debug.Log("Next Level");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        dataManager.SaveData(starCollectDetector.StarsAmount, dataManager.CurrentLvl);
+        dataManager.CurrentLvl++;
+        
+        if (dataManager.CurrentLvl == playerGameProgress.LevelsData.Count)
+        {
+            HandleGameOverState();
+        }
+        else 
+        {
+            SceneManager.LoadScene(playerGameProgress.LevelsData[dataManager.CurrentLvl - 1].PathToScene);
+        }
     }
 
     private void DecreaseUIHearts(Character character)

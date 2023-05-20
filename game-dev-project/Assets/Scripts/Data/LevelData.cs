@@ -5,7 +5,15 @@ using UnityEngine;
 public class LevelData 
 {
     public string PathToScene => pathToScene;
-    public int StarsAmount => starsAmount;
+    public int StarsAmount {
+        get { 
+            return starsAmount;
+        }
+        set {
+            starsAmount = value;
+        }
+    }
+
     public int LevelNumber => levelNumber;
     public bool IsLocked => isLocked;
     
@@ -28,5 +36,9 @@ public class LevelData
         levelNumber = levelToCopy.levelNumber;
         starsAmount =  levelToCopy.starsAmount;
         isLocked =  levelToCopy.isLocked;
+    }
+
+    public void UnlockLevel() {
+        isLocked = false;
     }
 }

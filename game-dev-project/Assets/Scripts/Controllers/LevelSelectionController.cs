@@ -8,12 +8,12 @@ public class LevelSelectionController : MonoBehaviour
 {
     [SerializeField] private DataManager dataManager;
     [SerializeField] private LevelItemGridGenerator levelItemGridGenerator;
-    PlayerLevelProgress playerLevelProgress;
+    PlayerGameProgress playerGameProgress;
     private void Awake() 
     {
-        playerLevelProgress = dataManager.LoadData();
-        Debug.Log(playerLevelProgress.LevelsData.Count);
-        levelItemGridGenerator.GenerateLevelItems(playerLevelProgress.LevelsData);
+        playerGameProgress = dataManager.LoadData();
+        Debug.Log(playerGameProgress.LevelsData.Count);
+        levelItemGridGenerator.GenerateLevelItems(playerGameProgress.LevelsData);
         levelItemGridGenerator.onSelectLevel += HandleLevelSelect;
     }
 
@@ -24,10 +24,10 @@ public class LevelSelectionController : MonoBehaviour
 
     private void HandleLevelSelect(int levelNumber) 
     {
-        if (levelNumber - 1 >= 0)
+        if (levelNumber + 1 >= 0)
         {
-            dataManager.CurrentLVL = levelNumber;
-            SceneManager.LoadScene(playerLevelProgress.LevelsData[levelNumber-1].PathToScene);
+            dataManager.CurrentLvl = levelNumber + 1;
+            SceneManager.LoadScene(playerGameProgress.LevelsData[levelNumber].PathToScene);
         }
     }
 }

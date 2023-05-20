@@ -23,7 +23,7 @@ public class LevelItem : MonoBehaviour
 
     public void SetData(int starsAmount, int levelNumber, bool isLocked)
     {
-        levelNumberText.text = levelNumber.ToString();
+        levelNumberText.text = (levelNumber + 1).ToString();
         starsImage.sprite = stars[starsAmount];
         isLevelLocked = isLocked;
         this.levelNumber = levelNumber;

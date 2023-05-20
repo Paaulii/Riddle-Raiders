@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2485efa8ddc4de47a385e209b173968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StarsAmount: 0
   audioSource: {fileID: 7902289335910795548}
   collectSound: {fileID: 8300000, guid: 8ad7e4e9e2639654bba64b24efbc2550, type: 3}
 --- !u!1 &2730563141803581577
@@ -264,6 +265,7 @@ MonoBehaviour:
   starCollectDetector: {fileID: 5271866452268559371}
   uiController: {fileID: 7836526175784570631}
   endDoor: {fileID: 8076840654857303366}
+  dataManager: {fileID: 11400000, guid: 2b5fc3fb66df6d441b73afd98989a18c, type: 2}
 --- !u!1001 &279223398651420816
 PrefabInstance:
   m_ObjectHideFlags: 0
