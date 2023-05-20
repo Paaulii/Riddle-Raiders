@@ -8,13 +8,27 @@ public class LevelSelectionController : MonoBehaviour
 {
     [SerializeField] private DataManager dataManager;
     [SerializeField] private LevelItemGridGenerator levelItemGridGenerator;
+    [SerializeField] private UnityEngine.UI.Button backToMenuButton;
+    [SerializeField] private UnityEngine.UI.Button resetDataButton;
     PlayerGameProgress playerGameProgress;
+    
     private void Awake() 
     {
         playerGameProgress = dataManager.LoadData();
         Debug.Log(playerGameProgress.LevelsData.Count);
         levelItemGridGenerator.GenerateLevelItems(playerGameProgress.LevelsData);
         levelItemGridGenerator.onSelectLevel += HandleLevelSelect;
+        
+        backToMenuButton.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("Menu");
+        });
+        
+        resetDataButton.onClick.AddListener(() =>
+        {
+            playerGameProgress = dataManager.ResetData();
+            levelItemGridGenerator.GenerateLevelItems(playerGameProgress.LevelsData);
+        });
     }
 
     private void OnDestroy()

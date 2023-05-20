@@ -23,11 +23,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private DataManager dataManager;
     
+    [Header("Sounds")]
+    [SerializeField] private AudioClip onEndLevel;
     PlayerGameProgress playerGameProgress;
     private void Start() 
     {
         BindToEvents();
         playerGameProgress = dataManager.LoadData();
+        uiController.SetLevelNumber(dataManager.CurrentLvl);
+        uiController.SetActiveLevelComplete(false);
+        uiController.SetActiveGameOverText(false);
     }
 
     private void OnDestroy()
@@ -45,7 +50,24 @@ public class GameManager : MonoBehaviour
 
         starCollectDetector.onStarCollected += HandleStarCollecting;
 
-        endDoor.onEnterEndDoor += EndOfLevel;
+        endDoor.onEnterEndDoor += HandleEndLevel;
+
+        uiController.onBackToMenu += HandleBackToMenu;
+        uiController.OnNextLevelButtonClicked += HandleNextLevelButtonClicked;
+    }
+
+    private void HandleBackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    private void HandleNextLevelButtonClicked()
+    {
+        int levelIndex = dataManager.CurrentLvl - 1;
+        
+        if (levelIndex >= 0) {
+            SceneManager.LoadScene(playerGameProgress.LevelsData[levelIndex].PathToScene);
+        }
     }
 
     private void HandleStarCollecting()
@@ -63,23 +85,22 @@ public class GameManager : MonoBehaviour
         
         starCollectDetector.onStarCollected -= HandleStarCollecting;
         
-        endDoor.onEnterEndDoor -= EndOfLevel;
+        endDoor.onEnterEndDoor -= HandleEndLevel;
+        
+        uiController.onBackToMenu -= HandleBackToMenu;
+        uiController.OnNextLevelButtonClicked -= HandleNextLevelButtonClicked;
     }
 
-    private void EndOfLevel()
+    private void HandleEndLevel()
     {
-        Debug.Log("Next Level");
         dataManager.SaveData(starCollectDetector.StarsAmount, dataManager.CurrentLvl);
-        dataManager.CurrentLvl++;
-        
+        uiController.SetActiveLevelComplete(true, starCollectDetector.StarsAmount);
+
         if (dataManager.CurrentLvl == playerGameProgress.LevelsData.Count)
         {
-            HandleGameOverState();
+            uiController.HandleGameComplete();
         }
-        else 
-        {
-            SceneManager.LoadScene(playerGameProgress.LevelsData[dataManager.CurrentLvl - 1].PathToScene);
-        }
+        dataManager.CurrentLvl++;
     }
 
     private void DecreaseUIHearts(Character character)

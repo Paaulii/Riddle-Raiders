@@ -30,11 +30,11 @@ public class PlayerGameProgress
     }
 
     public void ChangeStarsNumber(int starsAmount, int levelNumber) {
-        levelsData[levelNumber].StarsAmount = starsAmount;
+        levelsData[levelNumber - 1].StarsAmount = starsAmount;
     }
 
     public void UnlockLevel(int levelNumber)
     {
-        levelsData[levelNumber].UnlockLevel();
+        levelsData[levelNumber - 1].UnlockLevel();
     }
 }

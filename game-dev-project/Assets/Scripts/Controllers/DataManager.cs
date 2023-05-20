@@ -10,6 +10,7 @@ public class DataManager : ScriptableObject {
 
     public void SaveData(int starsAmount, int levelNumber)
     {
+        
         PlayerGameProgress playerGameProgress = LoadData();
         playerGameProgress.ChangeStarsNumber(starsAmount, levelNumber);
         
@@ -20,22 +21,30 @@ public class DataManager : ScriptableObject {
         
         SaveDataToPlayerPrefs(playerGameProgress);
     }
-    
+
+
     public PlayerGameProgress LoadData()
     {
-        PlayerGameProgress playerGameProgress = new PlayerGameProgress();
+        PlayerGameProgress playerGameProgress;
         
         if (PlayerPrefs.HasKey(PLAYER_DATA_KEY))
         {
             playerGameProgress = JsonUtility.FromJson<PlayerGameProgress>(PlayerPrefs.GetString(PLAYER_DATA_KEY));
         }
-        else 
+        else
         {
-            playerGameProgress.InitLevels(levelPaths);
-            SaveDataToPlayerPrefs(playerGameProgress);
+            playerGameProgress = ResetData();
         }
 
         return playerGameProgress;
+    }
+    
+    public PlayerGameProgress ResetData()
+    {
+        PlayerGameProgress newData = new PlayerGameProgress();
+        newData.InitLevels(levelPaths);
+        SaveDataToPlayerPrefs(newData);
+        return newData;
     }
 
     void SaveDataToPlayerPrefs(PlayerGameProgress playerGameProgress) 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DataManager
   m_EditorClassIdentifier: 
   levelPaths:
-  - Level_1
+  - Test
   - Level_2
   - Level_3
   - Level_4
