@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         playerGameProgress = dataManager.LoadData();
         uiController.SetLevelNumber(dataManager.CurrentLvl);
         uiController.SetActiveLevelComplete(false);
-        uiController.SetActiveGameOverText(false);
+        uiController.SetActiveGameOverPanel(false);
     }
 
     private void OnDestroy()
@@ -53,7 +53,13 @@ public class GameManager : MonoBehaviour
         endDoor.onEnterEndDoor += HandleEndLevel;
 
         uiController.onBackToMenu += HandleBackToMenu;
-        uiController.OnNextLevelButtonClicked += HandleNextLevelButtonClicked;
+        uiController.onNextLevelButtonClicked += HandleNextLevelButtonClicked;
+        uiController.onResetLevel += HandleResetLevel;
+    }
+
+    private void HandleResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void HandleBackToMenu()
@@ -88,7 +94,7 @@ public class GameManager : MonoBehaviour
         endDoor.onEnterEndDoor -= HandleEndLevel;
         
         uiController.onBackToMenu -= HandleBackToMenu;
-        uiController.OnNextLevelButtonClicked -= HandleNextLevelButtonClicked;
+        uiController.onNextLevelButtonClicked -= HandleNextLevelButtonClicked;
     }
 
     private void HandleEndLevel()
@@ -110,8 +116,8 @@ public class GameManager : MonoBehaviour
     
     private void HandleGameOverState()
     {
-        uiController.SetActiveGameOverText(true);
-        bigPlayer.Movement.enabled = false;
-        smallPlayer.Movement.enabled = false;
+        uiController.SetActiveGameOverPanel(true);
+        bigPlayer.Movement.ForceStopPlayer();
+        smallPlayer.Movement.ForceStopPlayer();
     }
 }

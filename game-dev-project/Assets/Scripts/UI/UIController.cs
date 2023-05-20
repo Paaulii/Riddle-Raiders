@@ -8,8 +8,9 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public Action OnNextLevelButtonClicked;
+    public Action onNextLevelButtonClicked;
     public Action onBackToMenu;
+    public Action onResetLevel;
 
     [Header("UI objects")] 
     
@@ -21,14 +22,14 @@ public class UIController : MonoBehaviour
     
     [Header("Panels")]
     [SerializeField] private LevelCompleteDisplayer levelCompleteDisplayer;
-    [SerializeField] private GameObject gameOverText;
-
+    [SerializeField] private GameOverPanelDisplayer gameOverPanelDisplayer;
     private void Start()
     {
-        SetActiveGameOverText(false);
-        levelCompleteDisplayer.onNextLevelButtonClicked += () => { OnNextLevelButtonClicked?.Invoke(); };
-
+        SetActiveGameOverPanel(false);
+        levelCompleteDisplayer.onNextLevelButtonClicked += () => { onNextLevelButtonClicked?.Invoke(); };
         levelCompleteDisplayer.onBackButtonClicked += () => { onBackToMenu?.Invoke(); };
+        gameOverPanelDisplayer.onResetLevel += () => { onResetLevel?.Invoke(); };
+        gameOverPanelDisplayer.onBackButtonClicked += () => { onBackToMenu?.Invoke(); };
     }
 
     public void DecreasePlayersHealth(Character.CharacterType characterType)
@@ -44,9 +45,9 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void SetActiveGameOverText(bool isActive)
+    public void SetActiveGameOverPanel(bool isActive)
     {
-        gameOverText.SetActive(isActive);
+        gameOverPanelDisplayer.gameObject.SetActive(isActive);
     }
 
     public void SetActiveLevelComplete(bool isActive, int collectedStars = 0)

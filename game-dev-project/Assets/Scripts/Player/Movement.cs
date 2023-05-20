@@ -41,6 +41,12 @@ public class Movement : MonoBehaviour
         beginGravity = rb.gravityScale;
     }
 
+    public void ForceStopPlayer()
+    {
+        rb.velocity = Vector2.zero;
+        enabled = false;
+        animator.SetBool("isMoving", false);
+    }
     private bool CheckGrounded()
     {
         Bounds bounds = collider.bounds;
@@ -183,4 +189,6 @@ public class Movement : MonoBehaviour
             isClimbing = false;
         }
     }
+    
+    
 }
