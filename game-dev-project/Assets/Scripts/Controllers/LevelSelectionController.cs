@@ -15,7 +15,6 @@ public class LevelSelectionController : MonoBehaviour
     private void Awake() 
     {
         playerGameProgress = dataManager.LoadData();
-        Debug.Log(playerGameProgress.LevelsData.Count);
         levelItemGridGenerator.GenerateLevelItems(playerGameProgress.LevelsData);
         levelItemGridGenerator.onSelectLevel += HandleLevelSelect;
         

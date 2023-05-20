@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 62522
+  controlID: 62936
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -86,7 +86,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 62523
+  controlID: 62937
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 62524
+  controlID: 62938
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,21 +226,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 0e43f6ff9a63f6ff0c6ef6ff1a6ef6ff986ef6ffa46ef6ffe46ef6fff86ef6fffa6ef6ffb889f6ff4290f6fff2b0f6ff84b4f6ff90b4f6ffe4b4f6ffe6b4f6ff90dff6ffb8e2f6ffece3f6ff5ae4f6ff8ae6f6ffc4e9f6ff0cfef6ff16fef6ff1afef6ff1efef6ff62fef6ff64fef6ffd417f7ff4218f7ffc49ffdffd09ffdffda9ffdffde9ffdffe29ffdff08a0fdff0aa0fdffcea6fdff70abfdff82abfdff84abfdff04b2fdff0eb2fdff12b2fdff16b2fdff2ab2fdff3cb2fdff3eb2fdffd4b3fdff64b5feff74b8feffc4b8feffa0d8feffe8d8feff4cd9feff28fbffffd0bf000026c000004cc000005aeb000014f10100a0fc0100
+      m_ExpandedIDs: 0e43f6ff8c63f6ff9863f6ff9a63f6ff0c6ef6ff1a6ef6ff986ef6ffa46ef6ffe46ef6fff86ef6fffa6ef6ffb889f6ff4290f6fff2b0f6ff84b4f6ff90b4f6ffe4b4f6ffe6b4f6ff90dff6ffb8e2f6ffece3f6ff5ae4f6ff8ae6f6ffc4e9f6ff0cfef6ff16fef6ff1afef6ff1efef6ff62fef6ff64fef6ffd417f7ff4218f7ffc49ffdffd09ffdffda9ffdffde9ffdffe29ffdff08a0fdff0aa0fdffcea6fdff70abfdff82abfdff84abfdff04b2fdff0eb2fdff12b2fdff16b2fdff2ab2fdff3cb2fdff3eb2fdffd4b3fdff64b5feff74b8feffc4b8feffa0d8feffe8d8feff4cd9feff28fbffffd0bf000026c000004cc000005aeb000014f10100a0fc0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: CharactersCamera
+        m_OriginalName: CharactersCamera
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 134240
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -269,8 +269,8 @@ MonoBehaviour:
     y: 0
     width: 1007
     height: 620
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -524,9 +524,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 12.063411, y: 6.203285, z: 0.013039522}
+    m_Target: {x: 3.673562, y: -0.3050175, z: -0.030619688}
     speed: 2
-    m_Value: {x: 12.063411, y: 6.203285, z: 0.013039522}
+    m_Value: {x: 3.673562, y: -0.3050175, z: -0.030619688}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -687,8 +687,8 @@ MonoBehaviour:
     y: 620
     width: 1382
     height: 311
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -724,7 +724,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: game manage
+    m_NameFilter: 
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -736,22 +736,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/UI
+    - Assets/Scenes/Levels
     m_Globs: []
-    m_OriginalText: game manage
+    m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/UI
+  - Assets/Scenes/Levels
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\STUDIA\GAME DEV\Project\game-dev-project\game-dev-project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 142}
-    m_SelectedIDs: 98600000
-    m_LastClickedID: 24728
-    m_ExpandedIDs: 00000000486000004a6000004c6000004e600000506000005260000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: e6600000
+    m_LastClickedID: 24806
+    m_ExpandedIDs: 00000000486000004c6000004e60000050600000526000008e60000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 62449
+  controlID: 63012
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -974,8 +974,8 @@ MonoBehaviour:
     y: 614
     width: 522
     height: 317
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
