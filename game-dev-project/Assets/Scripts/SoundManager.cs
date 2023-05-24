@@ -6,9 +6,9 @@ public class SoundManager : MonoBehaviour
 {
     public enum Sounds
     {
-        Jump, EndLevel, Collect, Hit, Wind, Box, Slide
+        Jump, EndLevel, Collect, Hit, Wind, Box, Slide, Climb
     }
-    [SerializeField] private AudioClip jump, endLevel, collect, hit, wind, box ,slide;
+    [SerializeField] private AudioClip jump, endLevel, collect, hit, wind, box ,slide, climb;
 
     AudioSource audioSource;
 
@@ -46,6 +46,10 @@ public class SoundManager : MonoBehaviour
 
             case Sounds.Slide:
                 audioSource.PlayOneShot(slide);
+                break;
+
+            case Sounds.Climb:
+                audioSource.PlayOneShot(climb);
                 break;
 
             default:

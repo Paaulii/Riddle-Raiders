@@ -148,3 +148,4 @@ MonoBehaviour:
   wind: {fileID: 8300000, guid: 617ca0f7a57288f49905b73085e3cef3, type: 3}
   box: {fileID: 8300000, guid: dd12033e0eec36b40889aa0d96fef113, type: 3}
   slide: {fileID: 8300000, guid: bf493e2d779725147ac79e807d7d00fa, type: 3}
+  climb: {fileID: 8300000, guid: 20cd4f699c1db5b478ef67ffee43612e, type: 3}
