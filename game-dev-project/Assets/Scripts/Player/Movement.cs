@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private string verticalAxis;
     [SerializeField] private KeyCode jumpKey = KeyCode.W;
     [SerializeField] private KeyCode catchKey = KeyCode.E;
+    [SerializeField] private bool canCarry = false;
 
     [SerializeField] private Collider2D collider;
     
@@ -34,11 +35,14 @@ public class Movement : MonoBehaviour
     private bool isNextToBox = false;
     public bool isCatchingBox = false;
     private Box boxObject = null;
+
+    private SoundManager soundManager = null;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         beginGravity = rb.gravityScale;
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     public void ForceStopPlayer()
@@ -112,32 +116,41 @@ public class Movement : MonoBehaviour
 
     private void HandleCatch()
     {
-        if (isCatchingBox)
+        if (canCarry)
         {
-            if (transform.eulerAngles.y == 180f)
+            if (isCatchingBox)
             {
-                boxObject.transform.position = transform.position + new Vector3(1f, 0f, 0f);
+                if (transform.eulerAngles.y == 180f)
+                {
+                    boxObject.transform.position = transform.position + new Vector3(1f, 0f, 0f);
+                }
+                else
+                {
+                    boxObject.transform.position = transform.position + new Vector3(-1f, 0f, 0f);
+                }
             }
-            else
+
+            if (attemptCatch && isNextToBox && !isCatchingBox)
             {
-                boxObject.transform.position = transform.position + new Vector3(-1f, 0f, 0f);
+                soundManager.PlaySound(SoundManager.Sounds.Box);
+                isCatchingBox = true;
             }
-            
-        }
-        if (attemptCatch && isNextToBox && !isCatchingBox)
-        {
-            isCatchingBox = true;
-        }
-        else if (attemptCatch && isCatchingBox)
-        {
-            isCatchingBox = false;
+            else if (attemptCatch && isCatchingBox)
+            {
+                soundManager.PlaySound(SoundManager.Sounds.Box);
+                isCatchingBox = false;
+            }
         }
     }
 
     private void HandleJump()
     {
         if (attemptJump && CheckGrounded())
+        {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            soundManager.PlaySound(SoundManager.Sounds.Jump);
+        }
+            
     }
 
     private void RunAnimation()
@@ -159,6 +172,7 @@ public class Movement : MonoBehaviour
         Ice ice = col.GetComponent<Ice>();
         if (ice)
         {
+            soundManager.PlaySound(SoundManager.Sounds.Slide);
             isSliding = true;
         }
 

@@ -9,8 +9,12 @@ public class Geyser : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 position;
+    private SoundManager soundManager = null;
 
-
+    private void Start()
+    {
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
+    }
     private void AddForce(Collider2D collision)
     {
         if (collision.name == "Small Player" || collision.name == "Big Player")
@@ -23,6 +27,7 @@ public class Geyser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        soundManager.PlaySound(SoundManager.Sounds.Wind);
         AddForce(collision);
     }
 

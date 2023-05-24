@@ -226,11 +226,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 8
+  slideForce: 1
   groundDistance: 0.1
   horizontalAxis: Horizontal_P1
   verticalAxis: Vertical_P1
-  jumpKey: 273
+  jumpKey: 305
+  catchKey: 303
+  canCarry: 1
   collider: {fileID: 1486613340}
+  isCatchingBox: 0
 --- !u!114 &1453374042422934432
 MonoBehaviour:
   m_ObjectHideFlags: 0
