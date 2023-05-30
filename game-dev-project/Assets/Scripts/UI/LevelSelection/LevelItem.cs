@@ -38,6 +38,7 @@ public class LevelItem : MonoBehaviour
         if (isLevelLocked)
         {
             lockedLevelCover.gameObject.SetActive(true);
+            button.enabled = false;
         }
     }
     

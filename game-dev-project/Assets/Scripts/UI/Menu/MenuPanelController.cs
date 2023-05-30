@@ -9,12 +9,14 @@ public class MenuPanelController : MonoBehaviour
 {
     [SerializeField] private UnityEngine.UI.Button startGameButton;
     [SerializeField] private UnityEngine.UI.Button chooseLevelButton;
+    [SerializeField] private UnityEngine.UI.Button optionsButton;
     [SerializeField] private UnityEngine.UI.Button creditsButton;
     [SerializeField] private UnityEngine.UI.Button exitGameButton;
     
     [Space]
     
     [SerializeField] private DataManager dataManager;
+    
     private void Start()
     {
         startGameButton.onClick.AddListener(() =>
@@ -25,6 +27,11 @@ public class MenuPanelController : MonoBehaviour
         chooseLevelButton.onClick.AddListener(() =>
         {
             SceneManager.LoadScene("LevelSelection");
+        });
+        
+        optionsButton.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("Options");
         });
         
         creditsButton.onClick.AddListener(() =>
