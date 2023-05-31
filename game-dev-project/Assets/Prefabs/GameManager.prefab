@@ -602,6 +602,18 @@ PrefabInstance:
       propertyPath: groundDistance
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1978948260169094492, guid: b917be9edec551042a231db6b27408dc, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978948260169094492, guid: b917be9edec551042a231db6b27408dc, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978948260169094492, guid: b917be9edec551042a231db6b27408dc, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3734142118793364512, guid: b917be9edec551042a231db6b27408dc, type: 3}
       propertyPath: m_Name
       value: Big Player
@@ -680,27 +692,10 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2350048302865948547, guid: b917be9edec551042a231db6b27408dc, type: 3}
   m_PrefabInstance: {fileID: 279223398651420816}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472933141203166384}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61dde07b9484b1d44a40ad749efbc92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &3472933141203166384 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3734142118793364512, guid: b917be9edec551042a231db6b27408dc, type: 3}
-  m_PrefabInstance: {fileID: 279223398651420816}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2090132590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3472933141203166384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d274833e1a9f198449a30f94ca8de720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &3472933141203166385 stripped
@@ -940,6 +935,18 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
       value: 0.2061472
       objectReference: {fileID: 0}
+    - target: {fileID: 833953708522277823, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 833953708522277823, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 833953708522277823, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5503595213375055801, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -995,27 +1002,10 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5507325348091092747, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
   m_PrefabInstance: {fileID: 5479016186350114935}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29786451600293837}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61dde07b9484b1d44a40ad749efbc92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &29786451600293837 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5503595213375055802, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
-  m_PrefabInstance: {fileID: 5479016186350114935}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1528127135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29786451600293837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d274833e1a9f198449a30f94ca8de720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &29786451600293838 stripped

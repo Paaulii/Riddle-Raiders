@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Bson;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -30,6 +31,11 @@ public class GameManager : MonoBehaviour
     public event Action<SoundManager.Sounds> HitSound;
     public event Action<SoundManager.Sounds> EndSound;
     public event Action<GameMusicManager.Music> GameMusic;
+    
+    private const string player1KeyBindingsConfKey = "PLAYER_1_BINDINGS";
+    private const string player2KeyBindingsConfKey = "PLAYER_2_BINDINGS";
+    private const string player1ActionMap = "Player1";
+    private const string player2ActionMap = "Player2";
     private void Start() 
     {
         GameMusic?.Invoke(GameMusicManager.Music.GameMusic1);
@@ -38,6 +44,9 @@ public class GameManager : MonoBehaviour
         uiController.SetLevelNumber(dataManager.CurrentLvl);
         uiController.SetActiveLevelComplete(false);
         uiController.SetActiveGameOverPanel(false);
+
+        LoadKeyBindings(player1KeyBindingsConfKey, smallPlayer, player1ActionMap);
+        LoadKeyBindings(player2KeyBindingsConfKey, bigPlayer, player2ActionMap);
     }
 
     private void OnDestroy()
@@ -128,5 +137,15 @@ public class GameManager : MonoBehaviour
         uiController.SetActiveGameOverPanel(true);
         bigPlayer.Movement.ForceStopPlayer();
         smallPlayer.Movement.ForceStopPlayer();
+    }
+    
+    private void LoadKeyBindings(string confKey, Character character, string actionMap)
+    {
+        string rebinds = PlayerPrefs.GetString(confKey, string.Empty);
+
+        if (!string.IsNullOrEmpty(rebinds))
+        {
+            character.Movement.PlayerInput.actions.FindActionMap(actionMap).LoadBindingOverridesFromJson(rebinds);
+        }
     }
 }

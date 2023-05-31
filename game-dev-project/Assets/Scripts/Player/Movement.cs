@@ -2,21 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class Movement : MonoBehaviour
 {
-    [Header("Movement")]
+    public PlayerInput PlayerInput => playerInput;
+    
+    [Header("Movement")] 
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float speed = 100f;
     [SerializeField] private float jumpForce = 6f;
     [SerializeField] private float slideForce = 1f;
     [SerializeField] private float groundDistance = 0.1f;
-    [SerializeField] private string horizontalAxis;
-    [SerializeField] private string verticalAxis;
-    [SerializeField] private KeyCode jumpKey = KeyCode.W;
-    [SerializeField] private KeyCode catchKey = KeyCode.E;
     [SerializeField] private bool canCarry = false;
-
+   // [SerializeField] private float smoothInputSpeed = .2f;
     [SerializeField] private Collider2D collider;
     
     private Rigidbody2D rb = null;
@@ -39,24 +39,22 @@ public class Movement : MonoBehaviour
     public event Action<SoundManager.Sounds> JumpSound;
     public event Action<SoundManager.Sounds> BoxSound;
     public event Action<SoundManager.Sounds> SlideSound;
+    private SoundManager soundManager = null;
+    
+   // private Vector2 currentInputVector;
+    private InputAction moveAction;
+    private InputAction jumpAction;
+    private InputAction catchAction;
+    //private Vector2 smoothInputVelocity;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         beginGravity = rb.gravityScale;
-    }
-
-    public void ForceStopPlayer()
-    {
-        rb.velocity = Vector2.zero;
-        enabled = false;
-        animator.SetBool("isMoving", false);
-    }
-    private bool CheckGrounded()
-    {
-        Bounds bounds = collider.bounds;
-        Vector2 bottomCenter = new Vector2(bounds.center.x, bounds.min.y);
-        return Physics2D.Raycast(bottomCenter, -Vector2.up, groundDistance);
+        moveAction = playerInput.actions["Movement"];
+        jumpAction = playerInput.actions["Jump"];
+        catchAction = playerInput.actions["Catch"];
     }
 
     private void Update()
@@ -68,7 +66,21 @@ public class Movement : MonoBehaviour
         HandleRun();
         HandleCatch();
     }
-
+    
+    public void ForceStopPlayer()
+    {
+        rb.velocity = Vector2.zero;
+        enabled = false;
+        animator.SetBool("isMoving", false);
+    }
+    
+    private bool CheckGrounded()
+    {
+        Bounds bounds = collider.bounds;
+        Vector2 bottomCenter = new Vector2(bounds.center.x, bounds.min.y);
+        return Physics2D.Raycast(bottomCenter, -Vector2.up, groundDistance);
+    }
+    
     private void MoveOnLadder()
     {
         if (isClimbing)
@@ -83,12 +95,10 @@ public class Movement : MonoBehaviour
     }
 
 
-    private void GetInput()
+    private void GetInput() 
     {
-        horizontal = Input.GetAxisRaw(horizontalAxis);
-        vertical = Input.GetAxis(verticalAxis);
-        attemptJump = Input.GetKeyDown(jumpKey);
-        attemptCatch = Input.GetKeyDown(catchKey);
+        attemptJump = jumpAction.IsPressed();
+        attemptCatch = catchAction.IsPressed();
         
         if (isNearbyLadder && Mathf.Abs(vertical) > 0f)
         {
@@ -98,7 +108,11 @@ public class Movement : MonoBehaviour
 
     private void HandleRun()
     {
-        if (isSliding)
+        Vector2 input = moveAction.ReadValue<Vector2>();
+        horizontal = input.x;
+        vertical = input.y;
+       // TO SMOOTH VELOCITY: currentInputVector = Vector2.SmoothDamp(currentInputVector, input, ref smoothInputVelocity, smoothInputSpeed);
+       if (isSliding)
         {
             rb.AddForce(new Vector2(horizontal * slideForce, 0f));
         }
@@ -204,6 +218,4 @@ public class Movement : MonoBehaviour
             isClimbing = false;
         }
     }
-    
-    
 }
