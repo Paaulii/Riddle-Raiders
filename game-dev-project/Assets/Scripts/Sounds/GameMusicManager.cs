@@ -10,7 +10,7 @@ public class GameMusicManager : MonoBehaviour
         GameMusic1
     }
     [SerializeField] private AudioClip gameMusic1;
-
+    [SerializeField] private GameManager gameManager;
     AudioSource audioSource;
 
     private void Start()
@@ -20,7 +20,7 @@ public class GameMusicManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager gameManager = FindObjectOfType<GameManager>();
+
         if (gameManager != null)
         {
             gameManager.GameMusic += PlayMusic;
@@ -30,7 +30,6 @@ public class GameMusicManager : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager gameManager = FindObjectOfType<GameManager>();
         if (gameManager != null)
         {
             gameManager.GameMusic -= PlayMusic;

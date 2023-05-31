@@ -144,6 +144,7 @@ MonoBehaviour:
   movements:
   - {fileID: 0}
   - {fileID: 0}
+  gameManager: {fileID: 0}
   jump: {fileID: 8300000, guid: c869f9b457c86f94b996dbc37dcd52ef, type: 3}
   endLevel: {fileID: 8300000, guid: 22b6831d3a12e7d4a9673db93b9adf90, type: 3}
   collect: {fileID: 8300000, guid: 8ad7e4e9e2639654bba64b24efbc2550, type: 3}

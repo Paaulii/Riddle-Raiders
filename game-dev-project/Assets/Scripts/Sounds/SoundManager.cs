@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private List<Movement> movements = new List<Movement>();
+    [SerializeField] private GameManager gameManager;
     public enum Sounds
     {
         Jump, EndLevel, Collect, Hit, Wind, Box, Slide, Climb
@@ -36,8 +37,6 @@ public class SoundManager : MonoBehaviour
             }
         }
 
-
-        GameManager gameManager = FindObjectOfType<GameManager>();
         if (gameManager != null)
         {
             gameManager.CollectSound += PlaySound;
@@ -65,8 +64,7 @@ public class SoundManager : MonoBehaviour
             }
         }
 
-        GameManager gameManager = FindObjectOfType<GameManager>();
-        if(gameManager != null)
+        if (gameManager != null)
         {
             gameManager.CollectSound -= PlaySound;
             gameManager.HitSound -= PlaySound;
