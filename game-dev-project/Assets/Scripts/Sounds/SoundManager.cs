@@ -31,17 +31,13 @@ public class SoundManager : MonoBehaviour
         {
             if (movement != null)
             {
-                movement.JumpSound += PlaySound;
-                movement.BoxSound += PlaySound;
-                movement.SlideSound += PlaySound;
+                movement.PlaySound += PlaySound;
             }
         }
 
         if (gameManager != null)
         {
-            gameManager.CollectSound += PlaySound;
-            gameManager.HitSound += PlaySound;
-            gameManager.EndSound += PlaySound;
+            gameManager.PlaySound += PlaySound;
         }
 
     }
@@ -58,17 +54,13 @@ public class SoundManager : MonoBehaviour
         {
             if (movement != null)
             {
-                movement.JumpSound -= PlaySound;
-                movement.BoxSound -= PlaySound;
-                movement.SlideSound -= PlaySound;
+                movement.PlaySound -= PlaySound;
             }
         }
 
         if (gameManager != null)
         {
-            gameManager.CollectSound -= PlaySound;
-            gameManager.HitSound -= PlaySound;
-            gameManager.EndSound -= PlaySound;
+            gameManager.PlaySound -= PlaySound;
         }
 
     }

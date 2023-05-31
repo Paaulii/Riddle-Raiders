@@ -36,10 +36,7 @@ public class Movement : MonoBehaviour
     public bool isCatchingBox = false;
     private Box boxObject = null;
 
-    public event Action<SoundManager.Sounds> JumpSound;
-    public event Action<SoundManager.Sounds> BoxSound;
-    public event Action<SoundManager.Sounds> SlideSound;
-    private SoundManager soundManager = null;
+    public event Action<SoundManager.Sounds> PlaySound;
     
    // private Vector2 currentInputVector;
     private InputAction moveAction;
@@ -147,12 +144,12 @@ public class Movement : MonoBehaviour
 
             if (attemptCatch && isNextToBox && !isCatchingBox)
             {
-                BoxSound?.Invoke(SoundManager.Sounds.Box);
+                PlaySound?.Invoke(SoundManager.Sounds.Box);
                 isCatchingBox = true;
             }
             else if (attemptCatch && isCatchingBox)
             {
-                BoxSound?.Invoke(SoundManager.Sounds.Box);
+                PlaySound?.Invoke(SoundManager.Sounds.Box);
                 isCatchingBox = false;
             }
         }
@@ -163,7 +160,7 @@ public class Movement : MonoBehaviour
         if (attemptJump && CheckGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            JumpSound?.Invoke(SoundManager.Sounds.Jump);
+            PlaySound?.Invoke(SoundManager.Sounds.Jump);
         }
             
     }
@@ -187,7 +184,7 @@ public class Movement : MonoBehaviour
         Ice ice = col.GetComponent<Ice>();
         if (ice)
         {
-            SlideSound?.Invoke(SoundManager.Sounds.Slide);
+            PlaySound?.Invoke(SoundManager.Sounds.Slide);
             isSliding = true;
         }
 
