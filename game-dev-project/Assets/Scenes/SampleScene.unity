@@ -123,41 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &310026352 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3472933141203166384, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
-  m_PrefabInstance: {fileID: 2125756305}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &310026361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 310026352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: d25b906ed2ef54c438dd8cd6902dbfb7, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 3d2ffe05-5303-4c1b-9315-a473365ef203
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,41 +207,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &796965531 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 29786451600293837, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
-  m_PrefabInstance: {fileID: 2125756305}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &796965540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796965531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: d25b906ed2ef54c438dd8cd6902dbfb7, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 515b7e82-f570-4419-9f10-63b2df23692d
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &924587671
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,10 +891,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: SoundManager
       objectReference: {fileID: 0}
-    - target: {fileID: 29786451600293838, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.12
-      objectReference: {fileID: 0}
     - target: {fileID: 141362938040981454, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -981,18 +907,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 279223400118062030, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
-      propertyPath: type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 279223400118062030, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
-      propertyPath: canCarry
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 279223400118062030, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
-      propertyPath: playerInput
-      value: 
-      objectReference: {fileID: 310026361}
     - target: {fileID: 2532458947666240723, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1057,10 +971,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5479016187082054945, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
-      propertyPath: playerInput
-      value: 
-      objectReference: {fileID: 796965540}
+    - target: {fileID: 5159907240392823752, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159907240392823752, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Keyboard and mouse
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
 --- !u!4 &1049023303014305125 stripped

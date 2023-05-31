@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class Movement : MonoBehaviour
 {
+    public PlayerInput PlayerInput => playerInput;
+    
     [Header("Movement")] 
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private float speed = 100f;

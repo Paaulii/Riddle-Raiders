@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MenuPanelController : MonoBehaviour
 {
     [SerializeField] private UnityEngine.UI.Button startGameButton;
     [SerializeField] private UnityEngine.UI.Button chooseLevelButton;
-    [SerializeField] private UnityEngine.UI.Button optionsButton;
+    [SerializeField] private UnityEngine.UI.Button settingsButton;
     [SerializeField] private UnityEngine.UI.Button creditsButton;
     [SerializeField] private UnityEngine.UI.Button exitGameButton;
     
@@ -29,9 +30,9 @@ public class MenuPanelController : MonoBehaviour
             SceneManager.LoadScene("LevelSelection");
         });
         
-        optionsButton.onClick.AddListener(() =>
+        settingsButton.onClick.AddListener(() =>
         {
-            SceneManager.LoadScene("Options");
+            SceneManager.LoadScene("Settings");
         });
         
         creditsButton.onClick.AddListener(() =>

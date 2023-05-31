@@ -117,7 +117,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard and mouse"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -128,7 +128,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard and mouse"",
                     ""action"": ""Catch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -137,12 +137,12 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         },
         {
             ""name"": ""Player2"",
-            ""id"": ""3d2ffe05-5303-4c1b-9315-a473365ef203"",
+            ""id"": ""b51e8eab-f3e5-4c1c-a88d-30c44e5556ed"",
             ""actions"": [
                 {
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
-                    ""id"": ""3b8ef71b-1524-49c1-a1d4-6e53f0a8ab59"",
+                    ""id"": ""b22f4310-d394-468f-9b72-6b9dfef1d8d9"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -151,7 +151,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""33323933-52ca-4a30-a419-2b46326af160"",
+                    ""id"": ""b9a6ca74-0a9b-484a-b16a-48be5c1fc18d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -160,7 +160,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Catch"",
                     ""type"": ""Button"",
-                    ""id"": ""17b0aa20-69ae-4448-b414-d0fe4953487f"",
+                    ""id"": ""55c71932-8667-426d-8698-f690b2486c3f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -170,7 +170,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": ""wasdKeys"",
-                    ""id"": ""f110185b-8520-4b5f-bcf2-4ad6d7ce1c82"",
+                    ""id"": ""6a70087c-ac0b-4c42-a2a2-87ebb354a082"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -181,7 +181,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""b5e65fdf-f852-4bf2-b1b1-6ff76cbb5a77"",
+                    ""id"": ""cea072fd-7cec-4312-911c-3045e2e250e1"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -192,7 +192,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""78c22669-ca08-4ffc-9d8a-fc2c6e677331"",
+                    ""id"": ""e99dc1c6-b135-48bf-9ad9-c26e988af08e"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -203,7 +203,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""d79f11d3-c067-4341-a8fd-220e658a2f6f"",
+                    ""id"": ""63b6fdee-4e8d-4836-a8d5-9d9d82122d99"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -214,7 +214,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""a6a85498-6b47-4c8b-a998-72f3a9f91563"",
+                    ""id"": ""d4f5d1f7-8e60-4e78-a6fc-7236bee806e4"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -225,23 +225,51 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ed266a14-4a18-4546-905f-546d461b65fc"",
+                    ""id"": ""a6288adc-def4-4392-9974-fc75ae5d5359"",
                     ""path"": ""<Keyboard>/rightCtrl"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard and mouse"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0c834cf8-1ed9-47fd-b3c8-eb00107cc156"",
+                    ""id"": ""56dc3b32-b918-4545-9d40-30e5125a77db"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard and mouse"",
                     ""action"": ""Catch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""None"",
+            ""id"": ""c3c524bf-6bce-44c9-9026-534a3321f048"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""356bfabf-c3e2-4604-888c-8d50a0311dfe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3e1bad35-ac8f-467b-8c0a-564eec3f1017"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -277,6 +305,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player2_Movement = m_Player2.FindAction("Movement", throwIfNotFound: true);
         m_Player2_Jump = m_Player2.FindAction("Jump", throwIfNotFound: true);
         m_Player2_Catch = m_Player2.FindAction("Catch", throwIfNotFound: true);
+        // None
+        m_None = asset.FindActionMap("None", throwIfNotFound: true);
+        m_None_Newaction = m_None.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -430,6 +461,39 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         }
     }
     public Player2Actions @Player2 => new Player2Actions(this);
+
+    // None
+    private readonly InputActionMap m_None;
+    private INoneActions m_NoneActionsCallbackInterface;
+    private readonly InputAction m_None_Newaction;
+    public struct NoneActions
+    {
+        private @InputManager m_Wrapper;
+        public NoneActions(@InputManager wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Newaction => m_Wrapper.m_None_Newaction;
+        public InputActionMap Get() { return m_Wrapper.m_None; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(NoneActions set) { return set.Get(); }
+        public void SetCallbacks(INoneActions instance)
+        {
+            if (m_Wrapper.m_NoneActionsCallbackInterface != null)
+            {
+                @Newaction.started -= m_Wrapper.m_NoneActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_NoneActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_NoneActionsCallbackInterface.OnNewaction;
+            }
+            m_Wrapper.m_NoneActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
+            }
+        }
+    }
+    public NoneActions @None => new NoneActions(this);
     private int m_KeyboardandmouseSchemeIndex = -1;
     public InputControlScheme KeyboardandmouseScheme
     {
@@ -450,5 +514,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCatch(InputAction.CallbackContext context);
+    }
+    public interface INoneActions
+    {
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }
