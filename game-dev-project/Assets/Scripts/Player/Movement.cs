@@ -36,13 +36,14 @@ public class Movement : MonoBehaviour
     public bool isCatchingBox = false;
     private Box boxObject = null;
 
-    private SoundManager soundManager = null;
+    public event Action<SoundManager.Sounds> JumpSound;
+    public event Action<SoundManager.Sounds> BoxSound;
+    public event Action<SoundManager.Sounds> SlideSound;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         beginGravity = rb.gravityScale;
-        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     public void ForceStopPlayer()
@@ -132,12 +133,12 @@ public class Movement : MonoBehaviour
 
             if (attemptCatch && isNextToBox && !isCatchingBox)
             {
-                soundManager.PlaySound(SoundManager.Sounds.Box);
+                BoxSound?.Invoke(SoundManager.Sounds.Box);
                 isCatchingBox = true;
             }
             else if (attemptCatch && isCatchingBox)
             {
-                soundManager.PlaySound(SoundManager.Sounds.Box);
+                BoxSound?.Invoke(SoundManager.Sounds.Box);
                 isCatchingBox = false;
             }
         }
@@ -148,7 +149,7 @@ public class Movement : MonoBehaviour
         if (attemptJump && CheckGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            soundManager.PlaySound(SoundManager.Sounds.Jump);
+            JumpSound?.Invoke(SoundManager.Sounds.Jump);
         }
             
     }
@@ -172,7 +173,7 @@ public class Movement : MonoBehaviour
         Ice ice = col.GetComponent<Ice>();
         if (ice)
         {
-            soundManager.PlaySound(SoundManager.Sounds.Slide);
+            SlideSound?.Invoke(SoundManager.Sounds.Slide);
             isSliding = true;
         }
 

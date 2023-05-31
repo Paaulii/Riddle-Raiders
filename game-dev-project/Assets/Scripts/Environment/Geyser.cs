@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Geyser : MonoBehaviour
 {
     [Header("Jump settings")]
     [SerializeField] private float power;
+    public event Action<SoundManager.Sounds> GeyserSound;
 
     private Rigidbody2D rb;
     private Vector2 position;
-    private SoundManager soundManager = null;
 
-    private void Start()
-    {
-        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-    }
     private void AddForce(Collider2D collision)
     {
         if (collision.name == "Small Player" || collision.name == "Big Player")
@@ -27,7 +24,7 @@ public class Geyser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        soundManager.PlaySound(SoundManager.Sounds.Wind);
+        GeyserSound?.Invoke(SoundManager.Sounds.Wind);
         AddForce(collision);
     }
 

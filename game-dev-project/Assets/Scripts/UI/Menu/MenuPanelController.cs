@@ -16,9 +16,12 @@ public class MenuPanelController : MonoBehaviour
     [Space]
     
     [SerializeField] private DataManager dataManager;
-    
+    public event Action MenuMusic;
+
     private void Start()
     {
+        MenuMusic?.Invoke();
+
         startGameButton.onClick.AddListener(() =>
         {
             LoadLastLevel();

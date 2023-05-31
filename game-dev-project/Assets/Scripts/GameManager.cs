@@ -24,13 +24,15 @@ public class GameManager : MonoBehaviour
     [Header("Data Manager")]
     [SerializeField] private DataManager dataManager;
 
-    [Header("Sound Manager")]
-    [SerializeField] private SoundManager soundManager;
-
     PlayerGameProgress playerGameProgress;
 
+    public event Action<SoundManager.Sounds> CollectSound;
+    public event Action<SoundManager.Sounds> HitSound;
+    public event Action<SoundManager.Sounds> EndSound;
+    public event Action<GameMusicManager.Music> GameMusic;
     private void Start() 
     {
+        GameMusic?.Invoke(GameMusicManager.Music.GameMusic1);
         BindToEvents();
         playerGameProgress = dataManager.LoadData();
         uiController.SetLevelNumber(dataManager.CurrentLvl);
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleStarCollecting()
     {
-        soundManager.PlaySound(SoundManager.Sounds.Collect);
+        CollectSound?.Invoke(SoundManager.Sounds.Collect);
         uiController.IncreaseStarAmount();
     }
 
@@ -103,7 +105,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleEndLevel()
     {
-        soundManager.PlaySound(SoundManager.Sounds.EndLevel);
+        EndSound?.Invoke(SoundManager.Sounds.EndLevel);
 
         dataManager.SaveData(starCollectDetector.StarsAmount, dataManager.CurrentLvl);
         uiController.SetActiveLevelComplete(true, starCollectDetector.StarsAmount);
@@ -117,7 +119,7 @@ public class GameManager : MonoBehaviour
 
     private void DecreaseUIHearts(Character character)
     {
-        soundManager.PlaySound(SoundManager.Sounds.Hit);
+        HitSound?.Invoke(SoundManager.Sounds.Hit);
         uiController.DecreasePlayersHealth(character.Type);
     }
     
