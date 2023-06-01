@@ -18,6 +18,16 @@ public class OnOffMusic : MonoBehaviour
         toggleButton = GetComponent<UnityEngine.UI.Button>();
         toggleButton.onClick.AddListener(ToggleMusic);
         buttonImage = toggleButton.GetComponent<Image>();
+        if (GlobalVolumeManager.GetMusicVolume() == 0)
+        {
+            isMuted = true;
+            buttonImage.sprite = onSprite;
+        }
+        else
+        {
+            isMuted = false;
+            buttonImage.sprite = offSprite;
+        }
     }
 
     private void ToggleMusic()

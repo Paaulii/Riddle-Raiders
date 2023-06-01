@@ -10,6 +10,11 @@ public class SoundSlider : MonoBehaviour
     private void Start()
     {
         Slider volumeSlider = GetComponent<Slider>();
+        volumeSlider.value = GlobalVolumeManager.GetSoundsVolume();
+        if (volumeSlider.value == 0)
+        {
+            volumeSlider.interactable = false;
+        }
         volumeSlider.onValueChanged.AddListener(ChangeVolume);
     }
 
