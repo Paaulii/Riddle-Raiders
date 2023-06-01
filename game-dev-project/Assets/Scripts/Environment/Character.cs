@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     [field:SerializeField] public CharacterType Type { get; private set; }
     [SerializeField] Movement movement;
     [SerializeField] HealthManager healthManager;
+    [SerializeField] SoundManager soundManager;
     
     private void Start() 
     {
@@ -22,8 +23,14 @@ public class Character : MonoBehaviour
         
         healthManager.onPlayerHit += () =>
         {
+            soundManager.PlaySound(SoundManager.Sounds.Hit);
             onPlayerHit?.Invoke(this);
         };
+
+        movement.onCatch += () => soundManager.PlaySound(SoundManager.Sounds.Box);
+        movement.onClimb += () => soundManager.PlaySound(SoundManager.Sounds.Climb);
+        movement.onJump += () => soundManager.PlaySound(SoundManager.Sounds.Jump);
+        movement.onSlide += () => soundManager.PlaySound(SoundManager.Sounds.Slide);
     }
 
     public enum CharacterType 

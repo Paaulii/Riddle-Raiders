@@ -22,21 +22,23 @@ public class GameManager : MonoBehaviour
     [Header("End level")]
     [SerializeField] private EnterEndDoor endDoor;
 
+    [Header("Sound Managers")]
+    [SerializeField] private GameMusicManager gameMusicManager;
+    [SerializeField] private SoundManager soundManager;
+    
     [Header("Data Manager")]
     [SerializeField] private DataManager dataManager;
 
     PlayerGameProgress playerGameProgress;
 
-    public event Action<SoundManager.Sounds> PlaySound;
-    public event Action<GameMusicManager.Music> GameMusic;
     
     private const string player1KeyBindingsConfKey = "PLAYER_1_BINDINGS";
     private const string player2KeyBindingsConfKey = "PLAYER_2_BINDINGS";
     private const string player1ActionMap = "Player1";
     private const string player2ActionMap = "Player2";
+    
     private void Start() 
     {
-        GameMusic?.Invoke(GameMusicManager.Music.GameMusic1);
         BindToEvents();
         playerGameProgress = dataManager.LoadData();
         uiController.SetLevelNumber(dataManager.CurrentLvl);
@@ -45,6 +47,8 @@ public class GameManager : MonoBehaviour
 
         LoadKeyBindings(player1KeyBindingsConfKey, smallPlayer, player1ActionMap);
         LoadKeyBindings(player2KeyBindingsConfKey, bigPlayer, player2ActionMap);
+        
+        gameMusicManager.PlayMusic(GameMusicManager.Music.GameMusic1);
     }
 
     private void OnDestroy()
@@ -55,10 +59,10 @@ public class GameManager : MonoBehaviour
     private void BindToEvents()
     {
         bigPlayer.onPlayersDeath += HandleGameOverState;
-        bigPlayer.onPlayerHit += DecreaseUIHearts;
+        bigPlayer.onPlayerHit += HandlePlayerHit;
         
         smallPlayer.onPlayersDeath += HandleGameOverState;
-        smallPlayer.onPlayerHit += DecreaseUIHearts;
+        smallPlayer.onPlayerHit += HandlePlayerHit;
 
         starCollectDetector.onStarCollected += HandleStarCollecting;
 
@@ -90,17 +94,17 @@ public class GameManager : MonoBehaviour
 
     private void HandleStarCollecting()
     {
-        PlaySound?.Invoke(SoundManager.Sounds.Collect);
+        soundManager.PlaySound(SoundManager.Sounds.Collect);
         uiController.IncreaseStarAmount();
     }
 
     private void UnbindFromEvents()
     {
         bigPlayer.onPlayersDeath -= HandleGameOverState;
-        bigPlayer.onPlayerHit -= DecreaseUIHearts;
+        bigPlayer.onPlayerHit -= HandlePlayerHit;
         
         smallPlayer.onPlayersDeath -= HandleGameOverState;
-        smallPlayer.onPlayerHit -= DecreaseUIHearts;
+        smallPlayer.onPlayerHit -= HandlePlayerHit;
         
         starCollectDetector.onStarCollected -= HandleStarCollecting;
         
@@ -112,7 +116,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleEndLevel()
     {
-        PlaySound?.Invoke(SoundManager.Sounds.EndLevel);
+        soundManager.PlaySound(SoundManager.Sounds.EndLevel);
 
         dataManager.SaveData(starCollectDetector.StarsAmount, dataManager.CurrentLvl);
         uiController.SetActiveLevelComplete(true, starCollectDetector.StarsAmount);
@@ -124,9 +128,9 @@ public class GameManager : MonoBehaviour
         dataManager.CurrentLvl++;
     }
 
-    private void DecreaseUIHearts(Character character)
+    private void HandlePlayerHit(Character character)
     {
-        PlaySound?.Invoke(SoundManager.Sounds.Hit);
+        soundManager.PlaySound(SoundManager.Sounds.Hit);
         uiController.DecreasePlayersHealth(character.Type);
     }
     

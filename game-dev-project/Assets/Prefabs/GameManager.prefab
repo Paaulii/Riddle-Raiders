@@ -266,6 +266,8 @@ MonoBehaviour:
   starCollectDetector: {fileID: 5271866452268559371}
   uiController: {fileID: 7836526175784570631}
   endDoor: {fileID: 8076840654857303366}
+  gameMusicManager: {fileID: 5548500111342231162}
+  soundManager: {fileID: 6253579761908069730}
   dataManager: {fileID: 11400000, guid: 2b5fc3fb66df6d441b73afd98989a18c, type: 2}
 --- !u!1 &4043854059280036356
 GameObject:
@@ -435,6 +437,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6253579763296808466, guid: 84ec4f0c8c96f084ead82d2f1d547abe, type: 3}
   m_PrefabInstance: {fileID: 1996135282}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6253579761908069730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6253579763296808464, guid: 84ec4f0c8c96f084ead82d2f1d547abe, type: 3}
+  m_PrefabInstance: {fileID: 1996135282}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4251b8c53237084d9f655441ee9e52a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &279223398651420816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -618,6 +631,10 @@ PrefabInstance:
       propertyPath: m_NeverAutoSwitchControlSchemes
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2350048302865948547, guid: b917be9edec551042a231db6b27408dc, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 6253579761908069730}
     - target: {fileID: 3734142118793364512, guid: b917be9edec551042a231db6b27408dc, type: 3}
       propertyPath: m_Name
       value: Big Player
@@ -768,6 +785,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4eb713937171a3409148f2aa9500d8d, type: 3}
+--- !u!114 &5548500111342231162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4884737992099860912, guid: f4eb713937171a3409148f2aa9500d8d, type: 3}
+  m_PrefabInstance: {fileID: 1065708409714855882}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3f4c51af9e4d542ae0a3150228343c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5548500111342231163 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4884737992099860913, guid: f4eb713937171a3409148f2aa9500d8d, type: 3}
@@ -1003,6 +1031,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5507325348091092747, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 6253579761908069730}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
 --- !u!114 &28309163888789372 stripped

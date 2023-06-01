@@ -2,121 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
-{
-    [SerializeField] private List<Movement> movements = new List<Movement>();
-    [SerializeField] private GameManager gameManager;
-    public enum Sounds
-    {
-        Jump, EndLevel, Collect, Hit, Wind, Box, Slide, Climb
-    }
+public class SoundManager : MonoBehaviour {
+
     [SerializeField] private AudioClip jump, endLevel, collect, hit, wind, box, slide, climb;
 
     AudioSource audioSource;
-
+    Dictionary<Sounds, AudioClip> sounds;
+    
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = GlobalVolumeManager.GetSoundsVolume();
+        sounds = new Dictionary<Sounds, AudioClip>
+        {
+            { Sounds.Jump, jump },
+            { Sounds.EndLevel, endLevel },
+            { Sounds.Collect, collect },
+            { Sounds.Hit, hit },
+            { Sounds.Wind, wind },
+            { Sounds.Box, box },
+            { Sounds.Slide, slide },
+            { Sounds.Climb, climb }
+        };
+        
+        BindAllEnvironmentElements();
     }
-
-    private void OnEnable()
-    {
-        SoundSlider soundslider = FindObjectOfType<SoundSlider>();
-        if (soundslider != null)
-        {
-            soundslider.PlaySound += PlaySound;
-        }
-
-        Geyser geyser = FindObjectOfType<Geyser>();
-        if (geyser != null)
-        {
-            geyser.GeyserSound += PlaySound;
-        }
-
-        foreach (Movement movement in movements)
-        {
-            if (movement != null)
-            {
-                movement.PlaySound += PlaySound;
-            }
-        }
-
-        if (gameManager != null)
-        {
-            gameManager.PlaySound += PlaySound;
-        }
-
-    }
-
-    private void OnDisable()
-    {
-        SoundSlider soundslider = FindObjectOfType<SoundSlider>();
-        if (soundslider != null)
-        {
-            soundslider.PlaySound += PlaySound;
-        }
-
-        Geyser geyser = FindObjectOfType<Geyser>();
-        if (geyser != null)
-        {
-            geyser.GeyserSound -= PlaySound;
-        }
-
-        foreach (Movement movement in movements)
-        {
-            if (movement != null)
-            {
-                movement.PlaySound -= PlaySound;
-            }
-        }
-
-        if (gameManager != null)
-        {
-            gameManager.PlaySound -= PlaySound;
-        }
-
-    }
-
+    
     public void PlaySound(Sounds sound)
     {
         audioSource.volume = GlobalVolumeManager.GetSoundsVolume();
-        switch (sound)
-        {
-            case Sounds.Jump:
-                audioSource.PlayOneShot(jump);
-                break;
-
-            case Sounds.EndLevel:
-                audioSource.PlayOneShot(endLevel);
-                break;
-
-            case Sounds.Collect:
-                audioSource.PlayOneShot(collect);
-                break;
-
-            case Sounds.Hit:
-                audioSource.PlayOneShot(hit);
-                break;
-
-            case Sounds.Wind:
-                audioSource.PlayOneShot(wind);
-                break;
-
-            case Sounds.Box:
-                audioSource.PlayOneShot(box);
-                break;
-
-            case Sounds.Slide:
-                audioSource.PlayOneShot(slide);
-                break;
-
-            case Sounds.Climb:
-                audioSource.PlayOneShot(climb);
-                break;
-
-            default:
-                break;
+        audioSource.PlayOneShot(sounds[sound]);
+    }
+    
+    private void BindAllEnvironmentElements()
+    {
+        Geyser[] geysers = FindObjectsOfType<Geyser>(true);
+        foreach (var geyser in geysers) {
+            geyser.onGeyserActivation += () => PlaySound(Sounds.Wind);
         }
+    }
+    
+    public enum Sounds
+    {
+        Jump, EndLevel, Collect, Hit, Wind, Box, Slide, Climb
     }
 }

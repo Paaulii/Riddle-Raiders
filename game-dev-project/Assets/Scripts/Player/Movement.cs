@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class Movement : MonoBehaviour
 {
+    public Action onJump;
+    public Action onClimb;
+    public Action onCatch;
+    public Action onSlide;
     public PlayerInput PlayerInput => playerInput;
     
     [Header("Movement")] 
@@ -16,13 +20,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private float slideForce = 1f;
     [SerializeField] private float groundDistance = 0.1f;
     [SerializeField] private bool canCarry = false;
-   // [SerializeField] private float smoothInputSpeed = .2f;
+
     [SerializeField] private Collider2D collider;
     
     private Rigidbody2D rb = null;
     private Animator animator = null;
-    private bool attemptJump = false;
-    private bool attemptCatch = false;
 
     private float horizontal;
     private float vertical;
@@ -33,16 +35,12 @@ public class Movement : MonoBehaviour
     private bool isSliding = false;
 
     private bool isNextToBox = false;
-    public bool isCatchingBox = false;
+    private bool isCatchingBox = false;
     private Box boxObject = null;
 
-    public event Action<SoundManager.Sounds> PlaySound;
-    
-   // private Vector2 currentInputVector;
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction catchAction;
-    //private Vector2 smoothInputVelocity;
 
     private void Awake()
     {
@@ -52,16 +50,25 @@ public class Movement : MonoBehaviour
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
         catchAction = playerInput.actions["Catch"];
+
+        jumpAction.performed += HandleJump;
+        catchAction.performed += HandleCatch;
+    }
+
+
+    private void OnDestroy()
+    {
+        jumpAction.performed -= HandleJump;
+        catchAction.performed -= HandleCatch;
     }
 
     private void Update()
     {
         GetInput();
         MoveOnLadder();
-        HandleJump();
         RunAnimation();
         HandleRun();
-        HandleCatch();
+        CarryBox();
     }
     
     public void ForceStopPlayer()
@@ -70,7 +77,49 @@ public class Movement : MonoBehaviour
         enabled = false;
         animator.SetBool("isMoving", false);
     }
-    
+
+    private void HandleJump(InputAction.CallbackContext context)
+    {
+        if (CheckGrounded())
+        {
+            onJump?.Invoke();
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+    }
+
+    private void HandleCatch(InputAction.CallbackContext context)
+    {
+        if (canCarry)
+        {
+            if (isNextToBox && !isCatchingBox)
+            {
+                onCatch?.Invoke();
+                isCatchingBox = true;
+            }
+            else if (isCatchingBox)
+            {
+                onCatch?.Invoke();
+                isCatchingBox = false;
+            }
+        }
+    }
+
+    private void CarryBox()
+    {
+        if (isCatchingBox && boxObject != null)
+        {
+            if (transform.eulerAngles.y == 180f)
+            {
+                boxObject.transform.position = transform.position + new Vector3(1f, 0f, 0f);
+            }
+            else
+            {
+                boxObject.transform.position = transform.position + new Vector3(-1f, 0f, 0f);
+            }
+        }
+
+    }
+
     private bool CheckGrounded()
     {
         Bounds bounds = collider.bounds;
@@ -94,9 +143,6 @@ public class Movement : MonoBehaviour
 
     private void GetInput() 
     {
-        attemptJump = jumpAction.IsPressed();
-        attemptCatch = catchAction.IsPressed();
-        
         if (isNearbyLadder && Mathf.Abs(vertical) > 0f)
         {
             isClimbing = true;
@@ -126,45 +172,6 @@ public class Movement : MonoBehaviour
 
     }
 
-    private void HandleCatch()
-    {
-        if (canCarry)
-        {
-            if (isCatchingBox)
-            {
-                if (transform.eulerAngles.y == 180f)
-                {
-                    boxObject.transform.position = transform.position + new Vector3(1f, 0f, 0f);
-                }
-                else
-                {
-                    boxObject.transform.position = transform.position + new Vector3(-1f, 0f, 0f);
-                }
-            }
-
-            if (attemptCatch && isNextToBox && !isCatchingBox)
-            {
-                PlaySound?.Invoke(SoundManager.Sounds.Box);
-                isCatchingBox = true;
-            }
-            else if (attemptCatch && isCatchingBox)
-            {
-                PlaySound?.Invoke(SoundManager.Sounds.Box);
-                isCatchingBox = false;
-            }
-        }
-    }
-
-    private void HandleJump()
-    {
-        if (attemptJump && CheckGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            PlaySound?.Invoke(SoundManager.Sounds.Jump);
-        }
-            
-    }
-
     private void RunAnimation()
     {
         if (horizontal != 0)
@@ -184,13 +191,14 @@ public class Movement : MonoBehaviour
         Ice ice = col.GetComponent<Ice>();
         if (ice)
         {
-            PlaySound?.Invoke(SoundManager.Sounds.Slide);
+            onSlide?.Invoke();
             isSliding = true;
         }
 
         Ladder ladder = col.GetComponent<Ladder>();
         if (ladder)
         {
+            onClimb?.Invoke();
             isNearbyLadder = true;
         }
     }

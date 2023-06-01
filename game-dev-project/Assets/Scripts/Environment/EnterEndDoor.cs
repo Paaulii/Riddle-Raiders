@@ -13,6 +13,8 @@ public class EnterEndDoor : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         Character character = col.GetComponent<Character>();
+        if (character == null) return;
+
         if (character.Type == Character.CharacterType.Small)
         {
             smallPlayerAtDoor = true;
