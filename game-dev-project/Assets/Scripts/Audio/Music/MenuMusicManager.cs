@@ -27,6 +27,7 @@ public class MenuMusicManager : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = GlobalVolumeManager.GetMusicVolume();
     }
     private void Update()
     {
@@ -35,6 +36,7 @@ public class MenuMusicManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        audioSource.volume = GlobalVolumeManager.GetMusicVolume();
     }
 
     private void OnEnable()
@@ -44,7 +46,6 @@ public class MenuMusicManager : MonoBehaviour
         {
             menuPanelController.MenuMusic += PlayMusic;
         }
-
     }
 
     private void OnDisable()
@@ -58,6 +59,7 @@ public class MenuMusicManager : MonoBehaviour
 
     public void PlayMusic()
     {
+        audioSource = GetComponent<AudioSource>();
         audioSource.clip = menuMusic;
         audioSource.loop = true;
         audioSource.Play();

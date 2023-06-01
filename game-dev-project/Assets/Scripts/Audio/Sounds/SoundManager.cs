@@ -17,10 +17,17 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = GlobalVolumeManager.GetSoundsVolume();
     }
 
     private void OnEnable()
     {
+        SoundSlider soundslider = FindObjectOfType<SoundSlider>();
+        if (soundslider != null)
+        {
+            soundslider.PlaySound += PlaySound;
+        }
+
         Geyser geyser = FindObjectOfType<Geyser>();
         if (geyser != null)
         {
@@ -44,6 +51,12 @@ public class SoundManager : MonoBehaviour
 
     private void OnDisable()
     {
+        SoundSlider soundslider = FindObjectOfType<SoundSlider>();
+        if (soundslider != null)
+        {
+            soundslider.PlaySound += PlaySound;
+        }
+
         Geyser geyser = FindObjectOfType<Geyser>();
         if (geyser != null)
         {
@@ -67,6 +80,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySound(Sounds sound)
     {
+        audioSource.volume = GlobalVolumeManager.GetSoundsVolume();
         switch (sound)
         {
             case Sounds.Jump:

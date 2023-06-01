@@ -16,6 +16,7 @@ public class GameMusicManager : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = GlobalVolumeManager.GetMusicVolume();
     }
 
     private void OnEnable()
@@ -51,4 +52,5 @@ public class GameMusicManager : MonoBehaviour
                 break;
         }
     }
+
 }
