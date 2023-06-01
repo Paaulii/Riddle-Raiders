@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SoundSlider : MonoBehaviour
 {
-    public event Action<SoundManager.Sounds> PlaySound;
+    public Action onChangeSoundVolume;
     private void Start()
     {
         Slider volumeSlider = GetComponent<Slider>();
@@ -16,6 +16,6 @@ public class SoundSlider : MonoBehaviour
     private void ChangeVolume(float volume)
     {
         GlobalVolumeManager.SetSoundsVolume(volume);
-        PlaySound?.Invoke(SoundManager.Sounds.Collect);
+        onChangeSoundVolume?.Invoke();
     }
 }

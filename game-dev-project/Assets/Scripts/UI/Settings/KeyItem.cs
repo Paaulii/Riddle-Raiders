@@ -9,7 +9,7 @@ public class KeyItem : MonoBehaviour {
     [SerializeField] private InputActionReference action;
     [SerializeField] private bool isComposite;
     [SerializeField] private string name;
-    
+
     [Header("UI")]
     [SerializeField] private UnityEngine.UI.Button bindButton;
     [SerializeField] private TextMeshProUGUI bindingDisplayNameText;

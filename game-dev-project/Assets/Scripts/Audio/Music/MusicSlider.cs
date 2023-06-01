@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 using TMPro;
 using UnityEngine.UI;
 
-public class MusicSlider : MonoBehaviour
+public class MusicSlider : MonoBehaviour 
 {
     private void Start()
     {
@@ -17,5 +17,4 @@ public class MusicSlider : MonoBehaviour
     {
         GlobalVolumeManager.SetMusicVolume(volume);
     }
-
 }

@@ -31,14 +31,21 @@ public class SoundManager : MonoBehaviour {
     public void PlaySound(Sounds sound)
     {
         audioSource.volume = GlobalVolumeManager.GetSoundsVolume();
-        audioSource.PlayOneShot(sounds[sound]);
+        if (!audioSource.isPlaying) 
+        {
+            audioSource.PlayOneShot(sounds[sound]);
+        }
     }
 
     public void SetClip(Sounds sound)
     {
         audioSource.volume = GlobalVolumeManager.GetSoundsVolume();
         audioSource.clip = sounds[sound];
-        audioSource.Play();
+        
+        if (!audioSource.isPlaying) 
+        {
+            audioSource.Play();
+        }
     }
 
     public void StopPlaying()
@@ -56,6 +63,11 @@ public class SoundManager : MonoBehaviour {
         Geyser[] geysers = FindObjectsOfType<Geyser>(true);
         foreach (var geyser in geysers) {
             geyser.onGeyserActivation += () => PlaySound(Sounds.Wind);
+        }
+
+        SoundSlider[] sliders = FindObjectsOfType<SoundSlider>();
+        foreach (var slider in sliders) {
+            slider.onChangeSoundVolume += () => PlaySound(Sounds.Collect);
         }
     }
     
