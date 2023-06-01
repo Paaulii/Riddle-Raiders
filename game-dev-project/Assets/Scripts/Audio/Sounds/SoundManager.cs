@@ -33,6 +33,23 @@ public class SoundManager : MonoBehaviour {
         audioSource.volume = GlobalVolumeManager.GetSoundsVolume();
         audioSource.PlayOneShot(sounds[sound]);
     }
+
+    public void SetClip(Sounds sound)
+    {
+        audioSource.volume = GlobalVolumeManager.GetSoundsVolume();
+        audioSource.clip = sounds[sound];
+        audioSource.Play();
+    }
+
+    public void StopPlaying()
+    {
+        audioSource.Stop();
+    }
+    
+    public void SetLoop(bool isLooped)
+    {
+        audioSource.loop = isLooped;
+    }
     
     private void BindAllEnvironmentElements()
     {

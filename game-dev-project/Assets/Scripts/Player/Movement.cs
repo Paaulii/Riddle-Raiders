@@ -8,7 +8,8 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public Action onJump;
-    public Action onClimb;
+    public Action onStartClimb;
+    public Action onStopClimb;
     public Action onCatch;
     public Action onSlide;
     public PlayerInput PlayerInput => playerInput;
@@ -198,7 +199,7 @@ public class Movement : MonoBehaviour
         Ladder ladder = col.GetComponent<Ladder>();
         if (ladder)
         {
-            onClimb?.Invoke();
+            onStartClimb?.Invoke();
             isNearbyLadder = true;
         }
     }
@@ -217,8 +218,10 @@ public class Movement : MonoBehaviour
             isSliding = false;
         }
         Ladder ladder = other.GetComponent<Ladder>();
+        
         if (ladder)
         {
+            onStopClimb?.Invoke();
             isNearbyLadder = false;
             isClimbing = false;
         }

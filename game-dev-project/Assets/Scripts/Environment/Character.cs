@@ -28,9 +28,20 @@ public class Character : MonoBehaviour
         };
 
         movement.onCatch += () => soundManager.PlaySound(SoundManager.Sounds.Box);
-        movement.onClimb += () => soundManager.PlaySound(SoundManager.Sounds.Climb);
         movement.onJump += () => soundManager.PlaySound(SoundManager.Sounds.Jump);
         movement.onSlide += () => soundManager.PlaySound(SoundManager.Sounds.Slide);
+        
+        movement.onStartClimb += () =>
+        {
+            soundManager.SetLoop(true);
+            soundManager.SetClip(SoundManager.Sounds.Climb);
+        };
+        
+        movement.onStopClimb += () =>
+        {
+            soundManager.SetLoop(false);
+            soundManager.StopPlaying();
+        };
     }
 
     public enum CharacterType 
