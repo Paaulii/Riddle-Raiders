@@ -173,6 +173,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -181,11 +193,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 28
-        y: 122
+        y: 322
         width: 30
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,11 +214,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 67
-        y: 115
+        y: 315
         width: 51
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,11 +235,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 115
+        y: 315
         width: 51
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,11 +256,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 188
-        y: 115
+        y: 315
         width: 51
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -265,11 +277,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 247
-        y: 115
+        y: 315
         width: 51
         height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -286,11 +298,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 303
-        y: 115
+        y: 315
         width: 23
         height: 15
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,11 +319,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 330
-        y: 115
+        y: 315
         width: 23
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -328,11 +340,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 357
-        y: 115
+        y: 315
         width: 28
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -349,11 +361,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 392
-        y: 115
+        y: 314
         width: 18
         height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -370,11 +382,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 414
-        y: 115
+        y: 315
         width: 26
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -391,11 +403,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 444
-        y: 115
+        y: 315
         width: 23
         height: 26
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -411,12 +423,12 @@ TextureImporter:
       name: Medieval_props_free_11
       rect:
         serializedVersion: 2
-        x: 34
-        y: 67
+        x: 35
+        y: 267
         width: 29
         height: 37
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -433,11 +445,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 76
-        y: 67
+        y: 267
         width: 39
         height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -454,11 +466,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 131
-        y: 68
+        y: 268
         width: 19
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -475,11 +487,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 161
-        y: 54
+        y: 254
         width: 19
         height: 54
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -496,11 +508,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 196
-        y: 31
+        y: 231
         width: 24
         height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -517,11 +529,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 230
-        y: 60
+        y: 260
         width: 22
         height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -538,11 +550,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 261
-        y: 52
+        y: 252
         width: 24
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -559,11 +571,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 310
-        y: 42
+        y: 242
         width: 20
         height: 63
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -580,11 +592,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 345
-        y: 42
+        y: 242
         width: 20
         height: 62
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -601,11 +613,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 386
-        y: 55
+        y: 256
         width: 37
         height: 39
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -622,11 +634,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 432
-        y: 56
+        y: 256
         width: 26
         height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -643,11 +655,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 230
-        y: 31
+        y: 231
         width: 22
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -664,11 +676,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 261
-        y: 31
+        y: 231
         width: 24
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -676,6 +688,69 @@ TextureImporter:
       bones: []
       spriteID: f4cc896da990e2d4187131da4fa92262
       internalID: 21300046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Medieval_props_free_24
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 344
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43935f2f2d5501c4ba21ef930c44b954
+      internalID: 1594028817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Medieval_props_free_25
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 54
+        width: 31
+        height: 164
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38e2310971a8ad8418c39627797ace15
+      internalID: 457167146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Medieval_props_free_26
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 111
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebca71c628b242247946f5c4b04b9c1f
+      internalID: 376503276
       vertices: []
       indices: 
       edges: []
@@ -691,6 +766,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Medieval_props_free_26: 376503276
       Medieval_props_free_19: 21300038
       Medieval_props_free_15: 21300030
       Medieval_props_free_20: 21300040
@@ -704,8 +780,10 @@ TextureImporter:
       Medieval_props_free_22: 21300044
       Medieval_props_free_16: 21300032
       Medieval_props_free_6: 21300012
+      Medieval_props_free_24: 1594028817
       Medieval_props_free_10: 21300020
       Medieval_props_free_13: 21300026
+      Medieval_props_free_25: 457167146
       Medieval_props_free_1: 21300002
       Medieval_props_free_9: 21300018
       Medieval_props_free_14: 21300028

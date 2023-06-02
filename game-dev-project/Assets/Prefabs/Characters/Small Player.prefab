@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -201350330, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -224,7 +224,6 @@ MonoBehaviour:
   groundDistance: 0.1
   canCarry: 0
   collider: {fileID: 799507800}
-  isCatchingBox: 0
 --- !u!114 &526853667583535797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,3 +281,4 @@ MonoBehaviour:
   <Type>k__BackingField: 1
   movement: {fileID: 799507798}
   healthManager: {fileID: 526853667583535797}
+  soundManager: {fileID: 0}

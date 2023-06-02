@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour
         HandleRun();
         CarryBox();
     }
-    
+
     public void ForceStopPlayer()
     {
         rb.velocity = Vector2.zero;

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 879343316, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -91,6 +91,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2042623224763555429, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042623224781504172, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -158,7 +166,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1.8
@@ -231,7 +239,6 @@ MonoBehaviour:
   groundDistance: 0.1
   canCarry: 1
   collider: {fileID: 1486613340}
-  isCatchingBox: 0
 --- !u!114 &1453374042422934432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +278,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard and mouse
-  m_DefaultActionMap: Gameplay
+  m_DefaultActionMap: Player1
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &2350048302865948547
@@ -289,6 +296,7 @@ MonoBehaviour:
   <Type>k__BackingField: 0
   movement: {fileID: 1486613342}
   healthManager: {fileID: 1453374042422934432}
+  soundManager: {fileID: 0}
 --- !u!4 &3734142118793364513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
