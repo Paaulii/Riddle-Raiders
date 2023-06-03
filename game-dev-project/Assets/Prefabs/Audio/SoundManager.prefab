@@ -141,10 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4251b8c53237084d9f655441ee9e52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movements:
-  - {fileID: 0}
-  - {fileID: 0}
-  gameManager: {fileID: 0}
   jump: {fileID: 8300000, guid: c869f9b457c86f94b996dbc37dcd52ef, type: 3}
   endLevel: {fileID: 8300000, guid: 22b6831d3a12e7d4a9673db93b9adf90, type: 3}
   collect: {fileID: 8300000, guid: 8ad7e4e9e2639654bba64b24efbc2550, type: 3}

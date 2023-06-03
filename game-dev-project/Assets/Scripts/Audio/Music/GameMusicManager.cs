@@ -7,23 +7,25 @@ public class GameMusicManager : MonoBehaviour
 {
     public enum Music
     {
-        GameMusic1
+        GameMusic1, GameMusic2, GameMusic3
     }
-    
+
     [Header("Music clips")]
-    [SerializeField] private AudioClip gameMusic1;
-    
+    [SerializeField] private AudioClip gameMusic1, gameMusic2, gameMusic3;
+
     AudioSource audioSource;
 
     Dictionary<Music, AudioClip> musicClips;
-    
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = GlobalVolumeManager.GetMusicVolume();
-        
+
         musicClips = new Dictionary<Music, AudioClip> {
-            { Music.GameMusic1, gameMusic1 }
+            { Music.GameMusic1, gameMusic1 },
+            { Music.GameMusic2, gameMusic2 },
+            { Music.GameMusic3, gameMusic3 }
         };
     }
 

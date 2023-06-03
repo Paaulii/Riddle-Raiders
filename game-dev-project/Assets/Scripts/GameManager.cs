@@ -47,8 +47,10 @@ public class GameManager : MonoBehaviour
 
         LoadKeyBindings(player1KeyBindingsConfKey, smallPlayer, player1ActionMap);
         LoadKeyBindings(player2KeyBindingsConfKey, bigPlayer, player2ActionMap);
-        
-        gameMusicManager.PlayMusic(GameMusicManager.Music.GameMusic1);
+
+        GameMusicManager.Music randomMusic = (GameMusicManager.Music)UnityEngine.Random.Range(0, 3);
+        gameMusicManager.PlayMusic(randomMusic);
+        //gameMusicManager.PlayMusic(GameMusicManager.Music.GameMusic1);
     }
 
     private void OnDestroy()

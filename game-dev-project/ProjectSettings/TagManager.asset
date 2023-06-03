@@ -42,3 +42,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackgoundGrid1
+    uniqueID: 298373705
+    locked: 0
+  - name: BackgroundGrid2
+    uniqueID: 839229179
+    locked: 0
+  - name: BackgoundItems
+    uniqueID: 3117156865
+    locked: 0
+  - name: Lava and EndDoor
+    uniqueID: 119713027
+    locked: 0
+  - name: Effects
+    uniqueID: 4167171857
+    locked: 0
+  - name: Buttons, Levers and platforms
+    uniqueID: 208333823
+    locked: 0
+  - name: Characters
+    uniqueID: 1023839407
+    locked: 0

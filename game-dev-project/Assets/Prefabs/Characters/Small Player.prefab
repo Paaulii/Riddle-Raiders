@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 1023839407
+  m_SortingLayer: 7
+  m_SortingOrder: 0
   m_Sprite: {fileID: -201350330, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,11 +97,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.125
+      value: 7.72
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.322
+      value: -3.46
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -113,15 +113,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -199,11 +199,11 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0.058241367, y: 0.46290016}
       - {x: -0.21075535, y: 0.39026046}
-      - {x: -0.30537564, y: 0.2552407}
-      - {x: -0.2832036, y: 0.021727562}
+      - {x: -0.28098375, y: 0.2552407}
+      - {x: -0.25068116, y: 0.021727562}
       - {x: -0.18781084, y: -0.092094064}
       - {x: 0.1825043, y: -0.095718145}
-      - {x: 0.33294344, y: 0.21427798}
+      - {x: 0.24350739, y: 0.2061472}
       - {x: 0.24811077, y: 0.31697148}
 --- !u!114 &799507798
 MonoBehaviour:
@@ -221,7 +221,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 9
   slideForce: 1
-  groundDistance: 0.1
+  groundDistance: 0.2
   canCarry: 0
   collider: {fileID: 799507800}
 --- !u!114 &526853667583535797

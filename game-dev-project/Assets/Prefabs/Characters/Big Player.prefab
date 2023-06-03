@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 1023839407
+  m_SortingLayer: 7
+  m_SortingOrder: 0
   m_Sprite: {fileID: 879343316, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -92,12 +92,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2042623224763555429, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
+      propertyPath: m_SortingLayer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042623224763555429, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042623224763555429, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1023839407
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042623224781504172, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
+      propertyPath: m_SortingLayer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2042623224781504172, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042623224781504172, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1023839407
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_RootOrder
@@ -105,11 +121,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.02
+      value: 9.69
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.38
+      value: -3.21
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_LocalPosition.z
@@ -121,15 +137,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -166,7 +182,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1.8
@@ -200,26 +216,26 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.7137089, y: 0.12850809}
-      - {x: 0.3917837, y: 0.84155107}
+    - - {x: 0.52670574, y: 0.12850809}
+      - {x: 0.4406023, y: 0.8822334}
       - {x: 0.42457294, y: 1.1672649}
-      - {x: 0.28421783, y: 1.3466719}
-      - {x: 0.19311619, y: 1.2150532}
-      - {x: 0.107437134, y: 1.2637072}
+      - {x: 0.30049133, y: 1.3792179}
+      - {x: 0.19311619, y: 1.3777825}
+      - {x: 0.15625572, y: 1.3938905}
       - {x: 0.096476555, y: 1.3951595}
-      - {x: -0.12769508, y: 1.2531482}
-      - {x: -0.09130669, y: 1.1194575}
-      - {x: -0.05736637, y: 0.9943758}
-      - {x: -0.16207123, y: 0.84666836}
-      - {x: -0.32410336, y: 0.59199333}
-      - {x: -0.38481712, y: 0.36146402}
-      - {x: -0.4822436, y: 0.22111467}
-      - {x: -0.56069946, y: 0.09558797}
-      - {x: -0.43236446, y: -0.08109927}
-      - {x: -0.47058147, y: -0.5746106}
-      - {x: 0.53894997, y: -0.5648439}
-      - {x: 0.48035014, y: -0.29136968}
-      - {x: 0.67758274, y: -0.13049465}
+      - {x: -0.19278717, y: 1.2612847}
+      - {x: -0.13198948, y: 1.0869117}
+      - {x: -0.1468668, y: 0.9781029}
+      - {x: -0.23529911, y: 0.83853185}
+      - {x: -0.31598473, y: 0.58385086}
+      - {x: -0.36046028, y: 0.39398646}
+      - {x: -0.3358937, y: 0.22111467}
+      - {x: -0.39809895, y: 0.014264584}
+      - {x: -0.38359833, y: -0.08923578}
+      - {x: -0.51940006, y: -0.55020106}
+      - {x: 0.571496, y: -0.5567074}
+      - {x: 0.5291697, y: -0.31577897}
+      - {x: 0.53123283, y: -0.122364104}
 --- !u!114 &1486613342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +252,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 8
   slideForce: 1
-  groundDistance: 0.1
+  groundDistance: 0.3
   canCarry: 1
   collider: {fileID: 1486613340}
 --- !u!114 &1453374042422934432
@@ -276,9 +292,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard and mouse
-  m_DefaultActionMap: Player1
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player2
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &2350048302865948547
