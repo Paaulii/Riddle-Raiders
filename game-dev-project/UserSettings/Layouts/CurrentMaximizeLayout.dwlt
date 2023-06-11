@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 1638
+  controlID: 7054
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -86,7 +86,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 1623
+  controlID: 7113
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 1624
+  controlID: 7114
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,9 +224,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7cf2ffff
-      m_LastClickedID: -3460
-      m_ExpandedIDs: 80f2ffff94f2ffffacf2ffffd4f2ffff02f6ffff06f6ffff1af6ffffd0f6ffff24fbffffe86b0000f46b0000046c0000266c00005c6c0000766c0000966c0000aa6c0000b06c0000b46c0000ce6c0000d66c0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: daa8f7ff4ab6f7ff80f2ffff94f2ffffacf2ffffd4f2ffff02f6ffff06f6ffff1af6ffffd0f6ffff24fbffffe86b0000f46b0000046c0000266c00005c6c0000766c0000966c0000aa6c0000b06c0000b46c0000ce6c0000d66c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -577,9 +577,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.0066394275, y: -0.017642075, z: 0.005038887, w: 0.9998096}
   m_Size:
-    m_Target: 1.4963226
+    m_Target: 2.0362885
     speed: 2
-    m_Value: 1.4963226
+    m_Value: 2.0362885
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -704,14 +704,14 @@ MonoBehaviour:
     y: 632
     width: 1347
     height: 315
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -753,21 +753,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Player
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/Player
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\STUDIA\GAME DEV\Project\game-dev-project\game-dev-project
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 421}
-    m_SelectedIDs: 1a6b0000
-    m_LastClickedID: 27418
+    m_SelectedIDs: 106b0000
+    m_LastClickedID: 27408
     m_ExpandedIDs: 00000000aa6a0000ac6a0000ae6a0000b06a0000b26a0000b46a0000b66a0000b86a0000ba6a0000bc6a0000be6a0000c06a0000c26a0000c46a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -821,9 +821,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7cf2ffff
-    m_LastClickedInstanceID: -3460
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 766b0000
+    m_LastClickedInstanceID: 27510
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000072eb000066600000da6900001e7a0000ea7700004e6400001a6400005066000000000000a07c0000087e0100427901004c8f0000ba640000ec7c0000e0900000347d0000bc8c0000f0640000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -904,7 +904,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 1639
+  controlID: 7055
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -965,7 +965,7 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: 27510
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0

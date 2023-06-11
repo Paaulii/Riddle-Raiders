@@ -37,11 +37,12 @@ public class Movement : MonoBehaviour
 
     private bool isNextToBox = false;
     private bool isCatchingBox = false;
-    private Box boxObject = null;
+    private Box caughtBox = null;
 
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction catchAction;
+    private Box boxInRange;
 
     private void Awake()
     {
@@ -94,6 +95,7 @@ public class Movement : MonoBehaviour
         {
             if (isNextToBox && !isCatchingBox)
             {
+                caughtBox = boxInRange;
                 onCatch?.Invoke();
                 isCatchingBox = true;
             }
@@ -101,21 +103,22 @@ public class Movement : MonoBehaviour
             {
                 onCatch?.Invoke();
                 isCatchingBox = false;
+                caughtBox = null;
             }
         }
     }
 
     private void CarryBox()
     {
-        if (isCatchingBox && boxObject != null)
+        if (isCatchingBox && caughtBox != null)
         {
             if (transform.eulerAngles.y == 180f)
             {
-                boxObject.transform.position = transform.position + new Vector3(1f, 0f, 0f);
+                caughtBox.transform.position = transform.position + new Vector3(1f, 0f, 0f);
             }
             else
             {
-                boxObject.transform.position = transform.position + new Vector3(-1f, 0f, 0f);
+                caughtBox.transform.position = transform.position + new Vector3(-1f, 0f, 0f);
             }
         }
 
@@ -183,12 +186,12 @@ public class Movement : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D col)
     {
-        boxObject = col.GetComponent<Box>();
-        if (boxObject)
-        {
+        boxInRange = col.GetComponent<Box>();
+        
+        if (boxInRange) {
             isNextToBox = true;
         }
-
+        
         Ice ice = col.GetComponent<Ice>();
         if (ice)
         {
@@ -206,12 +209,13 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        boxObject = other.GetComponent<Box>();
-        if (boxObject)
+        boxInRange = other.GetComponent<Box>();
+        
+        if (boxInRange)
         {
             isNextToBox = false;
         }
-
+        
         Ice ice = other.GetComponent<Ice>();
         if (ice)
         {
