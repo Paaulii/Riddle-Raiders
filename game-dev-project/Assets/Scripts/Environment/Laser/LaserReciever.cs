@@ -4,20 +4,32 @@ using System.Diagnostics;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-public class LaserReciever : MonoBehaviour
+public class LaserReciever : PlatformActivator
 {
     public bool isActive = false;
+    private bool wasActivationEventSent = false;
+    private bool wasInactivationEventSent = false;
     
     void Update() {
-        if (isActive) 
+        if (isActive)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+            if (!wasActivationEventSent) 
+            {
+                wasActivationEventSent = true;
+                wasInactivationEventSent = false;
+                onChangeState?.Invoke(State.On, platformColor);
+            }
         }
         else 
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            if (!wasInactivationEventSent)
+            {
+                wasInactivationEventSent = true;
+                wasActivationEventSent = false;
+                onChangeState?.Invoke(State.Off, platformColor);
+            }
         }
-
+        
         isActive = false;
     }
 }
