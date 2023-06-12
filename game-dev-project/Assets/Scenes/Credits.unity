@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 344515144, guid: dfea047a7e11ed943b9c5be39c1e94da, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8877378379983263511, guid: dfea047a7e11ed943b9c5be39c1e94da, type: 3}
       propertyPath: m_Name
       value: CreditsPanel
