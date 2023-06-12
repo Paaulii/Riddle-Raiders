@@ -36,9 +36,10 @@ public class GameManager : MonoBehaviour
     private const string player2KeyBindingsConfKey = "PLAYER_2_BINDINGS";
     private const string player1ActionMap = "Player1";
     private const string player2ActionMap = "Player2";
-    
+
     private void Start() 
     {
+
         BindToEvents();
         playerGameProgress = dataManager.LoadData();
         uiController.SetLevelNumber(dataManager.CurrentLvl);
@@ -50,7 +51,6 @@ public class GameManager : MonoBehaviour
 
         GameMusicManager.Music randomMusic = (GameMusicManager.Music)UnityEngine.Random.Range(0, 3);
         gameMusicManager.PlayMusic(randomMusic);
-        //gameMusicManager.PlayMusic(GameMusicManager.Music.GameMusic1);
     }
 
     private void OnDestroy()
@@ -73,6 +73,10 @@ public class GameManager : MonoBehaviour
         uiController.onBackToMenu += HandleBackToMenu;
         uiController.onNextLevelButtonClicked += HandleNextLevelButtonClicked;
         uiController.onResetLevel += HandleResetLevel;
+
+        uiController.onResumeLevel += HandleResume;
+
+        smallPlayer.Movement.onEscPressed += HandlePauseGame;
     }
 
     private void HandleResetLevel()
@@ -83,6 +87,13 @@ public class GameManager : MonoBehaviour
     private void HandleBackToMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    private void HandleResume()
+    {
+        uiController.SetActivePausePanel(false);
+        bigPlayer.Movement.ForceStartPlayer();
+        smallPlayer.Movement.ForceStartPlayer();
     }
 
     private void HandleNextLevelButtonClicked()
@@ -111,9 +122,10 @@ public class GameManager : MonoBehaviour
         starCollectDetector.onStarCollected -= HandleStarCollecting;
         
         endDoor.onEnterEndDoor -= HandleEndLevel;
-        
+        uiController.onResumeLevel -= HandleResume;
         uiController.onBackToMenu -= HandleBackToMenu;
         uiController.onNextLevelButtonClicked -= HandleNextLevelButtonClicked;
+        smallPlayer.Movement.onEscPressed -= HandlePauseGame;
     }
 
     private void HandleEndLevel()
@@ -142,7 +154,14 @@ public class GameManager : MonoBehaviour
         bigPlayer.Movement.ForceStopPlayer();
         smallPlayer.Movement.ForceStopPlayer();
     }
-    
+
+    private void HandlePauseGame()
+    {
+        uiController.SetActivePausePanel(true);
+        bigPlayer.Movement.ForceStopPlayer();
+        smallPlayer.Movement.ForceStopPlayer();
+    }
+
     private void LoadKeyBindings(string confKey, Character character, string actionMap)
     {
         string rebinds = PlayerPrefs.GetString(confKey, string.Empty);

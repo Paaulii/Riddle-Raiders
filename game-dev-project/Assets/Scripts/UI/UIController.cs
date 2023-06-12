@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     public Action onNextLevelButtonClicked;
     public Action onBackToMenu;
     public Action onResetLevel;
+    public Action onResumeLevel;
 
     [Header("UI objects")] 
     
@@ -23,13 +24,18 @@ public class UIController : MonoBehaviour
     [Header("Panels")]
     [SerializeField] private LevelCompleteDisplayer levelCompleteDisplayer;
     [SerializeField] private GameOverPanelDisplayer gameOverPanelDisplayer;
+    [SerializeField] private PauseGame pausePanelDisplayer;
     private void Start()
     {
         SetActiveGameOverPanel(false);
+        SetActivePausePanel(false);
         levelCompleteDisplayer.onNextLevelButtonClicked += () => { onNextLevelButtonClicked?.Invoke(); };
         levelCompleteDisplayer.onBackButtonClicked += () => { onBackToMenu?.Invoke(); };
         gameOverPanelDisplayer.onResetLevel += () => { onResetLevel?.Invoke(); };
         gameOverPanelDisplayer.onBackButtonClicked += () => { onBackToMenu?.Invoke(); };
+        pausePanelDisplayer.onResetLevel += () => { onResetLevel?.Invoke(); };
+        pausePanelDisplayer.onBackButtonClicked += () => { onBackToMenu?.Invoke(); };
+        pausePanelDisplayer.onResumeLevel += () => { onResumeLevel?.Invoke(); };
     }
 
     public void DecreasePlayersHealth(Character.CharacterType characterType)
@@ -48,6 +54,11 @@ public class UIController : MonoBehaviour
     public void SetActiveGameOverPanel(bool isActive)
     {
         gameOverPanelDisplayer.gameObject.SetActive(isActive);
+    }
+
+    public void SetActivePausePanel(bool isActive)
+    {
+        pausePanelDisplayer.gameObject.SetActive(isActive);
     }
 
     public void SetActiveLevelComplete(bool isActive, int collectedStars = 0)

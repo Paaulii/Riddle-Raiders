@@ -53,6 +53,15 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9e3c0bf-53d4-45f9-9f4b-b68403d54a87"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""action"": ""Catch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f7cdfd0-898b-4f72-b556-9d41011cf34e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -161,6 +181,15 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""name"": ""Catch"",
                     ""type"": ""Button"",
                     ""id"": ""55c71932-8667-426d-8698-f690b2486c3f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""43ac8035-c434-435a-8996-0312e99ca7ef"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -244,6 +273,17 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""action"": ""Catch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32c41f9f-59f7-4e48-9f3f-5e8389173e27"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -300,11 +340,13 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player1_Movement = m_Player1.FindAction("Movement", throwIfNotFound: true);
         m_Player1_Jump = m_Player1.FindAction("Jump", throwIfNotFound: true);
         m_Player1_Catch = m_Player1.FindAction("Catch", throwIfNotFound: true);
+        m_Player1_Esc = m_Player1.FindAction("Esc", throwIfNotFound: true);
         // Player2
         m_Player2 = asset.FindActionMap("Player2", throwIfNotFound: true);
         m_Player2_Movement = m_Player2.FindAction("Movement", throwIfNotFound: true);
         m_Player2_Jump = m_Player2.FindAction("Jump", throwIfNotFound: true);
         m_Player2_Catch = m_Player2.FindAction("Catch", throwIfNotFound: true);
+        m_Player2_Esc = m_Player2.FindAction("Esc", throwIfNotFound: true);
         // None
         m_None = asset.FindActionMap("None", throwIfNotFound: true);
         m_None_Newaction = m_None.FindAction("New action", throwIfNotFound: true);
@@ -370,6 +412,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player1_Movement;
     private readonly InputAction m_Player1_Jump;
     private readonly InputAction m_Player1_Catch;
+    private readonly InputAction m_Player1_Esc;
     public struct Player1Actions
     {
         private @InputManager m_Wrapper;
@@ -377,6 +420,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player1_Movement;
         public InputAction @Jump => m_Wrapper.m_Player1_Jump;
         public InputAction @Catch => m_Wrapper.m_Player1_Catch;
+        public InputAction @Esc => m_Wrapper.m_Player1_Esc;
         public InputActionMap Get() { return m_Wrapper.m_Player1; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -395,6 +439,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Catch.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnCatch;
                 @Catch.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnCatch;
                 @Catch.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnCatch;
+                @Esc.started -= m_Wrapper.m_Player1ActionsCallbackInterface.OnEsc;
+                @Esc.performed -= m_Wrapper.m_Player1ActionsCallbackInterface.OnEsc;
+                @Esc.canceled -= m_Wrapper.m_Player1ActionsCallbackInterface.OnEsc;
             }
             m_Wrapper.m_Player1ActionsCallbackInterface = instance;
             if (instance != null)
@@ -408,6 +455,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Catch.started += instance.OnCatch;
                 @Catch.performed += instance.OnCatch;
                 @Catch.canceled += instance.OnCatch;
+                @Esc.started += instance.OnEsc;
+                @Esc.performed += instance.OnEsc;
+                @Esc.canceled += instance.OnEsc;
             }
         }
     }
@@ -419,6 +469,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player2_Movement;
     private readonly InputAction m_Player2_Jump;
     private readonly InputAction m_Player2_Catch;
+    private readonly InputAction m_Player2_Esc;
     public struct Player2Actions
     {
         private @InputManager m_Wrapper;
@@ -426,6 +477,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player2_Movement;
         public InputAction @Jump => m_Wrapper.m_Player2_Jump;
         public InputAction @Catch => m_Wrapper.m_Player2_Catch;
+        public InputAction @Esc => m_Wrapper.m_Player2_Esc;
         public InputActionMap Get() { return m_Wrapper.m_Player2; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -444,6 +496,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Catch.started -= m_Wrapper.m_Player2ActionsCallbackInterface.OnCatch;
                 @Catch.performed -= m_Wrapper.m_Player2ActionsCallbackInterface.OnCatch;
                 @Catch.canceled -= m_Wrapper.m_Player2ActionsCallbackInterface.OnCatch;
+                @Esc.started -= m_Wrapper.m_Player2ActionsCallbackInterface.OnEsc;
+                @Esc.performed -= m_Wrapper.m_Player2ActionsCallbackInterface.OnEsc;
+                @Esc.canceled -= m_Wrapper.m_Player2ActionsCallbackInterface.OnEsc;
             }
             m_Wrapper.m_Player2ActionsCallbackInterface = instance;
             if (instance != null)
@@ -457,6 +512,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Catch.started += instance.OnCatch;
                 @Catch.performed += instance.OnCatch;
                 @Catch.canceled += instance.OnCatch;
+                @Esc.started += instance.OnEsc;
+                @Esc.performed += instance.OnEsc;
+                @Esc.canceled += instance.OnEsc;
             }
         }
     }
@@ -508,12 +566,14 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCatch(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
     public interface IPlayer2Actions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCatch(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
     public interface INoneActions
     {

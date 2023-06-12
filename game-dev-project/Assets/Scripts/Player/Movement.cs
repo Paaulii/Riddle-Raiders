@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     public Action onStopClimb;
     public Action onCatch;
     public Action onSlide;
+    public Action onEscPressed;
     public PlayerInput PlayerInput => playerInput;
     
     [Header("Movement")] 
@@ -42,6 +43,7 @@ public class Movement : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction catchAction;
+    private InputAction escAction;
     private Box boxInRange;
 
     private void Awake()
@@ -52,9 +54,11 @@ public class Movement : MonoBehaviour
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
         catchAction = playerInput.actions["Catch"];
+        escAction = playerInput.actions["Esc"];
 
         jumpAction.performed += HandleJump;
         catchAction.performed += HandleCatch;
+        escAction.performed += HandleEsc;
     }
 
 
@@ -62,6 +66,12 @@ public class Movement : MonoBehaviour
     {
         jumpAction.performed -= HandleJump;
         catchAction.performed -= HandleCatch;
+        escAction.performed -= HandleEsc;
+    }
+
+    private void HandleEsc(InputAction.CallbackContext context)
+    {
+        onEscPressed?.Invoke();
     }
 
     private void Update()
@@ -78,6 +88,12 @@ public class Movement : MonoBehaviour
         rb.velocity = Vector2.zero;
         enabled = false;
         animator.SetBool("isMoving", false);
+    }
+
+    public void ForceStartPlayer()
+    {
+        enabled = true;
+        animator.SetBool("isMoving", true);
     }
 
     private void HandleJump(InputAction.CallbackContext context)
