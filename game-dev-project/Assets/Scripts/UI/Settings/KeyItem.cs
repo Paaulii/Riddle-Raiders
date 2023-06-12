@@ -40,7 +40,7 @@ public class KeyItem : MonoBehaviour {
         }
         
         rebindingOperation
-            .WithControlsExcluding("Mouse")
+           // .WithControlsExcluding("Mouse")
             .OnMatchWaitForAnother(0.1f)
             .OnComplete(operation => RebindComplete())
             .Start();

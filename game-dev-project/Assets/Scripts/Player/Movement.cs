@@ -22,8 +22,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private float slideForce = 1f;
     [SerializeField] private float groundDistance = 0.1f;
     [SerializeField] private bool canCarry = false;
-
+    
     [SerializeField] private Collider2D collider;
+
+    [Header("Rotate ability")] 
+    [SerializeField] private float rotateSpeed;
     
     private Rigidbody2D rb = null;
     private Animator animator = null;
@@ -38,12 +41,15 @@ public class Movement : MonoBehaviour
 
     private bool isNextToBox = false;
     private bool isCatchingBox = false;
+    private bool isCatchingMirror = false;
     private Box caughtBox = null;
+    private Mirror caughtMirror = null;
 
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction catchAction;
     private InputAction escAction;
+    private InputAction scrollAction;
     private Box boxInRange;
 
     private void Awake()
@@ -55,10 +61,29 @@ public class Movement : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         catchAction = playerInput.actions["Catch"];
         escAction = playerInput.actions["Esc"];
+        scrollAction = playerInput.actions["Rotate"];
 
         jumpAction.performed += HandleJump;
         catchAction.performed += HandleCatch;
         escAction.performed += HandleEsc;
+        scrollAction.performed += RotateMirror;
+    }
+
+    private void RotateMirror(InputAction.CallbackContext obj)
+    {
+        if (isCatchingMirror)
+        {
+            float scrollValue = scrollAction.ReadValue<float>();
+
+            if (scrollValue > 0)
+            {
+                caughtMirror.Rotate(rotateSpeed);
+            }
+            else
+            {
+                caughtMirror.Rotate(-rotateSpeed);
+            }
+        }
     }
 
 
@@ -112,14 +137,25 @@ public class Movement : MonoBehaviour
             if (isNextToBox && !isCatchingBox)
             {
                 caughtBox = boxInRange;
+                
+                Mirror mirror = caughtBox.GetComponent<Mirror>();
+              
+                if (mirror)
+                {
+                    caughtMirror = mirror;
+                    isCatchingMirror = true;
+                }
+                
                 onCatch?.Invoke();
                 isCatchingBox = true;
             }
             else if (isCatchingBox)
             {
                 onCatch?.Invoke();
+                isCatchingMirror = false;
                 isCatchingBox = false;
                 caughtBox = null;
+                caughtMirror = null;
             }
         }
     }

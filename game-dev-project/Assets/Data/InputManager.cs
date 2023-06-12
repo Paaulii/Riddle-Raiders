@@ -194,6 +194,15 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""17110cff-6728-4e68-bf02-e61ba7ee439d"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -284,6 +293,17 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""action"": ""Esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e14d240c-4a12-4d52-9eb4-f8762ed49f55"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -347,6 +367,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player2_Jump = m_Player2.FindAction("Jump", throwIfNotFound: true);
         m_Player2_Catch = m_Player2.FindAction("Catch", throwIfNotFound: true);
         m_Player2_Esc = m_Player2.FindAction("Esc", throwIfNotFound: true);
+        m_Player2_Rotate = m_Player2.FindAction("Rotate", throwIfNotFound: true);
         // None
         m_None = asset.FindActionMap("None", throwIfNotFound: true);
         m_None_Newaction = m_None.FindAction("New action", throwIfNotFound: true);
@@ -470,6 +491,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player2_Jump;
     private readonly InputAction m_Player2_Catch;
     private readonly InputAction m_Player2_Esc;
+    private readonly InputAction m_Player2_Rotate;
     public struct Player2Actions
     {
         private @InputManager m_Wrapper;
@@ -478,6 +500,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player2_Jump;
         public InputAction @Catch => m_Wrapper.m_Player2_Catch;
         public InputAction @Esc => m_Wrapper.m_Player2_Esc;
+        public InputAction @Rotate => m_Wrapper.m_Player2_Rotate;
         public InputActionMap Get() { return m_Wrapper.m_Player2; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -499,6 +522,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Esc.started -= m_Wrapper.m_Player2ActionsCallbackInterface.OnEsc;
                 @Esc.performed -= m_Wrapper.m_Player2ActionsCallbackInterface.OnEsc;
                 @Esc.canceled -= m_Wrapper.m_Player2ActionsCallbackInterface.OnEsc;
+                @Rotate.started -= m_Wrapper.m_Player2ActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_Player2ActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_Player2ActionsCallbackInterface.OnRotate;
             }
             m_Wrapper.m_Player2ActionsCallbackInterface = instance;
             if (instance != null)
@@ -515,6 +541,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Esc.started += instance.OnEsc;
                 @Esc.performed += instance.OnEsc;
                 @Esc.canceled += instance.OnEsc;
+                @Rotate.started += instance.OnRotate;
+                @Rotate.performed += instance.OnRotate;
+                @Rotate.canceled += instance.OnRotate;
             }
         }
     }
@@ -574,6 +603,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnCatch(InputAction.CallbackContext context);
         void OnEsc(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
     }
     public interface INoneActions
     {

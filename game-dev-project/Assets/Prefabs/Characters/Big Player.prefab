@@ -255,6 +255,7 @@ MonoBehaviour:
   groundDistance: 0.3
   canCarry: 1
   collider: {fileID: 1486613340}
+  rotateSpeed: 1
 --- !u!114 &1453374042422934432
 MonoBehaviour:
   m_ObjectHideFlags: 0
