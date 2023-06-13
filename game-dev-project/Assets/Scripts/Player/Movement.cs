@@ -187,13 +187,8 @@ public class Movement : MonoBehaviour
         RaycastHit2D hitLeft = Physics2D.Raycast(bottomLeft, -Vector2.up, groundDistance);
         RaycastHit2D hitRight = Physics2D.Raycast(bottomRight, -Vector2.up, groundDistance);
 
-        Debug.DrawRay(bottomCenter, -Vector2.up * groundDistance, Color.red);
-        Debug.DrawRay(bottomLeft, -Vector2.up * groundDistance, Color.green);
-        Debug.DrawRay(bottomRight, -Vector2.up * groundDistance, Color.blue);
+        return hitCenter.collider && hitLeft.collider && hitRight.collider;
 
-        return hitCenter.collider != null || hitLeft.collider != null || hitRight.collider != null;
-
-        //return Physics2D.Raycast(bottomCenter, -Vector2.up, groundDistance);
     }
     
     private void MoveOnLadder()
