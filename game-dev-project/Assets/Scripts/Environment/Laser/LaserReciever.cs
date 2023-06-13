@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,6 +7,7 @@ using Debug = UnityEngine.Debug;
 
 public class LaserReciever : PlatformActivator
 {
+    public Action onLaserActivation;
     public bool isActive = false;
     private bool wasActivationEventSent = false;
     private bool wasInactivationEventSent = false;
@@ -15,6 +17,7 @@ public class LaserReciever : PlatformActivator
         {
             if (!wasActivationEventSent) 
             {
+                onLaserActivation?.Invoke();
                 wasActivationEventSent = true;
                 wasInactivationEventSent = false;
                 onChangeState?.Invoke(State.On, platformColor);

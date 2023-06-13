@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
 
-    [SerializeField] private AudioClip jump, endLevel, collect, hit, wind, box, slide, climb;
+    [SerializeField] private AudioClip jump, endLevel, collect, hit, wind, box, slide, climb, laser;
 
     AudioSource audioSource;
     Dictionary<Sounds, AudioClip> sounds;
@@ -22,7 +22,8 @@ public class SoundManager : MonoBehaviour {
             { Sounds.Wind, wind },
             { Sounds.Box, box },
             { Sounds.Slide, slide },
-            { Sounds.Climb, climb }
+            { Sounds.Climb, climb },
+            { Sounds.Laser, laser }
         };
         
         BindAllEnvironmentElements();
@@ -69,10 +70,16 @@ public class SoundManager : MonoBehaviour {
         foreach (var slider in sliders) {
             slider.onChangeSoundVolume += () => PlaySound(Sounds.Collect);
         }
+
+        LaserReciever[] lasers = FindObjectsOfType<LaserReciever>();
+        foreach (var laser in lasers)
+        {
+            laser.onLaserActivation += () => PlaySound(Sounds.Laser);
+        }
     }
     
     public enum Sounds
     {
-        Jump, EndLevel, Collect, Hit, Wind, Box, Slide, Climb
+        Jump, EndLevel, Collect, Hit, Wind, Box, Slide, Climb, Laser
     }
 }
