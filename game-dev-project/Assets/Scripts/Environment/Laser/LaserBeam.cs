@@ -13,6 +13,7 @@ public class LaserBeam
     public LaserBeam(Vector3 pos, Vector3 dir, Material material)
     {
         laser = new LineRenderer();
+        
         laserObj = new GameObject();
         laserObj.name = "Laser Beam";
         this.pos = pos;
@@ -23,7 +24,7 @@ public class LaserBeam
         laser.material = material;
         laser.startColor = new Color32(245, 207, 130, 255);
         laser.endColor = new Color32(245, 207, 130, 255);
-        
+        laser.sortingLayerName = "Laser line";
         CastRay(pos, dir, laser);
     }
     
