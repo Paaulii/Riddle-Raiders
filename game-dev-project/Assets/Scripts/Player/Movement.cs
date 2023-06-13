@@ -187,7 +187,7 @@ public class Movement : MonoBehaviour
         RaycastHit2D hitLeft = Physics2D.Raycast(bottomLeft, -Vector2.up, groundDistance);
         RaycastHit2D hitRight = Physics2D.Raycast(bottomRight, -Vector2.up, groundDistance);
 
-        return hitCenter.collider && hitLeft.collider && hitRight.collider;
+        return hitCenter.collider && (hitLeft.collider || hitRight.collider);
 
     }
     
