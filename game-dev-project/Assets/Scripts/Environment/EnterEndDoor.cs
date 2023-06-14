@@ -7,6 +7,8 @@ public class EnterEndDoor : MonoBehaviour
 {
     public Action onEnterEndDoor;
 
+    [SerializeField] GameObject openDoorSprite;
+    [SerializeField] GameObject closeDoorSprite;
     private bool smallPlayerAtDoor = false;
     private bool bigPlayerAtDoor = false;
 
@@ -26,6 +28,8 @@ public class EnterEndDoor : MonoBehaviour
 
         if (smallPlayerAtDoor && bigPlayerAtDoor)
         {
+            openDoorSprite.SetActive(true);
+            closeDoorSprite.SetActive(false);
             onEnterEndDoor?.Invoke();
         }
     }
