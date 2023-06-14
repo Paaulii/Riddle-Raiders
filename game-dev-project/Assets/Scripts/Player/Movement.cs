@@ -178,6 +178,7 @@ public class Movement : MonoBehaviour
 
     private bool CheckGrounded()
     {
+
         Bounds bounds = collider.bounds;
         Vector2 bottomCenter = new Vector2(bounds.center.x, bounds.min.y);
         Vector2 bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
@@ -187,7 +188,7 @@ public class Movement : MonoBehaviour
         RaycastHit2D hitLeft = Physics2D.Raycast(bottomLeft, -Vector2.up, groundDistance);
         RaycastHit2D hitRight = Physics2D.Raycast(bottomRight, -Vector2.up, groundDistance);
 
-        return hitCenter.collider && (hitLeft.collider || hitRight.collider);
+        return hitLeft.collider != null || hitCenter.collider != null || hitRight.collider != null;
 
     }
     
