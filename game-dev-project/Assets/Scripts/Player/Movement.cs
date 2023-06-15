@@ -266,6 +266,13 @@ public class Movement : MonoBehaviour
             onStartClimb?.Invoke();
             isNearbyLadder = true;
         }
+
+        Platform platform = col.GetComponent<Platform>();
+
+        if (platform)
+        {
+            gameObject.transform.SetParent(platform.transform);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -289,6 +296,13 @@ public class Movement : MonoBehaviour
             onStopClimb?.Invoke();
             isNearbyLadder = false;
             isClimbing = false;
+        }
+        
+        Platform platform = other.GetComponent<Platform>();
+
+        if (platform)
+        {
+            gameObject.transform.SetParent(null);
         }
     }
 }
