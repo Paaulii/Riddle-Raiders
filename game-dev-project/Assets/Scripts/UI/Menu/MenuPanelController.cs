@@ -61,6 +61,7 @@ public class MenuPanelController : MonoBehaviour
 
         if (lastPlayedLevel != null)
         {
+            dataManager.CurrentLvl = lastPlayedLevel.LevelNumber + 1;
             SceneManager.LoadScene(lastPlayedLevel.PathToScene);
         }
     }
