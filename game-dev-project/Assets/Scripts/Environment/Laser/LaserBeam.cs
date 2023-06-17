@@ -53,8 +53,8 @@ public class LaserBeam
         {
             laserReciever.isActive = true;
         }
-
-        if (hitInfo.collider.gameObject.tag == "Mirror")
+       
+        if (hitInfo.collider.transform.parent.GetComponent<Mirror>())
         {
             Vector3 pos = hitInfo.point;
             Vector3 dir = Vector3.Reflect(direction, hitInfo.normal);
