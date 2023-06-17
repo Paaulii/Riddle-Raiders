@@ -134,7 +134,7 @@ public class Movement : MonoBehaviour
     {
         if (canCarry)
         {
-            if (isNextToBox && !isCatchingBox)
+            if (isNextToBox && !isCatchingBox && boxInRange)
             {
                 caughtBox = boxInRange;
                 
