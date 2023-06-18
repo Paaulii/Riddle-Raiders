@@ -12,14 +12,13 @@ public class GameMusicManager : MonoBehaviour
 
     [Header("Music clips")]
     [SerializeField] private AudioClip gameMusic1, gameMusic2, gameMusic3;
-
-    AudioSource audioSource;
+    
+    [SerializeField] AudioSource audioSource;
 
     Dictionary<Music, AudioClip> musicClips;
 
-    private void Start()
+    private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
         audioSource.volume = GlobalVolumeManager.GetMusicVolume();
 
         musicClips = new Dictionary<Music, AudioClip> {
