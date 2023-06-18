@@ -274,7 +274,6 @@ public class Movement : MonoBehaviour
 
             if (platform)
             {
-                Debug.Log("PLATFORM");
                 isOnPlatform = true;
                 gameObject.transform.SetParent(platform.transform);
             }
