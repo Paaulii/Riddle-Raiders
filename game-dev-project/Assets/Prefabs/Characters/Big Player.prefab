@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1023839407
-  m_SortingLayer: 7
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: 879343316, guid: 0c1e734fa85636743af3bc22c6d99ba8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -93,7 +93,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2042623224763555429, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_SortingLayer
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2042623224763555429, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_SortingOrder
@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042623224781504172, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_SortingLayer
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2042623224781504172, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_SortingOrder
@@ -189,7 +189,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 0947d6a9318322245af21ff28d5b4a70, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!60 &1486613340
 PolygonCollider2D:

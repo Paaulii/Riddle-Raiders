@@ -51,6 +51,7 @@ public class Movement : MonoBehaviour
     private InputAction escAction;
     private InputAction scrollAction;
     private Box boxInRange;
+    private bool isOnPlatform;
 
     private void Awake()
     {
@@ -267,11 +268,20 @@ public class Movement : MonoBehaviour
             isNearbyLadder = true;
         }
 
-        Platform platform = col.GetComponent<Platform>();
-
-        if (platform)
+        if (!isOnPlatform) 
         {
-            gameObject.transform.SetParent(platform.transform);
+            Platform platform = col.GetComponent<Platform>();
+
+            if (platform)
+            {
+                Debug.Log("PLATFORM");
+                isOnPlatform = true;
+                gameObject.transform.SetParent(platform.transform);
+            }
+        }
+        else
+        {
+            gameObject.transform.SetParent(null);
         }
     }
 
@@ -302,6 +312,7 @@ public class Movement : MonoBehaviour
 
         if (platform)
         {
+            isOnPlatform = false;
             gameObject.transform.SetParent(null);
         }
     }
