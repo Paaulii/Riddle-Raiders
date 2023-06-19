@@ -32,10 +32,7 @@ public class SoundManager : MonoBehaviour {
     public void PlaySound(Sounds sound)
     {
         audioSource.volume = GlobalVolumeManager.GetSoundsVolume();
-        if (!audioSource.isPlaying) 
-        {
-            audioSource.PlayOneShot(sounds[sound]);
-        }
+        audioSource.PlayOneShot(sounds[sound]);
     }
 
     public void SetClip(Sounds sound)
