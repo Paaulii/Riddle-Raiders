@@ -55,11 +55,11 @@ TagManager:
   - name: Obstacles
     uniqueID: 119713027
     locked: 0
-  - name: Box, ice and ladder
-    uniqueID: 4152211197
-    locked: 0
   - name: EndDoor and stars
     uniqueID: 3857301211
+    locked: 0
+  - name: Box, ice and ladder
+    uniqueID: 4152211197
     locked: 0
   - name: Buttons, Levers and platforms
     uniqueID: 208333823
