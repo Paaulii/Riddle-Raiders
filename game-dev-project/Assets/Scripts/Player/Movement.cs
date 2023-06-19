@@ -167,11 +167,26 @@ public class Movement : MonoBehaviour
         {
             if (transform.eulerAngles.y == 180f)
             {
-                caughtBox.transform.position = transform.position + new Vector3(1f, 0f, 0f);
+                if (isCatchingMirror)
+                {
+                    caughtBox.transform.position = transform.position + new Vector3(0.7f, 0f, 0f);
+                }
+                else
+                {
+                    caughtBox.transform.position = transform.position + new Vector3(1f, 0f, 0f);
+                }
+                
             }
             else
             {
-                caughtBox.transform.position = transform.position + new Vector3(-1f, 0f, 0f);
+                if (isCatchingMirror)
+                {
+                    caughtBox.transform.position = transform.position + new Vector3(-0.7f, 0f, 0f);
+                }
+                else
+                {
+                    caughtBox.transform.position = transform.position + new Vector3(-1f, 0f, 0f);
+                }
             }
         }
 
