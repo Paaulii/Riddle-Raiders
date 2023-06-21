@@ -282,6 +282,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3341416813897402805, guid: fb57fedab51d79442b512e0ab3c0126f, type: 3}
+      propertyPath: m_text
+      value: RIDDLE RAIDERS
+      objectReference: {fileID: 0}
     - target: {fileID: 6912316365732243530, guid: fb57fedab51d79442b512e0ab3c0126f, type: 3}
       propertyPath: m_Name
       value: MenuCanvas
