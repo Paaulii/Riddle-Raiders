@@ -1,4 +1,4 @@
-# 🎮 Riddle Riders ♟
+# 🎮 Riddle Raiders ♟
 
 ## A puzzle coop game, two players need to figure out how to pass levels using different size abilities.
 ![image](https://github.com/Paaulii/game-dev-project/assets/71827160/28b9cc44-b686-4fc1-98b5-174193d8e089)
