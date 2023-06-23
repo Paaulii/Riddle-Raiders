@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private PlayerStateController bigPlayerStateController;
     [SerializeField] private StarDisplayer starDisplayer;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI timeText;
     
     [Header("Panels")]
     [SerializeField] private LevelCompleteDisplayer levelCompleteDisplayer;
@@ -38,6 +39,11 @@ public class UIController : MonoBehaviour
         pausePanelDisplayer.onResumeLevel += () => { onResumeLevel?.Invoke(); };
     }
 
+    public void UpdateTime(string time)
+    {
+        timeText.text = time;
+    }
+    
     public void DecreasePlayersHealth(Character.CharacterType characterType)
     {
         switch (characterType)
@@ -61,10 +67,11 @@ public class UIController : MonoBehaviour
         pausePanelDisplayer.gameObject.SetActive(isActive);
     }
 
-    public void SetActiveLevelComplete(bool isActive, int collectedStars = 0)
+    public void SetActiveLevelComplete(bool isActive,  string completionTime = "", int collectedStars = 0)
     {
         levelCompleteDisplayer.gameObject.SetActive(isActive);
         levelCompleteDisplayer.SetCollectedStars(collectedStars);
+        levelCompleteDisplayer.SetCompletionTime(completionTime);
     }
 
     public void IncreaseStarAmount()

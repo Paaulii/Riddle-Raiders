@@ -37,4 +37,14 @@ public class PlayerGameProgress
     {
         levelsData[levelNumber - 1].UnlockLevel();
     }
+
+    public void ChangeCompletionTime(float completionTime, int levelNumber)
+    {
+        LevelData levelData = levelsData[levelNumber - 1];
+        float lastCompletionTime = levelData.CompletionTime;
+        
+        if (lastCompletionTime == -1 || lastCompletionTime > completionTime) {
+            levelData.CompletionTime = completionTime;
+        }
+    }
 }

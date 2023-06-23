@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using Newtonsoft.Json.Bson;
 using TMPro;
 using UnityEngine;
@@ -21,14 +22,14 @@ public class GameManager : MonoBehaviour
 
     [Header("End level")]
     [SerializeField] private EnterEndDoor endDoor;
-
+    
     [Header("Sound Managers")]
     [SerializeField] private GameMusicManager gameMusicManager;
     [SerializeField] private SoundManager soundManager;
     
     [Header("Data Manager")]
     [SerializeField] private DataManager dataManager;
-
+    [SerializeField] private Timer timer;
     PlayerGameProgress playerGameProgress;
 
     
@@ -36,10 +37,10 @@ public class GameManager : MonoBehaviour
     private const string player2KeyBindingsConfKey = "PLAYER_2_BINDINGS";
     private const string player1ActionMap = "Player1";
     private const string player2ActionMap = "Player2";
-
+    private float lastTickTime = 0;
+    
     private void Start() 
     {
-
         BindToEvents();
         playerGameProgress = dataManager.LoadData();
         uiController.SetLevelNumber(dataManager.CurrentLvl);
@@ -77,8 +78,30 @@ public class GameManager : MonoBehaviour
         uiController.onResumeLevel += HandleResume;
 
         smallPlayer.Movement.onEscPressed += HandlePauseGame;
+
+        timer.onTimeTick += HandleTimeTick;
     }
 
+    private void HandleTimeTick(float currentTime)
+    {
+        lastTickTime = currentTime;
+        uiController.UpdateTime(GetFormatedTime(currentTime));
+    }
+
+    private string GetFormatedTime(float currentTime)
+    {
+        int minutes = Mathf.FloorToInt(currentTime / 60);
+        int seconds = Mathf.FloorToInt(currentTime % 60);
+        
+        StringBuilder builder = new StringBuilder();
+        builder.Append(minutes < 10 ? "0" : "");
+        builder.Append(minutes);
+        builder.Append(":");
+        builder.Append(seconds < 10 ? "0" : "");
+        builder.Append(seconds);
+        return builder.ToString();
+    }
+    
     private void HandleResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -126,14 +149,17 @@ public class GameManager : MonoBehaviour
         uiController.onBackToMenu -= HandleBackToMenu;
         uiController.onNextLevelButtonClicked -= HandleNextLevelButtonClicked;
         smallPlayer.Movement.onEscPressed -= HandlePauseGame;
+        
+        timer.onTimeTick += HandleTimeTick;
     }
 
     private void HandleEndLevel()
     {
+        timer.IsCounting = false;
+        
         soundManager.PlaySound(SoundManager.Sounds.EndLevel);
-
-        dataManager.SaveData(starCollectDetector.StarsAmount, dataManager.CurrentLvl);
-        uiController.SetActiveLevelComplete(true, starCollectDetector.StarsAmount);
+        dataManager.SaveData(starCollectDetector.StarsAmount, dataManager.CurrentLvl, lastTickTime);
+        uiController.SetActiveLevelComplete(true, GetFormatedTime(lastTickTime), starCollectDetector.StarsAmount);
 
         if (dataManager.CurrentLvl == playerGameProgress.LevelsData.Count)
         {
@@ -150,6 +176,7 @@ public class GameManager : MonoBehaviour
     
     private void HandleGameOverState()
     {
+        timer.IsCounting = false;
         uiController.SetActiveGameOverPanel(true);
         bigPlayer.Movement.ForceStopPlayer();
         smallPlayer.Movement.ForceStopPlayer();

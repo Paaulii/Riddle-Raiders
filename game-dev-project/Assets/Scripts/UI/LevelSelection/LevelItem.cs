@@ -9,6 +9,7 @@ public class LevelItem : MonoBehaviour
     public Action<LevelItem> onLevelClicked;
     public int LevelNumber => levelNumber;
     [SerializeField] private TextMeshProUGUI levelNumberText;
+    [SerializeField] private TextMeshProUGUI completionText;
     [SerializeField] private CollectedStarsDisplayer starsDisplayer;
     [SerializeField] private Image lockedLevelCover;
     [SerializeField] private UnityEngine.UI.Button button;
@@ -28,12 +29,13 @@ public class LevelItem : MonoBehaviour
         button.onClick.RemoveListener(HandleButtonClicked);
     }
     
-    public void SetData(int starsAmount, int levelNumber, bool isLocked)
+    public void SetData(int starsAmount, int levelNumber, bool isLocked, string completionTime )
     {
         levelNumberText.text = (levelNumber + 1).ToString();
         starsDisplayer.SetCollectedStars(starsAmount);
         isLevelLocked = isLocked;
         this.levelNumber = levelNumber;
+        completionText.text = completionTime;
         
         if (isLevelLocked)
         {
