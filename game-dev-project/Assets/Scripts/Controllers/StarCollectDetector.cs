@@ -8,7 +8,8 @@ public class StarCollectDetector : MonoBehaviour
 {
     public int StarsAmount = 0;
     public Action onStarCollected;
-    
+
+
     private Star[] stars;
     void Start()
     {

@@ -3842,6 +3842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Geyser
       objectReference: {fileID: 0}
+    - target: {fileID: 5217763285412979334, guid: 11237ed3cf8e7164bb2c054cbb8cb02a, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11237ed3cf8e7164bb2c054cbb8cb02a, type: 3}
 --- !u!1 &1303753085

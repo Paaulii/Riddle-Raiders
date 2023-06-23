@@ -13,7 +13,9 @@ public class HealthManager : MonoBehaviour
     
     [Header("Health value")]
     private int health = 3;
-    
+    [SerializeField] private GameObject skullEffect;
+    [SerializeField] private GameObject bloodEffect;
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         Spikes spikes = col.GetComponent<Spikes>();
@@ -36,9 +38,12 @@ public class HealthManager : MonoBehaviour
     {
         if (--health == 0)
         {
+            Destroy(gameObject);
             onPlayersDeath?.Invoke();
+            Instantiate(skullEffect, transform.position, Quaternion.identity);
         }
         gameObject.GetComponent<Animator>().SetTrigger("attack");
         onPlayerHit?.Invoke();
+        Instantiate(bloodEffect, transform.position, Quaternion.identity);
     }
 }

@@ -121,7 +121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.69
+      value: 8.3
       objectReference: {fileID: 0}
     - target: {fileID: 2042623225147202414, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
       propertyPath: m_LocalPosition.y
@@ -216,7 +216,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.52670574, y: 0.12850809}
+    - - {x: 0.49188423, y: 0.19234681}
       - {x: 0.4406023, y: 0.8822334}
       - {x: 0.42457294, y: 1.1672649}
       - {x: 0.30049133, y: 1.3792179}
@@ -228,14 +228,16 @@ PolygonCollider2D:
       - {x: -0.1468668, y: 0.9781029}
       - {x: -0.23529911, y: 0.83853185}
       - {x: -0.31598473, y: 0.58385086}
-      - {x: -0.36046028, y: 0.39398646}
-      - {x: -0.3358937, y: 0.22111467}
-      - {x: -0.39809895, y: 0.014264584}
-      - {x: -0.38359833, y: -0.08923578}
-      - {x: -0.51940006, y: -0.55020106}
-      - {x: 0.571496, y: -0.5567074}
-      - {x: 0.5291697, y: -0.31577897}
-      - {x: 0.53123283, y: -0.122364104}
+      - {x: -0.35465622, y: 0.38818288}
+      - {x: -0.3474999, y: 0.23852518}
+      - {x: -0.38068676, y: 0.025871515}
+      - {x: -0.38359833, y: -0.18209195}
+      - {x: -0.3104729, y: -0.3296677}
+      - {x: -0.2470684, y: -0.5430412}
+      - {x: 0.31735516, y: -0.5645187}
+      - {x: 0.35096264, y: -0.34778118}
+      - {x: 0.43631327, y: -0.12426329}
+      - {x: 0.46159077, y: -0.02370435}
 --- !u!114 &1486613342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d274833e1a9f198449a30f94ca8de720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skullEffect: {fileID: 4521946699179212529, guid: 8bf03c93987ca0844b3f23ef79debcbd, type: 3}
 --- !u!114 &1978948260169094492
 MonoBehaviour:
   m_ObjectHideFlags: 0

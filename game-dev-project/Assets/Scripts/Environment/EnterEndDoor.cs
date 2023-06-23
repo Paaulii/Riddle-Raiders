@@ -9,6 +9,8 @@ public class EnterEndDoor : MonoBehaviour
 
     [SerializeField] GameObject openDoorSprite;
     [SerializeField] GameObject closeDoorSprite;
+    [SerializeField] private GameObject fireworkEffect;
+    [SerializeField] private GameObject fireworkShootEffect;
     private bool smallPlayerAtDoor = false;
     private bool bigPlayerAtDoor = false;
 
@@ -34,6 +36,8 @@ public class EnterEndDoor : MonoBehaviour
             openDoorSprite.SetActive(true);
             closeDoorSprite.SetActive(false);
             onEnterEndDoor?.Invoke();
+            Instantiate(fireworkEffect, transform.position+new Vector3(1,0,0), Quaternion.identity);
+            Instantiate(fireworkShootEffect, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
         }
     }
 

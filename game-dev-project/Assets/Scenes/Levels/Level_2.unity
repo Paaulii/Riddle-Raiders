@@ -10100,6 +10100,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 4365889260829461560, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365889260888682691, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6490887658988376812, guid: 54230368cc0da0349a54dc9b150ae452, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

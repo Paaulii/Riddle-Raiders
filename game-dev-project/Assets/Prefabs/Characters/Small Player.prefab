@@ -97,11 +97,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.72
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.46
+      value: -3.43
       objectReference: {fileID: 0}
     - target: {fileID: 3171483926963243644, guid: 579f1ddab810a25418b180b6a13e388b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -197,14 +197,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.058241367, y: 0.46290016}
-      - {x: -0.21075535, y: 0.39026046}
-      - {x: -0.28098375, y: 0.2552407}
+    - - {x: 0.05427885, y: 0.43120074}
+      - {x: -0.28604174, y: 0.37044835}
+      - {x: -0.32060796, y: 0.24335364}
       - {x: -0.25068116, y: 0.021727562}
       - {x: -0.18781084, y: -0.092094064}
       - {x: 0.1825043, y: -0.095718145}
-      - {x: 0.24350739, y: 0.2061472}
-      - {x: 0.24811077, y: 0.31697148}
+      - {x: 0.30833817, y: 0.083203316}
+      - {x: 0.354455, y: 0.20218492}
+      - {x: 0.29566002, y: 0.3367836}
 --- !u!114 &799507798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d274833e1a9f198449a30f94ca8de720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skullEffect: {fileID: 4521946699179212529, guid: 8bf03c93987ca0844b3f23ef79debcbd, type: 3}
+  bloodEffect: {fileID: 2119927291796682321, guid: 482fe05dc551ea649aca8d64a219692b, type: 3}
 --- !u!114 &833953708522277823
 MonoBehaviour:
   m_ObjectHideFlags: 0
