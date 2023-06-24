@@ -9,7 +9,7 @@ public class PlayerGameProgress
 {
     public List<LevelData> LevelsData => levelsData;
     [SerializeField] private List<LevelData> levelsData;
-
+    
     public PlayerGameProgress()
     {
         levelsData = new List<LevelData>();
@@ -30,7 +30,13 @@ public class PlayerGameProgress
     }
 
     public void ChangeStarsNumber(int starsAmount, int levelNumber) {
-        levelsData[levelNumber - 1].StarsAmount = starsAmount;
+        LevelData levelData = levelsData[levelNumber - 1];
+        int lastStarsAmount = levelData.StarsAmount;
+        
+        if (lastStarsAmount <= starsAmount)
+        {
+            levelsData[levelNumber - 1].StarsAmount = starsAmount;
+        }
     }
 
     public void UnlockLevel(int levelNumber)
@@ -38,12 +44,13 @@ public class PlayerGameProgress
         levelsData[levelNumber - 1].UnlockLevel();
     }
 
-    public void ChangeCompletionTime(float completionTime, int levelNumber)
+    public void ChangeCompletionTime(Explanation explanation, float completionTime, int levelNumber)
     {
         LevelData levelData = levelsData[levelNumber - 1];
-        float lastCompletionTime = levelData.CompletionTime;
         
-        if (lastCompletionTime == -1 || lastCompletionTime > completionTime) {
+        if (explanation == Explanation.BetterTimeEqualStars || 
+            explanation == Explanation.BetterTimeMoreStars|| 
+            explanation == Explanation.WorseTimeMoreStars) {
             levelData.CompletionTime = completionTime;
         }
     }

@@ -8,11 +8,11 @@ public class DataManager : ScriptableObject {
     [SerializeField] private string[] levelPaths;
     private string PLAYER_DATA_KEY = "playerLevelProgress";
 
-    public void SaveData(int starsAmount, int levelNumber, float completionTime)
+    public void SaveData(Explanation explanation, int starsAmount, int levelNumber, float completionTime)
     {
         PlayerGameProgress playerGameProgress = LoadData();
         playerGameProgress.ChangeStarsNumber(starsAmount, levelNumber);
-        playerGameProgress.ChangeCompletionTime(completionTime, levelNumber);
+        playerGameProgress.ChangeCompletionTime(explanation, completionTime, levelNumber);
         
         if (levelNumber + 1 < playerGameProgress.LevelsData.Count)
         {

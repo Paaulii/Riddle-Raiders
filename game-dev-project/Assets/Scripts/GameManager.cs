@@ -37,15 +37,12 @@ public class GameManager : MonoBehaviour
     private const string player2KeyBindingsConfKey = "PLAYER_2_BINDINGS";
     private const string player1ActionMap = "Player1";
     private const string player2ActionMap = "Player2";
-    private float lastTickTime = 0;
     
     private void Start() 
     {
         BindToEvents();
         playerGameProgress = dataManager.LoadData();
         uiController.SetLevelNumber(dataManager.CurrentLvl);
-        uiController.SetActiveLevelComplete(false);
-        uiController.SetActiveGameOverPanel(false);
 
         LoadKeyBindings(player1KeyBindingsConfKey, smallPlayer, player1ActionMap);
         LoadKeyBindings(player2KeyBindingsConfKey, bigPlayer, player2ActionMap);
@@ -84,14 +81,18 @@ public class GameManager : MonoBehaviour
 
     private void HandleTimeTick(float currentTime)
     {
-        lastTickTime = currentTime;
         uiController.UpdateTime(GetFormatedTime(currentTime));
     }
 
-    private string GetFormatedTime(float currentTime)
+    private string GetFormatedTime(float time)
     {
-        int minutes = Mathf.FloorToInt(currentTime / 60);
-        int seconds = Mathf.FloorToInt(currentTime % 60);
+        if (time == -1) 
+        {
+            return "--:--";
+        }
+        
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
         
         StringBuilder builder = new StringBuilder();
         builder.Append(minutes < 10 ? "0" : "");
@@ -156,16 +157,48 @@ public class GameManager : MonoBehaviour
     private void HandleEndLevel()
     {
         timer.IsCounting = false;
-        
         soundManager.PlaySound(SoundManager.Sounds.EndLevel);
-        dataManager.SaveData(starCollectDetector.StarsAmount, dataManager.CurrentLvl, lastTickTime);
-        uiController.SetActiveLevelComplete(true, GetFormatedTime(lastTickTime), starCollectDetector.StarsAmount);
-
+        Explanation explanation = OpenLevelCompletePanel();
+        dataManager.SaveData(explanation, starCollectDetector.StarsAmount, dataManager.CurrentLvl, timer.CurrentTime);
         if (dataManager.CurrentLvl == playerGameProgress.LevelsData.Count)
         {
             uiController.HandleGameComplete();
         }
         dataManager.CurrentLvl++;
+    }
+
+    private Explanation OpenLevelCompletePanel()
+    {
+        int levelIndex = dataManager.CurrentLvl - 1;
+        LevelData currentLevel = playerGameProgress.LevelsData[levelIndex];
+        int lastCollectedStars = currentLevel.StarsAmount;
+        int currentCollectedStars = starCollectDetector.StarsAmount;
+        float lastCompletionTime = currentLevel.CompletionTime;
+        float currentCompletionTime = timer.CurrentTime;
+        
+        Explanation explanation;
+        if (lastCollectedStars < currentCollectedStars)
+        {
+            explanation = lastCompletionTime == -1 || lastCompletionTime > currentCompletionTime ? 
+                Explanation.BetterTimeMoreStars : Explanation.WorseTimeMoreStars;
+        }
+        else if (lastCollectedStars == currentCollectedStars)
+        {
+            explanation = lastCompletionTime == -1 || lastCompletionTime > currentCompletionTime ? 
+                Explanation.BetterTimeEqualStars : Explanation.WorseTimeEqualStars;
+        }
+        else
+        {
+            explanation = lastCompletionTime == -1 || lastCompletionTime > currentCompletionTime ? 
+                Explanation.BetterTimeLessStars : Explanation.WorseTimeLessStars;
+        }
+        
+        uiController.OpenLevelCompletePanel(explanation, 
+                                            lastCollectedStars,
+                                            currentCollectedStars,
+                                            GetFormatedTime(lastCompletionTime),
+                                            GetFormatedTime(currentCompletionTime));
+        return explanation;
     }
 
     private void HandlePlayerHit(Character character)

@@ -6,19 +6,49 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Explanation
+{
+    WorseTimeMoreStars,
+    BetterTimeEqualStars,
+    WorseTimeEqualStars,
+    BetterTimeLessStars,
+    WorseTimeLessStars,
+    BetterTimeMoreStars
+}
+
 public class LevelCompleteDisplayer : MonoBehaviour
 {
     public Action onBackButtonClicked;
     public Action onNextLevelButtonClicked;
-    [SerializeField] private CollectedStarsDisplayer starsDisplayer;
+    
+    [Header("Score prompt")]
+    [SerializeField] private TextMeshProUGUI headerPromptText;
+    [SerializeField] private TextMeshProUGUI explanationPromptText;
+
+    [SerializeField] private LevelStatsItem lastTimeStats;
+    [SerializeField] private LevelStatsItem currentTimeStats;
+    
+    [Header("Buttons")]
     [SerializeField] private UnityEngine.UI.Button backButton;
     [SerializeField] private UnityEngine.UI.Button nextLevelButton;
-    [SerializeField] private TextMeshProUGUI completionTimeText;
-
-    private void Start() 
+    
+    Dictionary<Explanation, string[]> levelCompletePrompts;
+    
+    private void Start()
     {
-        starsDisplayer.SetCollectedStars(0);
-
+        levelCompletePrompts = new Dictionary<Explanation, string[]>
+        {
+            { Explanation.WorseTimeMoreStars, new[] { "NEW HIGHSCORE!", "You achieved more stars!" }},
+            { Explanation.BetterTimeEqualStars, new[] { "NEW HIGHSCORE!", "You beat completion time!" }},
+            { Explanation.BetterTimeMoreStars, new[] { "NEW HIGHSCORE!", "You beat completion time and achieved more stars!" }},
+            { Explanation.WorseTimeEqualStars, new[] { "MAYBE NEXT TIME!", "You achieved the same amount of stars " +
+                                                                           "and your completion time is worse!" }},      
+            { Explanation.BetterTimeLessStars, new[] { "MAYBE NEXT TIME!", "Your completion time is better, " +
+                                                                           "but you achieved less stars this time!" }},
+            { Explanation.WorseTimeLessStars, new[] { "MAYBE NEXT TIME!", "You achieved less stars " +
+                                                                          "and your completion time is worse!" }},
+        };
+        
         backButton.onClick.AddListener(() =>
         {
             onBackButtonClicked?.Invoke();
@@ -30,14 +60,18 @@ public class LevelCompleteDisplayer : MonoBehaviour
         });
     }
 
-    public void SetCompletionTime(string completionTime)
+    public void ShowLevelCompletionPanel(Explanation explanation, 
+                                         int lastCollectedStars, 
+                                         int currentCollectedStars, 
+                                         string lastCompletionTime, 
+                                         string currentCompletionTime)
     {
-        completionTimeText.text = completionTime;
-    }
-    
-    public void SetCollectedStars(int number)
-    {
-        starsDisplayer.SetCollectedStars(number);
+        string[] promptTexts = levelCompletePrompts[explanation];
+        headerPromptText.text = promptTexts[0];
+        explanationPromptText.text = promptTexts[1];
+        
+        lastTimeStats.SetItemInfo(lastCompletionTime,lastCollectedStars);
+        currentTimeStats.SetItemInfo(currentCompletionTime,currentCollectedStars);
     }
 
     public void HandleGameComplete()

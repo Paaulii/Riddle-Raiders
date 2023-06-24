@@ -30,7 +30,7 @@ public class LevelItemGridGenerator : MonoBehaviour
     string GetFormatedTimeText(float completionTime)
     {
         if (completionTime == -1) {
-            return "00:00";
+            return "--:--";
         }
         
         int minutes = Mathf.FloorToInt(completionTime / 60);

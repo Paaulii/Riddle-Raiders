@@ -28,6 +28,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private PauseGame pausePanelDisplayer;
     private void Start()
     {
+        levelCompleteDisplayer.gameObject.SetActive(false);
+        gameOverPanelDisplayer.gameObject.SetActive(false);
         SetActiveGameOverPanel(false);
         SetActivePausePanel(false);
         levelCompleteDisplayer.onNextLevelButtonClicked += () => { onNextLevelButtonClicked?.Invoke(); };
@@ -67,11 +69,18 @@ public class UIController : MonoBehaviour
         pausePanelDisplayer.gameObject.SetActive(isActive);
     }
 
-    public void SetActiveLevelComplete(bool isActive,  string completionTime = "", int collectedStars = 0)
+    public void OpenLevelCompletePanel(Explanation explanation,
+                                       int lastCollectedStars, 
+                                       int collectedStars, 
+                                       string lastCompletionTime, 
+                                       string currentCompletionTime)
     {
-        levelCompleteDisplayer.gameObject.SetActive(isActive);
-        levelCompleteDisplayer.SetCollectedStars(collectedStars);
-        levelCompleteDisplayer.SetCompletionTime(completionTime);
+        levelCompleteDisplayer.gameObject.SetActive(true);
+        levelCompleteDisplayer.ShowLevelCompletionPanel(explanation, 
+                                                        lastCollectedStars, 
+                                                        collectedStars,
+                                                        lastCompletionTime, 
+                                                        currentCompletionTime);
     }
 
     public void IncreaseStarAmount()
