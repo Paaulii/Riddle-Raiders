@@ -36,6 +36,7 @@ public class UIController : MonoBehaviour
         SetActivePausePanel(false);
         levelCompleteDisplayer.onNextLevelButtonClicked += () => { onNextLevelButtonClicked?.Invoke(); };
         levelCompleteDisplayer.onBackButtonClicked += () => { onBackToMenu?.Invoke(); };
+        levelCompleteDisplayer.onResetButtonClicked += () => { onResetLevel?.Invoke(); };
         gameOverPanelDisplayer.onResetLevel += () => { onResetLevel?.Invoke(); };
         gameOverPanelDisplayer.onBackButtonClicked += () => { onBackToMenu?.Invoke(); };
         pausePanelDisplayer.onResetLevel += () => { onResetLevel?.Invoke(); };

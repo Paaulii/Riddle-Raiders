@@ -19,6 +19,7 @@ public enum Explanation
 public class LevelCompleteDisplayer : MonoBehaviour
 {
     public Action onBackButtonClicked;
+    public Action onResetButtonClicked;
     public Action onNextLevelButtonClicked;
     
     [Header("Score prompt")]
@@ -30,6 +31,7 @@ public class LevelCompleteDisplayer : MonoBehaviour
     
     [Header("Buttons")]
     [SerializeField] private UnityEngine.UI.Button backButton;
+    [SerializeField] private UnityEngine.UI.Button resetLevelButton;
     [SerializeField] private UnityEngine.UI.Button nextLevelButton;
     
     Dictionary<Explanation, string[]> levelCompletePrompts;
@@ -52,6 +54,11 @@ public class LevelCompleteDisplayer : MonoBehaviour
         backButton.onClick.AddListener(() =>
         {
             onBackButtonClicked?.Invoke();
+        });        
+        
+        resetLevelButton.onClick.AddListener(() =>
+        {
+            onResetButtonClicked?.Invoke();
         });
         
         nextLevelButton.onClick.AddListener(() =>
