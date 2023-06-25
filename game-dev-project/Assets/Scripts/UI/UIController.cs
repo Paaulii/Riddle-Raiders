@@ -26,10 +26,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private LevelCompleteDisplayer levelCompleteDisplayer;
     [SerializeField] private GameOverPanelDisplayer gameOverPanelDisplayer;
     [SerializeField] private PauseGame pausePanelDisplayer;
+    [SerializeField] private TutorialPanelController tutorialPanelController;
     private void Start()
     {
         levelCompleteDisplayer.gameObject.SetActive(false);
         gameOverPanelDisplayer.gameObject.SetActive(false);
+        tutorialPanelController.gameObject.SetActive(false);
         SetActiveGameOverPanel(false);
         SetActivePausePanel(false);
         levelCompleteDisplayer.onNextLevelButtonClicked += () => { onNextLevelButtonClicked?.Invoke(); };
@@ -59,6 +61,11 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void OpenTutorialPanel()
+    {
+        tutorialPanelController.gameObject.SetActive(true);
+    }
+    
     public void SetActiveGameOverPanel(bool isActive)
     {
         gameOverPanelDisplayer.gameObject.SetActive(isActive);

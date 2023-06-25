@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
         playerGameProgress = dataManager.LoadData();
         uiController.SetLevelNumber(dataManager.CurrentLvl);
 
+        if (dataManager.CurrentLvl == 1)
+        {
+            uiController.OpenTutorialPanel();
+        }
+        
         LoadKeyBindings(player1KeyBindingsConfKey, smallPlayer, player1ActionMap);
         LoadKeyBindings(player2KeyBindingsConfKey, bigPlayer, player2ActionMap);
 
