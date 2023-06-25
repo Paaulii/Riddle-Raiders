@@ -12,7 +12,7 @@ public class UIController : MonoBehaviour
     public Action onBackToMenu;
     public Action onResetLevel;
     public Action onResumeLevel;
-
+    public Action onCloseTutorial;
     [Header("UI objects")] 
     
     [Header("Top info")]
@@ -41,6 +41,7 @@ public class UIController : MonoBehaviour
         pausePanelDisplayer.onResetLevel += () => { onResetLevel?.Invoke(); };
         pausePanelDisplayer.onBackButtonClicked += () => { onBackToMenu?.Invoke(); };
         pausePanelDisplayer.onResumeLevel += () => { onResumeLevel?.Invoke(); };
+        tutorialPanelController.onPanelClose += () => { onCloseTutorial?.Invoke(); };
     }
 
     public void UpdateTime(string time)

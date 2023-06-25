@@ -34,7 +34,7 @@ public class LevelCompleteDisplayer : MonoBehaviour
     
     Dictionary<Explanation, string[]> levelCompletePrompts;
     
-    private void Start()
+    private void Awake()
     {
         levelCompletePrompts = new Dictionary<Explanation, string[]>
         {

@@ -10,11 +10,16 @@ public class Timer : MonoBehaviour
     public float CurrentTime => currentTime;
     private float currentTime = 0;
     
-    void Start() {
+    private void Start() {
         IsCounting = true;
     }
+
+    public void ResetTimer()
+    {
+        currentTime = 0;
+    }
     
-    void Update()
+    private void Update()
     {
         if (IsCounting)
         {

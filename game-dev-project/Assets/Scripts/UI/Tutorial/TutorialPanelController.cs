@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TutorialPanelController : MonoBehaviour
 {
+    public Action onPanelClose;
     [Header("Panels")] 
     [SerializeField] private List<GameObject> panels;
 
@@ -17,7 +18,11 @@ public class TutorialPanelController : MonoBehaviour
     
     private void Start()
     {
-        closeButton.onClick.AddListener(() => gameObject.SetActive(false));
+        closeButton.onClick.AddListener(() =>
+        {
+            gameObject.SetActive(false);
+            onPanelClose?.Invoke();
+        });
         leftButton.onClick.AddListener(SetActivePreviousPanel);
         rightButton.onClick.AddListener(SetActiveNextPanel);
         SetActivePanel(currentIndexPanel);

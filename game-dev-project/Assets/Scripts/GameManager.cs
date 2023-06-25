@@ -43,10 +43,11 @@ public class GameManager : MonoBehaviour
         BindToEvents();
         playerGameProgress = dataManager.LoadData();
         uiController.SetLevelNumber(dataManager.CurrentLvl);
-
+        uiController.onCloseTutorial += HandleCloseTutorialPanel;
+        
         if (dataManager.CurrentLvl == 1)
         {
-            uiController.OpenTutorialPanel();
+            HandleOpenTutorialPanel();
         }
         
         LoadKeyBindings(player1KeyBindingsConfKey, smallPlayer, player1ActionMap);
@@ -54,6 +55,23 @@ public class GameManager : MonoBehaviour
 
         GameMusicManager.Music randomMusic = (GameMusicManager.Music)UnityEngine.Random.Range(0, 3);
         gameMusicManager.PlayMusic(randomMusic);
+    }
+
+    private void HandleCloseTutorialPanel()
+    {
+        timer.ResetTimer();
+        timer.IsCounting = true;
+        bigPlayer.Movement.ForceStartPlayer();
+        smallPlayer.Movement.ForceStartPlayer();
+        uiController.onCloseTutorial -= HandleCloseTutorialPanel;
+    }
+
+    private void HandleOpenTutorialPanel()
+    {
+        timer.IsCounting = false;
+        uiController.OpenTutorialPanel();
+        bigPlayer.Movement.ForceStopPlayer();
+        smallPlayer.Movement.ForceStopPlayer();
     }
 
     private void OnDestroy()
@@ -120,6 +138,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleResume()
     {
+        timer.IsCounting = true;
         uiController.SetActivePausePanel(false);
         bigPlayer.Movement.ForceStartPlayer();
         smallPlayer.Movement.ForceStartPlayer();
@@ -222,6 +241,7 @@ public class GameManager : MonoBehaviour
 
     private void HandlePauseGame()
     {
+        timer.IsCounting = false;
         uiController.SetActivePausePanel(true);
         bigPlayer.Movement.ForceStopPlayer();
         smallPlayer.Movement.ForceStopPlayer();
