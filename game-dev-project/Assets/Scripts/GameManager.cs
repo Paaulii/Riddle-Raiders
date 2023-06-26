@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
 
     private void HandleNextLevelButtonClicked()
     {
+        dataManager.CurrentLvl++;
         int levelIndex = dataManager.CurrentLvl - 1;
         
         if (levelIndex >= 0) {
@@ -198,7 +199,6 @@ public class GameManager : MonoBehaviour
         {
             uiController.HandleGameComplete();
         }
-        dataManager.CurrentLvl++;
     }
 
     private Explanation OpenLevelCompletePanel()
