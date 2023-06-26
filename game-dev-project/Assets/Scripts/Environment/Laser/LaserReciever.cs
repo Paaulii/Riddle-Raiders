@@ -11,12 +11,14 @@ public class LaserReciever : PlatformActivator
     public bool isActive = false;
     private bool wasActivationEventSent = false;
     private bool wasInactivationEventSent = false;
-    
+    [SerializeField] private GameObject laserEffect;
+
     void Update() {
         if (isActive)
         {
             if (!wasActivationEventSent) 
             {
+                Instantiate(laserEffect, transform.position, Quaternion.identity);
                 onLaserActivation?.Invoke();
                 wasActivationEventSent = true;
                 wasInactivationEventSent = false;

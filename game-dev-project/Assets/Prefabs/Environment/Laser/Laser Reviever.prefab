@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformColor: 0
   isActive: 0
+  laserEffect: {fileID: 5021417866994837888, guid: 5d76d20adfb43174f83c4dca92f6fce7, type: 3}
 --- !u!65 &5032219064833976120
 BoxCollider:
   m_ObjectHideFlags: 0
