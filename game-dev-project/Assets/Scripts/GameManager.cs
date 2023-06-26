@@ -181,9 +181,19 @@ public class GameManager : MonoBehaviour
     private void HandleEndLevel()
     {
         timer.IsCounting = false;
-        soundManager.PlaySound(SoundManager.Sounds.EndLevel);
         Explanation explanation = OpenLevelCompletePanel();
         dataManager.SaveData(explanation, starCollectDetector.StarsAmount, dataManager.CurrentLvl, timer.CurrentTime);
+
+
+        if (explanation == Explanation.WorseTimeEqualStars || explanation == Explanation.BetterTimeLessStars || explanation == Explanation.WorseTimeLessStars)
+        {
+            soundManager.PlaySound(SoundManager.Sounds.NextTime);
+        }
+        else
+        {
+            soundManager.PlaySound(SoundManager.Sounds.EndLevel);
+        }
+
         if (dataManager.CurrentLvl == playerGameProgress.LevelsData.Count)
         {
             uiController.HandleGameComplete();

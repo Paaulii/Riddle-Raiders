@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
 
-    [SerializeField] private AudioClip jump, endLevel, collect, hit, wind, box, slide, climb, laser;
+    [SerializeField] private AudioClip jump, endLevel, collect, hit, wind, box, slide, climb, laser, nextTime;
 
     AudioSource audioSource;
     Dictionary<Sounds, AudioClip> sounds;
@@ -23,7 +23,8 @@ public class SoundManager : MonoBehaviour {
             { Sounds.Box, box },
             { Sounds.Slide, slide },
             { Sounds.Climb, climb },
-            { Sounds.Laser, laser }
+            { Sounds.Laser, laser },
+            { Sounds.NextTime, nextTime }
         };
         
         BindAllEnvironmentElements();
@@ -77,6 +78,6 @@ public class SoundManager : MonoBehaviour {
     
     public enum Sounds
     {
-        Jump, EndLevel, Collect, Hit, Wind, Box, Slide, Climb, Laser
+        Jump, EndLevel, Collect, Hit, Wind, Box, Slide, Climb, Laser, NextTime
     }
 }
