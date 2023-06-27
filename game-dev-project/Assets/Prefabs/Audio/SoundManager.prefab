@@ -150,4 +150,4 @@ MonoBehaviour:
   slide: {fileID: 8300000, guid: bf493e2d779725147ac79e807d7d00fa, type: 3}
   climb: {fileID: 8300000, guid: 20cd4f699c1db5b478ef67ffee43612e, type: 3}
   laser: {fileID: 8300000, guid: 5c643f893093b3841b7169eb1a127d35, type: 3}
-  nextTime: {fileID: 8300000, guid: 7b775d9cdab372a439afc581c71883ec, type: 3}
+  nextTime: {fileID: 8300000, guid: 6532935488f6e794bb47ed6bde7ad74e, type: 3}
