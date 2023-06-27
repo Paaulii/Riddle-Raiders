@@ -32,7 +32,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Timer timer;
     PlayerGameProgress playerGameProgress;
 
-    
+    [Header("Effects")]
+    [SerializeField] private GameObject fireworkEffect;
+    [SerializeField] private GameObject fireworkShootEffect;
+    [SerializeField] private GameObject smokeEffect;
+
     private const string player1KeyBindingsConfKey = "PLAYER_1_BINDINGS";
     private const string player2KeyBindingsConfKey = "PLAYER_2_BINDINGS";
     private const string player1ActionMap = "Player1";
@@ -189,10 +193,13 @@ public class GameManager : MonoBehaviour
         if (explanation == Explanation.WorseTimeEqualStars || explanation == Explanation.BetterTimeLessStars || explanation == Explanation.WorseTimeLessStars)
         {
             soundManager.PlaySound(SoundManager.Sounds.NextTime);
+            Instantiate(smokeEffect, endDoor.transform.position + new Vector3(2, 0, 0), Quaternion.identity);
         }
         else
         {
             soundManager.PlaySound(SoundManager.Sounds.EndLevel);
+            Instantiate(fireworkEffect, endDoor.transform.position + new Vector3(1, 0, 0), Quaternion.identity);
+            Instantiate(fireworkShootEffect, endDoor.transform.position + new Vector3(1, 0, 0), Quaternion.identity);
         }
 
         if (dataManager.CurrentLvl == playerGameProgress.LevelsData.Count)

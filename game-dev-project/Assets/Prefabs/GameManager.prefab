@@ -272,6 +272,9 @@ MonoBehaviour:
   soundManager: {fileID: 6253579761908069730}
   dataManager: {fileID: 11400000, guid: 2b5fc3fb66df6d441b73afd98989a18c, type: 2}
   timer: {fileID: 8199720484131127961}
+  fireworkEffect: {fileID: 1714513133734682684, guid: 02bda087f3ed40b4fb55b688ae247125, type: 3}
+  fireworkShootEffect: {fileID: 9036601164526154956, guid: 27167cc1c5796104f885f41de698b2da, type: 3}
+  smokeEffect: {fileID: 4368098709314299244, guid: 160ff0a38ec44a34ab2a73c91dd208f3, type: 3}
 --- !u!1 &3497360495509150938
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +497,10 @@ PrefabInstance:
       propertyPath: bloodEffect
       value: 
       objectReference: {fileID: 2119927291796682321, guid: 482fe05dc551ea649aca8d64a219692b, type: 3}
+    - target: {fileID: 1453374042422934432, guid: b917be9edec551042a231db6b27408dc, type: 3}
+      propertyPath: smokeEffect
+      value: 
+      objectReference: {fileID: 4368098709314299244, guid: 160ff0a38ec44a34ab2a73c91dd208f3, type: 3}
     - target: {fileID: 2350048302865948547, guid: b917be9edec551042a231db6b27408dc, type: 3}
       propertyPath: soundManager
       value: 
@@ -716,11 +723,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2467869622647762874, guid: 5fc5398b2933fe149b362a50406e43e8, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2467869622647762874, guid: 5fc5398b2933fe149b362a50406e43e8, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.7
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2467869622647762874, guid: 5fc5398b2933fe149b362a50406e43e8, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.07943219
+      objectReference: {fileID: 0}
+    - target: {fileID: 2467869622647762874, guid: 5fc5398b2933fe149b362a50406e43e8, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.7610437
+      objectReference: {fileID: 0}
+    - target: {fileID: 2467869622647762874, guid: 5fc5398b2933fe149b362a50406e43e8, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.990566
       objectReference: {fileID: 0}
     - target: {fileID: 6285282711233062851, guid: 5fc5398b2933fe149b362a50406e43e8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -803,6 +822,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1860801873}
     m_Modifications:
+    - target: {fileID: 526853667583535797, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
+      propertyPath: smokeEffect
+      value: 
+      objectReference: {fileID: 4368098709314299244, guid: 160ff0a38ec44a34ab2a73c91dd208f3, type: 3}
     - target: {fileID: 5503595213375055801, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
       propertyPath: m_RootOrder
       value: 1

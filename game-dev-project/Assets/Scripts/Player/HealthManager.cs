@@ -15,6 +15,7 @@ public class HealthManager : MonoBehaviour
     private int health = 3;
     [SerializeField] private GameObject skullEffect;
     [SerializeField] private GameObject bloodEffect;
+    [SerializeField] private GameObject smokeEffect;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -23,6 +24,7 @@ public class HealthManager : MonoBehaviour
 
         if (spikes)
         {
+            Instantiate(bloodEffect, transform.position, Quaternion.identity);
             DecreaseHealth();
         }
         if (lava)
@@ -31,6 +33,7 @@ public class HealthManager : MonoBehaviour
             {
                 DecreaseHealth();
             }
+            Instantiate(smokeEffect, transform.position, Quaternion.identity);
         }
     }
 
@@ -44,6 +47,6 @@ public class HealthManager : MonoBehaviour
         }
         gameObject.GetComponent<Animator>().SetTrigger("attack");
         onPlayerHit?.Invoke();
-        Instantiate(bloodEffect, transform.position, Quaternion.identity);
+        
     }
 }
