@@ -1,5 +1,5 @@
 # 🎮 Riddle Raiders ♟
-test
+
 ## A puzzle coop game, two players need to figure out how to pass levels using different size abilities.
 ![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/265f606d-4a9f-4a01-b0b3-3507adaba4fe)
 
