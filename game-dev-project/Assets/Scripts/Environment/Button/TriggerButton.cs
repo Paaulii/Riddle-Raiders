@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Button : PlatformActivator
+public class TriggerButton : PlatformActivator
 {
     [Header("Appearance")] 
     [SerializeField] private SpriteRenderer renderer;

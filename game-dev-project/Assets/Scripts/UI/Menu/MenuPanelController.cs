@@ -1,68 +1,65 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MenuPanelController : MonoBehaviour
 {
-    [SerializeField] private UnityEngine.UI.Button startGameButton;
-    [SerializeField] private UnityEngine.UI.Button chooseLevelButton;
-    [SerializeField] private UnityEngine.UI.Button settingsButton;
-    [SerializeField] private UnityEngine.UI.Button creditsButton;
-    [SerializeField] private UnityEngine.UI.Button exitGameButton;
+    public event Action onExitButtonClick; 
+    public event Action onStartButtonClick; 
     
-    [Space]
-    
-    [SerializeField] private DataManager dataManager;
-    public event Action MenuMusic;
+    [SerializeField] private Button startGameTriggerButton;
+    [SerializeField] private Button chooseLevelTriggerButton;
+    [SerializeField] private Button settingsTriggerButton;
+    [SerializeField] private Button creditsTriggerButton;
+    [SerializeField] private Button exitGameTriggerButton;
 
     private void Start()
     {
-        MenuMusic?.Invoke();
-
-        startGameButton.onClick.AddListener(() =>
-        {
-            LoadLastLevel();
-        });
-        
-        chooseLevelButton.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene("LevelSelection");
-        });
-        
-        settingsButton.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene("Settings");
-        });
-        
-        creditsButton.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene("Credits");
-        });
-        
-        exitGameButton.onClick.AddListener(() =>
-        {
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else 
-                Application.Quit();
-            #endif
-            
-        });
+        startGameTriggerButton.onClick.AddListener(NotifyStartButtonClicked);
+        chooseLevelTriggerButton.onClick.AddListener(ShowLevelSelectionPanel);
+        settingsTriggerButton.onClick.AddListener(ShowSettingsPanel);
+        creditsTriggerButton.onClick.AddListener(ShowCreditsPanel);
+        exitGameTriggerButton.onClick.AddListener(NotifyExitButtonClicked);
     }
 
-    private void LoadLastLevel()
+    private void OnDestroy()
     {
-        PlayerGameProgress playerGameProgress = dataManager.LoadData();
-        LevelData lastPlayedLevel = playerGameProgress.LevelsData.FindLast(level => level.IsLocked == false);
-
-        if (lastPlayedLevel != null)
-        {
-            dataManager.CurrentLvl = lastPlayedLevel.LevelNumber + 1;
-            SceneManager.LoadScene(lastPlayedLevel.PathToScene);
-        }
+        chooseLevelTriggerButton.onClick.RemoveListener(ShowLevelSelectionPanel);
+        startGameTriggerButton.onClick.RemoveListener(NotifyStartButtonClicked);
+        settingsTriggerButton.onClick.RemoveListener(ShowSettingsPanel);
+        creditsTriggerButton.onClick.RemoveListener(ShowCreditsPanel);
+        exitGameTriggerButton.onClick.RemoveListener(NotifyExitButtonClicked);
     }
+
+    private void NotifyStartButtonClicked()
+    {
+        onStartButtonClick?.Invoke();
+    }
+
+    private void NotifyExitButtonClicked()
+    {
+        onExitButtonClick?.Invoke();
+    }
+
+    private void ShowCreditsPanel()
+    {
+        ShowPanel(typeof(CreditsPanel));
+    }
+
+    private void ShowSettingsPanel()
+    {
+        ShowPanel(typeof(SettingsPanel));
+    }
+
+    private void ShowLevelSelectionPanel()
+    {
+        ShowPanel(typeof(LevelSelectionPanel));
+    }
+
+    private void ShowPanel(Type type)
+    {
+        PanelManager.instance.ShowPanel(type);
+    }
+
 }

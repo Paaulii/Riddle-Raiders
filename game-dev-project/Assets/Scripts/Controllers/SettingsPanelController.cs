@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,9 +9,8 @@ public class SettingsPanelController : MonoBehaviour
     [SerializeField] private RebindKeyController rebindKeyController;
     private void Start()
     {
-        backToMenuButton.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene("Menu");
+        backToMenuButton.onClick.AddListener(() => {
+            PanelManager.instance.ShowPanel<MenuPanel>();
         });
         
         saveButton.onClick.AddListener(rebindKeyController.SaveKeyBindings);
