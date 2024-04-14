@@ -11,7 +11,7 @@ public class MainMenuState : State
         menuPanel = PanelManager.instance.ShowPanel<MenuPanel>();
         menuPanel.onExitGame += HandleExitGame;
         menuPanel.onStartGame += HandleStartGame;
-        MenuMusicManager.instance.PlayMusic();
+        SoundManager.Instance.PlayMusic(SoundManager.MusicType.Menu);
     }
 
     private void HandleStartGame()

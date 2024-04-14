@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-public class InLevelState : MonoBehaviour
+public class InLevelState : State
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnEnter()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.OnEnter();
+        SoundManager.Instance.PlayMusic(SoundManager.MusicType.Gameplay);
     }
 }

@@ -30,8 +30,6 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private EnterEndDoor endDoor;
 	
 	[Header("Sound Managers")]
-	[SerializeField] private GameMusicManager gameMusicManager;
-	[SerializeField] private SoundManager soundManager;
 	
 	[Header("Data Manager")]
 	[SerializeField] private DataManager dataManager;
@@ -69,9 +67,7 @@ public class GameManager : MonoBehaviour
 		
 		LoadKeyBindings(GameSettings.player1KeyBindingsConfKey, smallPlayer, GameSettings.player1ActionMap);
 		LoadKeyBindings(GameSettings.player2KeyBindingsConfKey, bigPlayer, GameSettings.player2ActionMap);
-
-		GameMusicManager.Music randomMusic = (GameMusicManager.Music)UnityEngine.Random.Range(0, 3);
-		gameMusicManager.PlayMusic(randomMusic);*/
+*/
 		DontDestroyOnLoad(this);
 	}
 
@@ -186,7 +182,7 @@ public class GameManager : MonoBehaviour
 
 	private void HandleStarCollecting()
 	{
-		soundManager.PlaySound(SoundManager.Sounds.Collect);
+		SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Collect, smallPlayer.transform.position);
 		uiController.IncreaseStarAmount();
 	}
 
@@ -219,12 +215,12 @@ public class GameManager : MonoBehaviour
 
 		if (explanation == Explanation.WorseTimeEqualStars || explanation == Explanation.BetterTimeLessStars || explanation == Explanation.WorseTimeLessStars)
 		{
-			soundManager.PlaySound(SoundManager.Sounds.NextTime);
+			SoundManager.Instance.PlayUISound(SoundManager.UISoundType.GameOver);
 			Instantiate(smokeEffect, endDoor.transform.position + new Vector3(2, 0, 0), Quaternion.identity);
 		}
 		else
 		{
-			soundManager.PlaySound(SoundManager.Sounds.EndLevel);
+			SoundManager.Instance.PlayUISound(SoundManager.UISoundType.EndLevel);
 			Instantiate(fireworkEffect, endDoor.transform.position + new Vector3(1, 0, 0), Quaternion.identity);
 			Instantiate(fireworkShootEffect, endDoor.transform.position + new Vector3(1, 0, 0), Quaternion.identity);
 		}
@@ -271,7 +267,7 @@ public class GameManager : MonoBehaviour
 
 	private void HandlePlayerHit(Character character)
 	{
-		soundManager.PlaySound(SoundManager.Sounds.Hit);
+		SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Hit, character.transform.position);
 		uiController.DecreasePlayersHealth(character.Type);
 	}
 	

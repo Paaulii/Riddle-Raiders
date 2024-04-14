@@ -10,7 +10,8 @@ public class MusicSlider : MonoBehaviour
     private void Start()
     {
         Slider volumeSlider = GetComponent<Slider>();
-        volumeSlider.value = GlobalVolumeManager.GetMusicVolume();
+        volumeSlider.value = SoundManager.Instance.MusicVolume;
+        
         if (volumeSlider.value == 0)
         {
             volumeSlider.interactable = false;
@@ -20,6 +21,6 @@ public class MusicSlider : MonoBehaviour
 
     private void ChangeVolume(float volume)
     {
-        GlobalVolumeManager.SetMusicVolume(volume);
+        SoundManager.Instance.SetMusicVolume(volume);
     }
 }

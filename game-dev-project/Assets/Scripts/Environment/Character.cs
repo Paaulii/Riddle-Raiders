@@ -12,7 +12,6 @@ public class Character : MonoBehaviour
     [field:SerializeField] public CharacterType Type { get; private set; }
     [SerializeField] Movement movement;
     [SerializeField] HealthManager healthManager;
-    [SerializeField] SoundManager soundManager;
     
     private void Start() 
     {
@@ -23,24 +22,23 @@ public class Character : MonoBehaviour
         
         healthManager.onPlayerHit += () =>
         {
-            soundManager.PlaySound(SoundManager.Sounds.Hit);
+            SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Hit, transform.position);
             onPlayerHit?.Invoke(this);
         };
 
-        movement.onCatch += () => soundManager.PlaySound(SoundManager.Sounds.Box);
-        movement.onJump += () => soundManager.PlaySound(SoundManager.Sounds.Jump);
-        movement.onSlide += () => soundManager.PlaySound(SoundManager.Sounds.Slide);
+        movement.onCatch += () => SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Box, transform.position);
+        movement.onJump += () =>SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Jump, transform.position);
+        movement.onSlide += () => SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Slide, transform.position);
         
         movement.onStartClimb += () =>
         {
-            soundManager.SetLoop(true);
-            soundManager.SetClip(SoundManager.Sounds.Climb);
+            SoundManager.Instance.SetLoop(true);
+            SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Climb, transform.position);
         };
         
         movement.onStopClimb += () =>
         {
-            soundManager.SetLoop(false);
-            soundManager.StopPlaying();
+            SoundManager.Instance.SetLoop(false);
         };
     }
 

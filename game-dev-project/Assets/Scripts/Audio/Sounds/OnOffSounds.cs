@@ -19,7 +19,7 @@ public class OnOffSounds : MonoBehaviour
         toggleButton = GetComponent<UnityEngine.UI.Button>();
         toggleButton.onClick.AddListener(ToggleMusic);
         buttonImage = toggleButton.GetComponent<Image>();
-        if (GlobalVolumeManager.GetSoundsVolume() == 0)
+        if (SoundManager.Instance.SFXVolume == 0)
         {
             isMuted = true;
             buttonImage.sprite = onSprite;
@@ -36,15 +36,15 @@ public class OnOffSounds : MonoBehaviour
         isMuted = !isMuted;
         if (isMuted)
         {
-            previousVolume = GlobalVolumeManager.GetSoundsVolume();
-            GlobalVolumeManager.SetSoundsVolume(0f);
+            previousVolume = SoundManager.Instance.SFXVolume;
+            SoundManager.Instance.SetSFXVolume(0f);
             soundSlider.value = 0f;
             buttonImage.sprite = onSprite;
             soundSlider.interactable = false;
         }
         else
         {
-            GlobalVolumeManager.SetSoundsVolume(previousVolume);
+            SoundManager.Instance.SetSFXVolume(previousVolume);
             soundSlider.value = previousVolume;
             buttonImage.sprite = offSprite;
             soundSlider.interactable = true;

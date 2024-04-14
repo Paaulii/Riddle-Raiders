@@ -18,6 +18,7 @@ public class LoadLevelState : State
         {
             dataManager.CurrentLvl = lastPlayedLevel.LevelNumber + 1;
             SceneManager.LoadScene(lastPlayedLevel.PathToScene);
+            GameManager.Instance.Data.Status = GameData.GameStatus.InLevel;
         }
     }
 }
