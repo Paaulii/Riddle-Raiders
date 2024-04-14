@@ -1,23 +1,39 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SettingsPanelController : MonoBehaviour
 {
-    [SerializeField] private UnityEngine.UI.Button backToMenuButton;
     [SerializeField] private UnityEngine.UI.Button resetDataButton;
     [SerializeField] private UnityEngine.UI.Button saveButton;
-    [SerializeField] private RebindKeyController rebindKeyController;
+    [SerializeField] private PlayerKeys bigPlayerKeys;
+    [SerializeField] private PlayerKeys smallPlayerKeys;
+
     private void Start()
     {
-        backToMenuButton.onClick.AddListener(() => {
-            PanelManager.instance.ShowPanel<MenuPanel>();
-        });
-        
-        saveButton.onClick.AddListener(rebindKeyController.SaveKeyBindings);
+        saveButton.onClick.AddListener(SaveKeyBindings);
+        resetDataButton.onClick.AddListener(ResetKeyBindings);
     }
 
     private void OnDestroy()
     {
-        saveButton.onClick.RemoveListener(rebindKeyController.SaveKeyBindings);
+        saveButton.onClick.RemoveListener(SaveKeyBindings);
+        resetDataButton.onClick.RemoveListener(ResetKeyBindings);
+    }
+    
+    private void SaveKeyBindings()
+    {
+        KeyBindingsManager.instance.SaveKeyBindings();
+    }
+    
+    private void ResetKeyBindings()
+    {
+        KeyBindingsManager.instance.ResetKeyBindings();
+        RefreshKeyContent();
+    }
+
+    public void RefreshKeyContent()
+    {
+        KeyBindingsManager.instance.LoadKeyBindings();
+        bigPlayerKeys.RefreshKeys();
+        smallPlayerKeys.RefreshKeys();
     }
 }

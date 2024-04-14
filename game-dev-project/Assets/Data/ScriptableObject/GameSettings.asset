@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: cce607aa94655b1479e98501ceadbfcb, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: Assembly-CSharp::GameSettingsSO
-  player1KeyBindingsConfKey: PLAYER_1_BINDINGS
-  player2KeyBindingsConfKey: PLAYER_2_BINDINGS
-  player1ActionMap: Player1
-  player2ActionMap: Player2

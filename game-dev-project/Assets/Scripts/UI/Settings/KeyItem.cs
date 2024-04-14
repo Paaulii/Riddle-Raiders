@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,12 +11,9 @@ public class KeyItem : MonoBehaviour {
     [SerializeField] private UnityEngine.UI.Button bindButton;
     [SerializeField] private TextMeshProUGUI bindingDisplayNameText;
 
-    private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
-
     private void Start()
     {
         bindButton.onClick.AddListener(RebindKey);
-        RefreshContent();
     }
 
     private void OnDestroy()
@@ -27,43 +21,21 @@ public class KeyItem : MonoBehaviour {
         bindButton.onClick.RemoveListener(RebindKey);
     }
 
-    public void RebindKey()
+    public void RefreshContent()
+    {
+        bindingDisplayNameText.text = KeyBindingsManager.instance.GetKeyBindingText(action, isComposite, name);
+    }
+    
+    private void RebindKey()
     {
         bindButton.gameObject.SetActive(false);
-        if (isComposite && name != String.Empty) {
-            var bindingIndex = action.action.bindings.IndexOf(x => x.isPartOfComposite && x.name == name);
-            rebindingOperation = action.action.PerformInteractiveRebinding().WithTargetBinding(bindingIndex);
-        }
-        else
-        {
-            rebindingOperation = action.action.PerformInteractiveRebinding();
-        }
-        
-        rebindingOperation
-           // .WithControlsExcluding("Mouse")
-            .OnMatchWaitForAnother(0.1f)
-            .OnComplete(operation => RebindComplete())
-            .Start();
+        KeyBindingsManager.instance.PerformKeyRebinding(action, isComposite, name);
+        KeyBindingsManager.instance.onKeyRebinded += OnKeyRebinded;
     }
 
-    private void RefreshContent()
+    private void OnKeyRebinded(InputActionReference action)
     {
-        int bindingIndex;
-        if (isComposite && name != String.Empty) {
-            bindingIndex = action.action.bindings.IndexOf(x => x.isPartOfComposite && x.name == name);
-        }
-        else
-        {
-            bindingIndex = action.action.GetBindingIndexForControl(action.action.controls[0]);
-        }
-        
-        bindingDisplayNameText.text = InputControlPath.ToHumanReadableString(
-            action.action.bindings[bindingIndex].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
-    }
-
-    private void RebindComplete()
-    {
-        rebindingOperation.Dispose();
+        KeyBindingsManager.instance.onKeyRebinded -= OnKeyRebinded;
         bindButton.gameObject.SetActive(true);
         RefreshContent();
     }

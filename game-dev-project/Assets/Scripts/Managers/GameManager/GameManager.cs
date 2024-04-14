@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 	private readonly GameData data = new();
 	private static GameManager instance;
 
+	public GameSettingsSO GameSettings => _gameSettings;
+	
 	[Header("Game states")] 
 	[SerializeField] private GameStatus[] gameStates;
 	[Header("Players")]
@@ -41,8 +43,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject fireworkShootEffect;
 	[SerializeField] private GameObject smokeEffect;
 
-	[SerializeField] private GameSettingsSO GameSettings => _GameSettings;
-	private GameSettingsSO _GameSettings;
+	[SerializeField] private GameSettingsSO _gameSettings;
 
 	private State currentState;
 	

@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CreditsPanel : Panel
+public class CreditsPanel : SubPanel
 {
 }

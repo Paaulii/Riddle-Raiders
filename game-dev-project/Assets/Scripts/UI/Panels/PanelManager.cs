@@ -8,7 +8,7 @@ public class PanelManager : Singleton<PanelManager>
     [SerializeField] List<Panel> panels;
     Panel currentPanel;
 
-    private void Start() {
+    private void Awake() {
         foreach (var panel in panels) {
             panel.Hide();
         }

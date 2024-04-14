@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 1408469827}
   - component: {fileID: 1408469826}
   m_Layer: 5
-  m_Name: text
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -495,10 +495,9 @@ GameObject:
   - component: {fileID: 8877378379983263531}
   - component: {fileID: 8877378379983263528}
   - component: {fileID: 8877378379983263510}
-  - component: {fileID: 972103137}
   - component: {fileID: 4445963674014226592}
   m_Layer: 5
-  m_Name: credits
+  m_Name: CreditsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,19 +565,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &972103137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8877378379983263511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e9c9d3f1ae4fc44be907547878615d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backToMenuButton: {fileID: 344515141}
 --- !u!114 &4445963674014226592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,6 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c655a75ede187a14e85f7a3be67719b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backToMenuButton: {fileID: 344515141}
 --- !u!1 &8877378380009500299
 GameObject:
   m_ObjectHideFlags: 0
