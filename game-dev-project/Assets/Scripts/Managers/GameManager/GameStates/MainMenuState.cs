@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class MainMenuState : State 
@@ -14,19 +13,21 @@ public class MainMenuState : State
         SoundManager.Instance.PlayMusic(SoundManager.MusicType.Menu);
     }
 
-    private void HandleStartGame()
-    {
-        GameManager.Instance.Data.Status = GameData.GameStatus.LoadLevel;
-    }
 
     public override void OnExit()
     {
         base.OnExit();
         menuPanel.onExitGame -= HandleExitGame;
-        menuPanel.onStartGame += HandleStartGame;
+        menuPanel.onStartGame -= HandleStartGame;
     }
 
-    private void HandleExitGame() {
+    private void HandleStartGame()
+    {
+        GameManager.Instance.Data.Status = GameData.GameStatus.LoadLevel;
+    }
+    
+    private void HandleExitGame() 
+    {
         GameManager.Instance.Data.Status = GameData.GameStatus.ExitGame;
     }
 }

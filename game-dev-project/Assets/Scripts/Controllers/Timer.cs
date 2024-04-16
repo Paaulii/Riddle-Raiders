@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class Timer : Singleton<Timer>
 {
     public Action<float> onTimeTick;
     public bool IsCounting { get; set; }

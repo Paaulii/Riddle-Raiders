@@ -3,29 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class LevelSelectionController : MonoBehaviour
 {
-    [SerializeField] private DataManager dataManager;
     [SerializeField] private LevelItemGridGenerator levelItemGridGenerator;
-    [SerializeField] private UnityEngine.UI.Button backToMenuButton;
     [SerializeField] private UnityEngine.UI.Button resetDataButton;
     PlayerGameProgress playerGameProgress;
     
     private void Awake() 
     {
-        playerGameProgress = dataManager.LoadData();
+        playerGameProgress = SaveSystemManager.instance.LoadData();
         levelItemGridGenerator.GenerateLevelItems(playerGameProgress.LevelsData);
         levelItemGridGenerator.onSelectLevel += HandleLevelSelect;
-        
-        backToMenuButton.onClick.AddListener(() =>
-        {
-            SceneManager.LoadScene("Menu");
-        });
-        
+
         resetDataButton.onClick.AddListener(() =>
         {
-            playerGameProgress = dataManager.ResetData();
+            playerGameProgress = SaveSystemManager.instance.ResetData();
             levelItemGridGenerator.GenerateLevelItems(playerGameProgress.LevelsData);
         });
     }
@@ -37,9 +31,10 @@ public class LevelSelectionController : MonoBehaviour
 
     private void HandleLevelSelect(int levelNumber) 
     {
-        if (levelNumber + 1 >= 0)
+        if (levelNumber >= 0)
         {
-            dataManager.CurrentLvl = levelNumber + 1;
+            //TODO: it shouldnt be like this
+            GameManager.Instance.Data.CurrentLvl = levelNumber ;
             SceneManager.LoadScene(playerGameProgress.LevelsData[levelNumber].PathToScene);
         }
     }

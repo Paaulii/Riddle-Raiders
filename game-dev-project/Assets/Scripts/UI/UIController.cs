@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -27,13 +23,19 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameOverPanelDisplayer gameOverPanelDisplayer;
     [SerializeField] private PauseGame pausePanelDisplayer;
     [SerializeField] private TutorialPanelController tutorialPanelController;
-    private void Start()
+
+    //TODO: i don't like how it looks like - it should be separate panels
+    private void Awake()
     {
         levelCompleteDisplayer.gameObject.SetActive(false);
         gameOverPanelDisplayer.gameObject.SetActive(false);
         tutorialPanelController.gameObject.SetActive(false);
         SetActiveGameOverPanel(false);
         SetActivePausePanel(false);
+    }
+
+    private void Start()
+    {
         levelCompleteDisplayer.onNextLevelButtonClicked += () => { onNextLevelButtonClicked?.Invoke(); };
         levelCompleteDisplayer.onBackButtonClicked += () => { onBackToMenu?.Invoke(); };
         levelCompleteDisplayer.onResetButtonClicked += () => { onResetLevel?.Invoke(); };

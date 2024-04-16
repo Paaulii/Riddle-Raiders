@@ -1,9 +1,7 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadLevelState : State
 {
-    [SerializeField] private DataManager dataManager;
     public override void OnEnter() 
     {
         LoadLastLevel();
@@ -11,14 +9,14 @@ public class LoadLevelState : State
     
     private void LoadLastLevel()
     {
-        PlayerGameProgress playerGameProgress = dataManager.LoadData();
-        LevelData lastPlayedLevel = playerGameProgress.LevelsData.FindLast(level => level.IsLocked == false);
-
-        if (lastPlayedLevel != null)
+        string levelName = SaveSystemManager.instance.GetLastLevelName() ;
+        
+        if (levelName == default)
         {
-            dataManager.CurrentLvl = lastPlayedLevel.LevelNumber + 1;
-            SceneManager.LoadScene(lastPlayedLevel.PathToScene);
-            GameManager.Instance.Data.Status = GameData.GameStatus.InLevel;
+            return;
         }
+        
+        SceneManager.LoadScene(levelName);
+        GameManager.Instance.Data.Status = GameData.GameStatus.InLevel;
     }
 }

@@ -1,10 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,10 +30,11 @@ public class GameManager : MonoBehaviour
 	[Header("End level")]
 	[SerializeField] private EnterEndDoor endDoor;
 	
+	[FormerlySerializedAs("dataManager")]
 	[Header("Sound Managers")]
 	
 	[Header("Data Manager")]
-	[SerializeField] private DataManager dataManager;
+	[SerializeField] private SaveSystemManager saveSystemManager;
 	[SerializeField] private Timer timer;
 	PlayerGameProgress playerGameProgress;
 
@@ -56,32 +56,19 @@ public class GameManager : MonoBehaviour
 	{
 		ChangeCurrentState(GameData.GameStatus.MainMenu);
 		data.onStateChange += ChangeCurrentState;
-		/*BindToEvents();
-		playerGameProgress = dataManager.LoadData();
-		uiController.SetLevelNumber(dataManager.CurrentLvl);
-		uiController.onCloseTutorial += HandleCloseTutorialPanel;
-		
-		if (dataManager.CurrentLvl == 1)
-		{
-			HandleOpenTutorialPanel();
-		}
-		
-		LoadKeyBindings(GameSettings.player1KeyBindingsConfKey, smallPlayer, GameSettings.player1ActionMap);
-		LoadKeyBindings(GameSettings.player2KeyBindingsConfKey, bigPlayer, GameSettings.player2ActionMap);
-*/
 		DontDestroyOnLoad(this);
-	}
-
-	private void ChangeCurrentState(GameData.GameStatus status) 
-	{
-		currentState?.OnExit();
-		currentState = gameStates.FirstOrDefault(x => x.status == status)?.state;
-		currentState?.OnEnter();
 	}
 	
 	private void Update()
 	{
 		currentState?.Update();
+	}
+	
+	private void ChangeCurrentState(GameData.GameStatus status) 
+	{
+		currentState?.OnExit();
+		currentState = gameStates.FirstOrDefault(x => x.status == status)?.state;
+		currentState?.OnEnter();
 	}
 	
 	private void HandleCloseTutorialPanel()
@@ -173,11 +160,8 @@ public class GameManager : MonoBehaviour
 
 	private void HandleNextLevelButtonClicked()
 	{
-		dataManager.CurrentLvl++;
-		int levelIndex = dataManager.CurrentLvl - 1;
-		
-		if (levelIndex >= 0) {
-			SceneManager.LoadScene(playerGameProgress.LevelsData[levelIndex].PathToScene);
+		if (++data.CurrentLvl >= 0) {
+			SceneManager.LoadScene(playerGameProgress.LevelsData[data.CurrentLvl].PathToScene);
 		}
 	}
 
@@ -211,7 +195,7 @@ public class GameManager : MonoBehaviour
 	{
 		timer.IsCounting = false;
 		Explanation explanation = OpenLevelCompletePanel();
-		dataManager.SaveData(explanation, starCollectDetector.StarsAmount, dataManager.CurrentLvl, timer.CurrentTime);
+		saveSystemManager.SaveData(explanation, starCollectDetector.StarsAmount, data.CurrentLvl, timer.CurrentTime);
 
 
 		if (explanation == Explanation.WorseTimeEqualStars || explanation == Explanation.BetterTimeLessStars || explanation == Explanation.WorseTimeLessStars)
@@ -226,7 +210,7 @@ public class GameManager : MonoBehaviour
 			Instantiate(fireworkShootEffect, endDoor.transform.position + new Vector3(1, 0, 0), Quaternion.identity);
 		}
 
-		if (dataManager.CurrentLvl == playerGameProgress.LevelsData.Count)
+		if (data.CurrentLvl == playerGameProgress.LevelsData.Count)
 		{
 			uiController.HandleGameComplete();
 		}
@@ -234,7 +218,7 @@ public class GameManager : MonoBehaviour
 
 	private Explanation OpenLevelCompletePanel()
 	{
-		int levelIndex = dataManager.CurrentLvl - 1;
+		int levelIndex = data.CurrentLvl;
 		LevelData currentLevel = playerGameProgress.LevelsData[levelIndex];
 		int lastCollectedStars = currentLevel.StarsAmount;
 		int currentCollectedStars = starCollectDetector.StarsAmount;

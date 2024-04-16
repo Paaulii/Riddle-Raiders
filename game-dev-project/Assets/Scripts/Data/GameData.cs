@@ -19,6 +19,7 @@ public class GameData
         LoseScreen,
     }
 
+    public int CurrentLvl { get; set; }
     public GameStatus Status
     {
         get => gameStatus;
