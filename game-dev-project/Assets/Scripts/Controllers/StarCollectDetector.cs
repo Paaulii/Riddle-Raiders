@@ -1,35 +1,38 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class StarCollectDetector : MonoBehaviour
 {
     public int StarsAmount = 0;
-    public Action onStarCollected;
-
-
+    public Action<Vector2> onStarCollected;
     private Star[] stars;
-    void Start()
+    
+    public void FindAllStartAtLevel()
     {
-        stars = GetComponentsInChildren<Star>(true);
+        Deinit();
+        stars = FindObjectsOfType<Star>(true);
         foreach (var star in stars)
         {
-            star.onStartCollect += HandleStarCollection;
+            star.onStarCollect += HandleStarCollection;
         }
     }
 
-    private void OnDestroy()
+    private void Deinit()
     {
+        if (stars == null || stars?.Length == 0)
+        {
+            return;
+        }
+        
         foreach (var star in stars)
         {
-            star.onStartCollect -= HandleStarCollection;
+            star.onStarCollect -= HandleStarCollection;
         }
     }
 
-    private void HandleStarCollection() {
+    private void HandleStarCollection(Star collectedStar) {
         StarsAmount++;
-        onStarCollected?.Invoke();
+        onStarCollected?.Invoke(collectedStar.transform.position);
+        collectedStar.onStarCollect -= HandleStarCollection;
     }
 }

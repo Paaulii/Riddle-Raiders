@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Star : MonoBehaviour 
 {
-    public Action onStartCollect;
+    public Action<Star> onStarCollect;
     [SerializeField] private GameObject pickupStartEffect;
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -14,7 +14,7 @@ public class Star : MonoBehaviour
         if (character)
         {
             Instantiate(pickupStartEffect, transform.position, Quaternion.identity);
-            onStartCollect?.Invoke();
+            onStarCollect?.Invoke(this);
             Destroy(gameObject);
         }
     }

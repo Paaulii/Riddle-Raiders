@@ -14,6 +14,11 @@ public class PanelManager : Singleton<PanelManager>
         }
     }
 
+    public T GetPanel<T> () where T : Panel
+    {
+        return currentPanel as T;
+    }
+    
     public T ShowPanel<T>() where T : Panel {
         T panel = GetChild<T>();
         ShowPanel(panel);

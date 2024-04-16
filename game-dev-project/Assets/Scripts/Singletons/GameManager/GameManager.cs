@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
@@ -63,6 +62,11 @@ public class GameManager : MonoBehaviour
 	{
 		currentState?.Update();
 	}
+		
+	private void OnDestroy()
+	{
+		data.onStateChange -= ChangeCurrentState;
+	}
 	
 	private void ChangeCurrentState(GameData.GameStatus status) 
 	{
@@ -70,44 +74,13 @@ public class GameManager : MonoBehaviour
 		currentState = gameStates.FirstOrDefault(x => x.status == status)?.state;
 		currentState?.OnEnter();
 	}
-	
-	private void HandleCloseTutorialPanel()
-	{
-		timer.ResetTimer();
-		timer.IsCounting = true;
-		bigPlayer.Movement.ForceStartPlayer();
-		smallPlayer.Movement.ForceStartPlayer();
-		uiController.onCloseTutorial -= HandleCloseTutorialPanel;
-	}
 
-	private void HandleOpenTutorialPanel()
-	{
-		timer.IsCounting = false;
-		uiController.OpenTutorialPanel();
-		bigPlayer.Movement.ForceStopPlayer();
-		smallPlayer.Movement.ForceStopPlayer();
-	}
-
-	private void OnDestroy()
-	{
-		UnbindFromEvents();
-	}
 
 	private void BindToEvents()
 	{
-		bigPlayer.onPlayersDeath += HandleGameOverState;
-		bigPlayer.onPlayerHit += HandlePlayerHit;
-		
-		smallPlayer.onPlayersDeath += HandleGameOverState;
-		smallPlayer.onPlayerHit += HandlePlayerHit;
-
-		starCollectDetector.onStarCollected += HandleStarCollecting;
-
 		endDoor.onEnterEndDoor += HandleEndLevel;
 
-		uiController.onBackToMenu += HandleBackToMenu;
 		uiController.onNextLevelButtonClicked += HandleNextLevelButtonClicked;
-		uiController.onResetLevel += HandleResetLevel;
 
 		uiController.onResumeLevel += HandleResume;
 
@@ -140,16 +113,6 @@ public class GameManager : MonoBehaviour
 		return builder.ToString();
 	}
 	
-	private void HandleResetLevel()
-	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	}
-
-	private void HandleBackToMenu()
-	{
-		SceneManager.LoadScene("Menu");
-	}
-
 	private void HandleResume()
 	{
 		timer.IsCounting = true;
@@ -165,21 +128,10 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void HandleStarCollecting()
-	{
-		SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Collect, smallPlayer.transform.position);
-		uiController.IncreaseStarAmount();
-	}
-
 	private void UnbindFromEvents()
 	{
-		/*data.onStateChange -= ChangeCurrentState;
-		bigPlayer.onPlayersDeath -= HandleGameOverState;
-		bigPlayer.onPlayerHit -= HandlePlayerHit;
-		
-		smallPlayer.onPlayersDeath -= HandleGameOverState;
-		smallPlayer.onPlayerHit -= HandlePlayerHit;
-		
+		/*
+		s
 		starCollectDetector.onStarCollected -= HandleStarCollecting;
 		
 		endDoor.onEnterEndDoor -= HandleEndLevel;
@@ -249,20 +201,7 @@ public class GameManager : MonoBehaviour
 											GetFormatedTime(currentCompletionTime));
 		return explanation;
 	}
-
-	private void HandlePlayerHit(Character character)
-	{
-		SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Hit, character.transform.position);
-		uiController.DecreasePlayersHealth(character.Type);
-	}
 	
-	private void HandleGameOverState()
-	{
-		timer.IsCounting = false;
-		uiController.SetActiveGameOverPanel(true);
-		bigPlayer.Movement.ForceStopPlayer();
-		smallPlayer.Movement.ForceStopPlayer();
-	}
 
 	private void HandlePauseGame()
 	{
@@ -270,15 +209,5 @@ public class GameManager : MonoBehaviour
 		uiController.SetActivePausePanel(true);
 		bigPlayer.Movement.ForceStopPlayer();
 		smallPlayer.Movement.ForceStopPlayer();
-	}
-
-	private void LoadKeyBindings(string confKey, Character character, string actionMap)
-	{
-		string rebinds = PlayerPrefs.GetString(confKey, string.Empty);
-
-		if (!string.IsNullOrEmpty(rebinds))
-		{
-			character.Movement.PlayerInput.actions.FindActionMap(actionMap).LoadBindingOverridesFromJson(rebinds);
-		}
 	}
 }

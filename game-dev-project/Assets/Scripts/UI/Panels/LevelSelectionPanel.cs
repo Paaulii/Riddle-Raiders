@@ -4,4 +4,7 @@ using UnityEngine;
 
 public class LevelSelectionPanel : SubPanel
 {
+    [SerializeField] private LevelSelectionController controller;
+    
+    
 }

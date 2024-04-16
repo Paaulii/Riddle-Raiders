@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuState : State 
 {
     private MenuPanel menuPanel;
     
-    public override void OnEnter() 
+    public override void OnEnter()
     {
         Time.timeScale = 1;
         menuPanel = PanelManager.instance.ShowPanel<MenuPanel>();

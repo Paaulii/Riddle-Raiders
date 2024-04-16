@@ -17,6 +17,7 @@ public class GameData
         InPause,
         WinScreen,
         LoseScreen,
+        ReturnToMenu
     }
 
     public int CurrentLvl { get; set; }
@@ -26,9 +27,8 @@ public class GameData
         set 
         {
             if (gameStatus != value) {
-                onStateChange?.Invoke(value);
                 gameStatus = value;
-
+                onStateChange?.Invoke(value);
             }
         } 
     }

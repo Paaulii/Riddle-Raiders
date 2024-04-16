@@ -370,6 +370,10 @@ PrefabInstance:
       propertyPath: dataManager
       value: 
       objectReference: {fileID: 11400000, guid: 2b5fc3fb66df6d441b73afd98989a18c, type: 2}
+    - target: {fileID: 7600431336427365103, guid: 9dba71acac602e34eac2bb1507e3167c, type: 3}
+      propertyPath: saveSystemManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b5fc3fb66df6d441b73afd98989a18c, type: 2}
     - target: {fileID: 8152113346892286395, guid: 9dba71acac602e34eac2bb1507e3167c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
