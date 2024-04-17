@@ -5,18 +5,22 @@ public class InLevelState : State
     [SerializeField] StarCollectDetector starCollectDetector;
     private bool wasTutorialShown = false;
     private GameUIPanel panel;
+    
     public override void OnEnter()
     {
         base.OnEnter();
+        SoundManager.Instance.PlayMusic(SoundManager.MusicType.Gameplay);
 
         if (OpenTutorialIfFirstLevel())
         {
             return;
         }
 
+        Timer.instance.IsCounting = true;
+        Timer.instance.onTimeTick += HandleTimeTick;
+        
         panel = PanelManager.instance.GetPanel<GameUIPanel>();
         Time.timeScale = 1;
-        SoundManager.Instance.PlayMusic(SoundManager.MusicType.Gameplay);
         KeyBindingsManager.instance.LoadKeyBindings();
         
         PlayersManager playersManager = PlayersManager.instance;
@@ -24,8 +28,13 @@ public class InLevelState : State
         playersManager.onPlayerHit += HandlePlayerHit;
         playersManager.onPlayersDeath += HandlePlayerDeath;
         
-        starCollectDetector.FindAllStartAtLevel();
+        starCollectDetector.FindAllStarsAtLevel();
         starCollectDetector.onStarCollected += HandleStarCollected;
+    }
+
+    private void HandleTimeTick(float time)
+    {
+        panel.UpdateTime(TimerUtils.GetFormatedTime(time));
     }
 
     private void HandleStarCollected(Vector2 starPosition)
@@ -40,12 +49,14 @@ public class InLevelState : State
         PlayersManager playersManager = PlayersManager.instance;
         playersManager.onPlayerHit -= HandlePlayerHit;
         playersManager.onPlayersDeath -= HandlePlayerDeath;
-        
+
+        Timer.instance.onTimeTick -= HandleTimeTick;
         starCollectDetector.onStarCollected -= HandleStarCollected;
     }
 
     private void HandlePlayerDeath()
     {
+        PlayersManager.instance.DestroyPlayers();
         GameManager.Instance.Data.Status = GameData.GameStatus.LoseScreen;
     }
 

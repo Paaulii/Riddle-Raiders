@@ -7,7 +7,7 @@ public class StarCollectDetector : MonoBehaviour
     public Action<Vector2> onStarCollected;
     private Star[] stars;
     
-    public void FindAllStartAtLevel()
+    public void FindAllStarsAtLevel()
     {
         Deinit();
         stars = FindObjectsOfType<Star>(true);

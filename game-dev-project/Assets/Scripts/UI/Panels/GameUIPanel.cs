@@ -26,6 +26,11 @@ public class GameUIPanel : Panel
         controller.onBackToMenu -= NotifyBackToMenu;
     }
 
+    public void UpdateTime(string time)
+    {
+        controller.UpdateTime(time);
+    }
+    
     public void IncreaseStarAmount()
     {
         controller.IncreaseStarAmount();

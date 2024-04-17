@@ -85,33 +85,9 @@ public class GameManager : MonoBehaviour
 		uiController.onResumeLevel += HandleResume;
 
 		smallPlayer.Movement.onEscPressed += HandlePauseGame;
-
-		timer.onTimeTick += HandleTimeTick;
-	}
-
-	private void HandleTimeTick(float currentTime)
-	{
-		uiController.UpdateTime(GetFormatedTime(currentTime));
-	}
-
-	private string GetFormatedTime(float time)
-	{
-		if (time == -1) 
-		{
-			return "--:--";
-		}
 		
-		int minutes = Mathf.FloorToInt(time / 60);
-		int seconds = Mathf.FloorToInt(time % 60);
-		
-		StringBuilder builder = new StringBuilder();
-		builder.Append(minutes < 10 ? "0" : "");
-		builder.Append(minutes);
-		builder.Append(":");
-		builder.Append(seconds < 10 ? "0" : "");
-		builder.Append(seconds);
-		return builder.ToString();
 	}
+
 	
 	private void HandleResume()
 	{
@@ -132,7 +108,6 @@ public class GameManager : MonoBehaviour
 	{
 		/*
 		s
-		starCollectDetector.onStarCollected -= HandleStarCollecting;
 		
 		endDoor.onEnterEndDoor -= HandleEndLevel;
 		uiController.onResumeLevel -= HandleResume;
@@ -197,8 +172,8 @@ public class GameManager : MonoBehaviour
 		uiController.OpenLevelCompletePanel(explanation, 
 											lastCollectedStars,
 											currentCollectedStars,
-											GetFormatedTime(lastCompletionTime),
-											GetFormatedTime(currentCompletionTime));
+											TimerUtils.GetFormatedTime(lastCompletionTime),
+											TimerUtils.GetFormatedTime(currentCompletionTime));
 		return explanation;
 	}
 	
