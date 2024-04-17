@@ -7,7 +7,7 @@ public class LoseScreenState : State
     public override void OnEnter()
     {
         base.OnEnter();
-        Timer.instance.IsCounting = false;
+        Timer.instance.StopTimer();
         panel = PanelManager.instance.GetPanel<GameUIPanel>();
         panel.SetActiveGameOverPanel(true);
         panel.onResetLevel += HandleResetLevel;

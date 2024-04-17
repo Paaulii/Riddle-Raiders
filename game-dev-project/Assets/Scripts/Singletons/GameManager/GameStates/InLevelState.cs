@@ -3,7 +3,8 @@ using UnityEngine;
 public class InLevelState : State
 {
     [SerializeField] StarCollectDetector starCollectDetector;
-    private bool wasTutorialShown = false;
+    private bool wasTutorialShown;
+    private bool wasInPauseState;
     private GameUIPanel panel;
     
     public override void OnEnter()
@@ -16,33 +17,29 @@ public class InLevelState : State
             return;
         }
 
-        Timer.instance.IsCounting = true;
-        Timer.instance.onTimeTick += HandleTimeTick;
-        
+        SetupTimer();
         panel = PanelManager.instance.GetPanel<GameUIPanel>();
-        Time.timeScale = 1;
         KeyBindingsManager.instance.LoadKeyBindings();
-        
         PlayersManager playersManager = PlayersManager.instance;
         playersManager.ForceStartPlayersMovement();
         playersManager.onPlayerHit += HandlePlayerHit;
         playersManager.onPlayersDeath += HandlePlayerDeath;
+
+        SetupStarDetector();
+        wasInPauseState = false;
+    }
+    
+    public override void OnUpdate()
+    {
+        base.OnUpdate();
         
-        starCollectDetector.FindAllStarsAtLevel();
-        starCollectDetector.onStarCollected += HandleStarCollected;
+        if (Input.GetKeyDown(GameManager.Instance.GameSettings.PauseButton))
+        {
+            wasInPauseState = true;
+            GameManager.Instance.Data.Status = GameData.GameStatus.InPause;
+        }
     }
-
-    private void HandleTimeTick(float time)
-    {
-        panel.UpdateTime(TimerUtils.GetFormatedTime(time));
-    }
-
-    private void HandleStarCollected(Vector2 starPosition)
-    {
-        SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Collect, starPosition);
-        panel.IncreaseStarAmount();
-    }
-
+    
     public override void OnExit()
     {
         base.OnExit();
@@ -53,7 +50,37 @@ public class InLevelState : State
         Timer.instance.onTimeTick -= HandleTimeTick;
         starCollectDetector.onStarCollected -= HandleStarCollected;
     }
+    
+    private void SetupTimer()
+    {
+        Time.timeScale = 1;
+        
+        if (!wasInPauseState)
+        {
+            Timer.instance.ResetTimer();
+        }
+        
+        Timer.instance.StartTimer(); 
+        Timer.instance.onTimeTick += HandleTimeTick;
+    }
 
+    private void HandleTimeTick(float time)
+    {
+        panel.UpdateTime(TimerUtils.GetFormatedTime(time));
+    }
+
+    private void SetupStarDetector()
+    {
+        starCollectDetector.FindAllStarsAtLevel();
+        starCollectDetector.onStarCollected += HandleStarCollected;
+    }
+    
+    private void HandleStarCollected(Vector2 starPosition)
+    {
+        SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Collect, starPosition);
+        panel.IncreaseStarAmount();
+    }
+    
     private void HandlePlayerDeath()
     {
         PlayersManager.instance.DestroyPlayers();

@@ -4,8 +4,9 @@ using UnityEngine;
 public class GameUIPanel : Panel
 {
     public event Action onCloseTutorial; 
-    public event Action onResetLevel; 
+    public event Action onResetLevel;
     public event Action onBackToMenu;
+    public event Action onResumeLevel;
     
     [SerializeField] private UIController controller;
 
@@ -16,6 +17,7 @@ public class GameUIPanel : Panel
         controller.onCloseTutorial += NotifyTutorialClosed;
         controller.onResetLevel += NotifyResetGame;
         controller.onBackToMenu += NotifyBackToMenu;
+        controller.onResumeLevel += NotifyResumeLevel;
     }
 
     public override void Hide()
@@ -24,6 +26,7 @@ public class GameUIPanel : Panel
         controller.onCloseTutorial -= NotifyTutorialClosed;
         controller.onResumeLevel -= NotifyResetGame;
         controller.onBackToMenu -= NotifyBackToMenu;
+        controller.onResumeLevel -= NotifyResumeLevel;
     }
 
     public void UpdateTime(string time)
@@ -50,6 +53,11 @@ public class GameUIPanel : Panel
         controller.SetActiveGameOverPanel(isActive);
     }
     
+    private void NotifyTutorialClosed()
+    {
+        onCloseTutorial?.Invoke();
+    }
+    
     private void NotifyResetGame()
     {
         onResetLevel?.Invoke();
@@ -59,9 +67,14 @@ public class GameUIPanel : Panel
     {
         onBackToMenu?.Invoke();
     }
-
-    private void NotifyTutorialClosed()
+    
+    private void NotifyResumeLevel()
     {
-        onCloseTutorial?.Invoke();
+        onResumeLevel?.Invoke();
+    }
+
+    public void SetActivePausePanel(bool isActive)
+    {
+        controller.SetActivePausePanel(isActive);
     }
 }

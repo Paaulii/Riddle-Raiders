@@ -12,9 +12,8 @@ public class GameData
         LoadLevel,
         Tutorial,
         InLevel,
-        ResetLevel,
-        StartPause,
         InPause,
+        ResetLevel,
         WinScreen,
         LoseScreen,
         ReturnToMenu

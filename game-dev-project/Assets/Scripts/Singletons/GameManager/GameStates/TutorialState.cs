@@ -9,7 +9,7 @@ public class TutorialState : State
         Time.timeScale = 0;
         PlayersManager.instance.ForceStopPlayersMovement();
         OpenTutorialPanel();
-        Timer.instance.IsCounting = false;
+        Timer.instance.StopTimer();
     }
 
     public override void OnExit()

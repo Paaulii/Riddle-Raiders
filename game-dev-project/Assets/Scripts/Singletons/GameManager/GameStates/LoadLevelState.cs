@@ -1,8 +1,4 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class LoadLevelState : State
+public class LoadLevelState : LoadLevelHandlerState
 {
     public override void OnEnter()
     {
@@ -20,17 +16,10 @@ public class LoadLevelState : State
 
         StartCoroutine(LoadSceneAsync(levelName));
     }
-    
-    IEnumerator LoadSceneAsync(string levelName)
+
+    protected override void OnLoadingLevelComplete()
     {
-        //TODO: add screen loader
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
-
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-
+        base.OnLoadingLevelComplete();
         PlayersManager.instance.SpawnPlayers();
         GameManager.Instance.Data.Status = GameData.GameStatus.InLevel;
     }

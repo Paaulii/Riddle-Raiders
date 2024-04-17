@@ -16,9 +16,6 @@ public class GameManager : MonoBehaviour
 	
 	[Header("Game states")] 
 	[SerializeField] private GameStatus[] gameStates;
-	[Header("Players")]
-	[SerializeField] private Character bigPlayer;
-	[SerializeField] private Character smallPlayer;
 
 	[Header("Items")] 
 	[SerializeField] private StarCollectDetector starCollectDetector;
@@ -60,7 +57,7 @@ public class GameManager : MonoBehaviour
 	
 	private void Update()
 	{
-		currentState?.Update();
+		currentState?.OnUpdate();
 	}
 		
 	private void OnDestroy()
@@ -74,53 +71,23 @@ public class GameManager : MonoBehaviour
 		currentState = gameStates.FirstOrDefault(x => x.status == status)?.state;
 		currentState?.OnEnter();
 	}
-
-
+	
 	private void BindToEvents()
 	{
 		endDoor.onEnterEndDoor += HandleEndLevel;
-
 		uiController.onNextLevelButtonClicked += HandleNextLevelButtonClicked;
-
-		uiController.onResumeLevel += HandleResume;
-
-		smallPlayer.Movement.onEscPressed += HandlePauseGame;
-		
 	}
-
 	
-	private void HandleResume()
-	{
-		timer.IsCounting = true;
-		uiController.SetActivePausePanel(false);
-		bigPlayer.Movement.ForceStartPlayer();
-		smallPlayer.Movement.ForceStartPlayer();
-	}
-
 	private void HandleNextLevelButtonClicked()
 	{
 		if (++data.CurrentLvl >= 0) {
 			SceneManager.LoadScene(playerGameProgress.LevelsData[data.CurrentLvl].PathToScene);
 		}
 	}
-
-	private void UnbindFromEvents()
-	{
-		/*
-		s
-		
-		endDoor.onEnterEndDoor -= HandleEndLevel;
-		uiController.onResumeLevel -= HandleResume;
-		uiController.onBackToMenu -= HandleBackToMenu;
-		uiController.onNextLevelButtonClicked -= HandleNextLevelButtonClicked;
-		smallPlayer.Movement.onEscPressed -= HandlePauseGame;
-		
-		timer.onTimeTick += HandleTimeTick;*/
-	}
-
+	
 	private void HandleEndLevel()
 	{
-		timer.IsCounting = false;
+		Timer.instance.StopTimer();
 		Explanation explanation = OpenLevelCompletePanel();
 		saveSystemManager.SaveData(explanation, starCollectDetector.StarsAmount, data.CurrentLvl, timer.CurrentTime);
 
@@ -177,12 +144,4 @@ public class GameManager : MonoBehaviour
 		return explanation;
 	}
 	
-
-	private void HandlePauseGame()
-	{
-		timer.IsCounting = false;
-		uiController.SetActivePausePanel(true);
-		bigPlayer.Movement.ForceStopPlayer();
-		smallPlayer.Movement.ForceStopPlayer();
-	}
 }
