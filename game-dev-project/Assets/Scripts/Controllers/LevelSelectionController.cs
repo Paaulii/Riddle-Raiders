@@ -11,7 +11,7 @@ public class LevelSelectionController : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button resetDataButton;
     PlayerGameProgress playerGameProgress;
     
-    private void Awake() 
+    private void Start() 
     {
         playerGameProgress = SaveSystemManager.instance.LoadData();
         levelItemGridGenerator.GenerateLevelItems(playerGameProgress.LevelsData);
