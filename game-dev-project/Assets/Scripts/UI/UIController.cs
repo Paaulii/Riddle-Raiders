@@ -75,6 +75,11 @@ public class UIController : MonoBehaviour
         gameOverPanelDisplayer.gameObject.SetActive(isActive);
     }
 
+    public void SetActiveSummaryPanel(bool isActive)
+    {
+        levelCompleteDisplayer.gameObject.SetActive(isActive);
+    }
+    
     public void SetActivePausePanel(bool isActive)
     {
         pausePanelDisplayer.gameObject.SetActive(isActive);

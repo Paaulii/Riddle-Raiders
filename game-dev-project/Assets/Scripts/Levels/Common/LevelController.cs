@@ -11,7 +11,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private Transform smallPlayerPos;
     [SerializeField] private EnterEndDoor endDoor;
 
-   /* private void Awake()
+    private void Awake()
     {
         endDoor.onEnterEndDoor += NotifyEnterDoor;
     }
@@ -24,5 +24,5 @@ public class LevelController : MonoBehaviour
     private void NotifyEnterDoor()
     {
         onEnterDoor?.Invoke();
-    }*/
+    }
 }

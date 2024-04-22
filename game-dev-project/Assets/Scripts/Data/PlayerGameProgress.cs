@@ -30,28 +30,27 @@ public class PlayerGameProgress
     }
 
     public void ChangeStarsNumber(int starsAmount, int levelNumber) {
-        LevelData levelData = levelsData[levelNumber - 1];
+        LevelData levelData = levelsData[levelNumber];
         int lastStarsAmount = levelData.StarsAmount;
         
         if (lastStarsAmount <= starsAmount)
         {
-            levelsData[levelNumber - 1].StarsAmount = starsAmount;
+            levelsData[levelNumber] = new LevelData(levelData, starsAmount);
         }
     }
 
     public void UnlockLevel(int levelNumber)
     {
-        levelsData[levelNumber - 1].UnlockLevel();
+        levelsData[levelNumber].UnlockLevel();
     }
 
     public void ChangeCompletionTime(Explanation explanation, float completionTime, int levelNumber)
     {
-        LevelData levelData = levelsData[levelNumber - 1];
-        
         if (explanation == Explanation.BetterTimeEqualStars || 
             explanation == Explanation.BetterTimeMoreStars|| 
-            explanation == Explanation.WorseTimeMoreStars) {
-            levelData.CompletionTime = completionTime;
+            explanation == Explanation.WorseTimeMoreStars) 
+        {
+            levelsData[levelNumber] = new LevelData(levelsData[levelNumber], completionTime);
         }
     }
 }

@@ -1,21 +1,15 @@
-public class ReturnToMenuState : LoadLevelHandlerState
+public class ReturnToMenuState : LoadUnloadLevelHandlerState
 {
     public override void OnEnter()
     {
         base.OnEnter();
-        UnloadCurrentScene();
+        UnloadScene(GameManager.Instance.Data.CurrentLevel.PathToScene);
     }
 
     protected override void OnUnloadingLevelComplete()
     {
         base.OnUnloadingLevelComplete();
-
         GameManager.Instance.Data.Status = GameData.GameStatus.MainMenu;
     }
 
-    private void UnloadCurrentScene()
-    {
-        string levelName = SaveSystemManager.instance.GetLastLevelName();
-        StartCoroutine(UnloadSceneAsync(levelName));
-    }
 }

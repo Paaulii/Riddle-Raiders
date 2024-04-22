@@ -1,7 +1,9 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/GameSettings")]
-public class GameSettingsSO : ScriptableObject {
+public class GameSettingsSO : ScriptableObject
+{
+    public int LevelCount => levelPaths.Length;
     public string player1KeyBindingsConfKey = "player_1_bindings";
     public string player2KeyBindingsConfKey = "player_2_bindings";
     public string player1ActionMap = "Player1";

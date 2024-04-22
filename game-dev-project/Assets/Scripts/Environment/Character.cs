@@ -1,12 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Character : MonoBehaviour
 {
-    public Action onPlayersDeath;
+    public Action<Character> onPlayersDeath;
     public Action<Character> onPlayerHit;
     public Movement Movement => movement;
     [field:SerializeField] public CharacterType Type { get; private set; }
@@ -17,7 +14,7 @@ public class Character : MonoBehaviour
     {
         healthManager.onPlayersDeath += () =>
         {
-            onPlayersDeath?.Invoke();
+            onPlayersDeath?.Invoke(this);
         };
         
         healthManager.onPlayerHit += () =>

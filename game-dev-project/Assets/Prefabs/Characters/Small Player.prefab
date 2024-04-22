@@ -240,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skullEffect: {fileID: 4521946699179212529, guid: 8bf03c93987ca0844b3f23ef79debcbd, type: 3}
   bloodEffect: {fileID: 2119927291796682321, guid: 482fe05dc551ea649aca8d64a219692b, type: 3}
+  smokeEffect: {fileID: 4368098709314299244, guid: 160ff0a38ec44a34ab2a73c91dd208f3, type: 3}
 --- !u!114 &833953708522277823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,4 +286,3 @@ MonoBehaviour:
   <Type>k__BackingField: 1
   movement: {fileID: 799507798}
   healthManager: {fileID: 526853667583535797}
-  soundManager: {fileID: 0}

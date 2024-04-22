@@ -34,7 +34,7 @@ public class LevelSelectionController : MonoBehaviour
         if (levelNumber >= 0)
         {
             //TODO: it shouldnt be like this
-            GameManager.Instance.Data.CurrentLvl = levelNumber ;
+            //GameManager.Instance.Data.CurrentLvl = levelNumber ;
             SceneManager.LoadScene(playerGameProgress.LevelsData[levelNumber].PathToScene);
         }
     }

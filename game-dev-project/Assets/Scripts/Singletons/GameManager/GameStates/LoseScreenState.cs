@@ -1,6 +1,3 @@
-
-using UnityEngine.SceneManagement;
-
 public class LoseScreenState : State
 {
     private GameUIPanel panel;
@@ -20,6 +17,7 @@ public class LoseScreenState : State
         base.OnExit();
         panel.onResetLevel -= HandleResetLevel;
         panel.onBackToMenu -= HandleBackToMenu;
+        panel.SetActiveGameOverPanel(false);
     }
 
     private void HandleBackToMenu()

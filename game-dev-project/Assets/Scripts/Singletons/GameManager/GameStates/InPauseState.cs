@@ -12,7 +12,6 @@ public class InPauseState : State
         panel.onResetLevel += ResetLevel;
         panel.onBackToMenu += BackToMenu;
         PlayersManager.instance.ForceStopPlayersMovement();
-        
     }
 
     private void BackToMenu()

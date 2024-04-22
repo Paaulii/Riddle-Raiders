@@ -5,23 +5,11 @@ using UnityEngine;
 public class LevelData 
 {
     public string PathToScene => pathToScene;
-    public int StarsAmount {
-        get => starsAmount;
-        set 
-        {
-            starsAmount = value;
-        }
-    }
-
+    public int StarsAmount  => starsAmount;
     public int LevelNumber => levelNumber;
     public bool IsLocked => isLocked;
-    public float CompletionTime {
-        get => completionTime;
-        set 
-        {
-            completionTime = value;
-        }
-    }
+    public float CompletionTime => completionTime;
+
     
     [SerializeField] private string pathToScene;
     [SerializeField] private int levelNumber;
@@ -46,7 +34,25 @@ public class LevelData
         isLocked =  levelToCopy.isLocked; 
         completionTime = levelToCopy.completionTime;
     }
-
+    
+    public LevelData(LevelData levelToCopy, float completionTime) 
+    {
+        pathToScene = levelToCopy.pathToScene;
+        levelNumber = levelToCopy.levelNumber;
+        starsAmount =  levelToCopy.starsAmount;
+        isLocked =  levelToCopy.isLocked; 
+        this.completionTime = completionTime;
+    }
+    
+    public LevelData(LevelData levelToCopy, int starsAmount) 
+    {
+        pathToScene = levelToCopy.pathToScene;
+        levelNumber = levelToCopy.levelNumber;
+        isLocked =  levelToCopy.isLocked; 
+        completionTime = levelToCopy.completionTime;
+        this.starsAmount =  starsAmount;
+    }
+    
     public void UnlockLevel() {
         isLocked = false;
     }

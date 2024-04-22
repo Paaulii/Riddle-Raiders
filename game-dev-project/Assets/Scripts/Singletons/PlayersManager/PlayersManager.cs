@@ -20,25 +20,10 @@ public class PlayersManager : Singleton<PlayersManager>
         bigPlayer = Instantiate(bigPlayerPrefab, levelController.BigPlayerPosition, Quaternion.identity, levelController.transform);
         smallPlayer = Instantiate(smallPlayerPrefab, levelController.SmallPlayerPosition, Quaternion.identity, levelController.transform);
         
-        bigPlayer.onPlayersDeath += NotifyPlayersDeath;
+        bigPlayer.onPlayersDeath += HandlePlayerDeath;
         bigPlayer.onPlayerHit += NotifyPlayerHit;
-        smallPlayer.onPlayersDeath += NotifyPlayersDeath;
+        smallPlayer.onPlayersDeath += HandlePlayerDeath;
         smallPlayer.onPlayerHit += NotifyPlayerHit;
-    }
-
-    //TODO Add after passing/ not passing level
-    public void DestroyPlayers()
-    {
-        bigPlayer.onPlayersDeath -= NotifyPlayersDeath;
-        bigPlayer.onPlayerHit -= NotifyPlayerHit;
-        smallPlayer.onPlayersDeath -= NotifyPlayersDeath;
-        smallPlayer.onPlayerHit -= NotifyPlayerHit;
-        
-        Destroy(bigPlayer.gameObject);
-        Destroy(smallPlayer.gameObject);
-
-        bigPlayer = null;
-        smallPlayer = null;
     }
     
     public void ForceStopPlayersMovement()
@@ -58,9 +43,18 @@ public class PlayersManager : Singleton<PlayersManager>
        onPlayerHit?.Invoke(playerType);
     }
 
-    private void NotifyPlayersDeath()
+    private void HandlePlayerDeath(Character character)
     {
         onPlayersDeath?.Invoke();
     }
-
+    
+    //TODO Add after passing/ not passing level
+    void DestroyPlayers(Character character) {
+        bigPlayer.onPlayersDeath -= HandlePlayerDeath;
+        bigPlayer.onPlayerHit -= NotifyPlayerHit;
+        smallPlayer.onPlayersDeath -= HandlePlayerDeath;
+        smallPlayer.onPlayerHit -= NotifyPlayerHit;
+        
+        Destroy(character.gameObject);
+    }
 }

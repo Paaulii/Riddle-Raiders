@@ -3,6 +3,7 @@ using UnityEngine;
 public class InLevelState : State
 {
     [SerializeField] StarCollectDetector starCollectDetector;
+    private LevelController levelController;
     private bool wasTutorialShown;
     private bool wasInPauseState;
     private GameUIPanel panel;
@@ -17,14 +18,11 @@ public class InLevelState : State
             return;
         }
 
-        SetupTimer();
-        panel = PanelManager.instance.GetPanel<GameUIPanel>();
+        panel = PanelManager.instance.ShowPanel<GameUIPanel>();
         KeyBindingsManager.instance.LoadKeyBindings();
-        PlayersManager playersManager = PlayersManager.instance;
-        playersManager.ForceStartPlayersMovement();
-        playersManager.onPlayerHit += HandlePlayerHit;
-        playersManager.onPlayersDeath += HandlePlayerDeath;
-
+        SetupTimer();
+        GetLevelData();
+        SetupPlayerManager();
         SetupStarDetector();
         wasInPauseState = false;
     }
@@ -49,6 +47,11 @@ public class InLevelState : State
 
         Timer.instance.onTimeTick -= HandleTimeTick;
         starCollectDetector.onStarCollected -= HandleStarCollected;
+        
+        if (levelController)
+        {
+            levelController.onEnterDoor -= HandleEndLevel;
+        }
     }
     
     private void SetupTimer()
@@ -81,9 +84,27 @@ public class InLevelState : State
         panel.IncreaseStarAmount();
     }
     
+    private void SetupPlayerManager()
+    {
+        PlayersManager playersManager = PlayersManager.instance;
+        playersManager.ForceStartPlayersMovement();
+        playersManager.onPlayerHit += HandlePlayerHit;
+        playersManager.onPlayersDeath += HandlePlayerDeath;
+    }
+    
+    private void GetLevelData()
+    {
+        levelController = FindObjectOfType<LevelController>();
+        levelController.onEnterDoor += HandleEndLevel;
+    }
+
+    private void HandleEndLevel()
+    {
+        GameManager.Instance.Data.Status = GameData.GameStatus.SummaryScreen;
+    }
+    
     private void HandlePlayerDeath()
     {
-        PlayersManager.instance.DestroyPlayers();
         GameManager.Instance.Data.Status = GameData.GameStatus.LoseScreen;
     }
 
@@ -95,7 +116,7 @@ public class InLevelState : State
 
     private bool OpenTutorialIfFirstLevel()
     {
-        if (GameManager.Instance.Data.CurrentLvl == 0 && !wasTutorialShown) 
+        if (GameManager.Instance.Data.CurrentLevel.LevelNumber == 0 && !wasTutorialShown) 
         {
             wasTutorialShown = true;
             OpenTutorial();

@@ -14,23 +14,27 @@ public class GameData
         InLevel,
         InPause,
         ResetLevel,
-        WinScreen,
         LoseScreen,
+        SummaryScreen,
+        NextLevel,
         ReturnToMenu
     }
 
-    public int CurrentLvl { get; set; }
+    public LevelData CurrentLevel { get; set; }
     public GameStatus Status
     {
         get => gameStatus;
         set 
         {
-            if (gameStatus != value) {
+            if (gameStatus != value) 
+            {
+                LastStatus = gameStatus;
                 gameStatus = value;
                 onStateChange?.Invoke(value);
             }
         } 
     }
 
+    public GameStatus LastStatus { get; private set; } = GameStatus.MainMenu;
     private GameStatus gameStatus;
 }

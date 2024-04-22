@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SaveSystemManager : Singleton<SaveSystemManager> {
@@ -9,20 +10,13 @@ public class SaveSystemManager : Singleton<SaveSystemManager> {
         playerSaveKey = GameManager.Instance.GameSettings.playerSaveKey;
     }
 
-    public string GetLastLevelName()
+    public LevelData GetLastUnlockedLevel()
     {
         PlayerGameProgress playerGameProgress = LoadData();
-        LevelData lastPlayedLevel = playerGameProgress.LevelsData.FindLast(level => level.IsLocked == false);
-
-        if (lastPlayedLevel != null)
-        {
-            GameManager.Instance.Data.CurrentLvl = lastPlayedLevel.LevelNumber;
-            return lastPlayedLevel.PathToScene;
-        }
-
-        return default;
+        LevelData previousLevel = playerGameProgress.LevelsData.FindLast(level => level.IsLocked == false);// getLevelData(playerGameProgress);
+        return previousLevel;
     }
-    
+
     public void SaveData(Explanation explanation, int starsAmount, int levelNumber, float completionTime)
     {
         PlayerGameProgress playerGameProgress = LoadData();
@@ -61,6 +55,12 @@ public class SaveSystemManager : Singleton<SaveSystemManager> {
         return newData;
     }
 
+    public LevelData GetLevelByIndex(int levelIndex)
+    {
+        PlayerGameProgress playerGameProgress = LoadData();
+        return playerGameProgress.LevelsData[levelIndex];
+    }
+    
     void SaveDataToPlayerPrefs(PlayerGameProgress playerGameProgress) 
     {
         string json = JsonUtility.ToJson(playerGameProgress);
