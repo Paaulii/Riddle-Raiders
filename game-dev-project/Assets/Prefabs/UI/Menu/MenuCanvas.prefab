@@ -565,7 +565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8529684977995397680, guid: 7c5f2c3d91110e04494967acb2ee8542, type: 3}
       propertyPath: m_Name
-      value: GameUI
+      value: HUDPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8529684977995397680, guid: 7c5f2c3d91110e04494967acb2ee8542, type: 3}
       propertyPath: m_IsActive

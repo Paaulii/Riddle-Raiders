@@ -553,15 +553,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6c2119af45baf4c850b2032d32fd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smallPlayerStateController: {fileID: 2715718769881227613}
-  bigPlayerStateController: {fileID: 1443983908212613655}
-  starDisplayer: {fileID: 6265749862392048373}
+  smallPlayerStateDisplay: {fileID: 2715718769881227613}
+  bigPlayerStateDisplay: {fileID: 1443983908212613655}
+  achievedStarDisplay: {fileID: 6265749862392048373}
   levelText: {fileID: 4241326005020385617}
   timeText: {fileID: 8001799461167589179}
-  levelCompleteDisplayer: {fileID: 0}
-  gameOverPanelDisplayer: {fileID: 0}
-  pausePanelDisplayer: {fileID: 0}
-  tutorialPanelController: {fileID: 0}
 --- !u!114 &762026147910033957
 MonoBehaviour:
   m_ObjectHideFlags: 0
