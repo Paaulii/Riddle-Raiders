@@ -17,6 +17,7 @@ public class InLevelState : State
         }
 
         panel = PanelManager.instance.ShowPanel<HUDPanel>();
+        panel.SetLevelNumber(GameManager.Instance.Data.CurrentLevel.LevelNumber + 1);
         KeyBindingsManager.instance.LoadKeyBindings();
         SetupTimer();
         GetLevelController();

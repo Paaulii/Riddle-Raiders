@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class HUDController : MonoBehaviour
 {
-    [SerializeField] private PlayerStateController smallPlayerStateController;
-    [SerializeField] private PlayerStateController bigPlayerStateController;
-    [SerializeField] private StarDisplayer starDisplayer;
+    [SerializeField] private PlayerStateDisplay smallPlayerStateDisplay;
+    [SerializeField] private PlayerStateDisplay bigPlayerStateDisplay;
+    [SerializeField] private AchievedStarDisplay achievedStarDisplay;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI timeText;
     
@@ -19,17 +19,17 @@ public class HUDController : MonoBehaviour
         switch (characterType)
         {
             case Character.CharacterType.Big:
-                bigPlayerStateController.DecreaseHeartsAmount();
+                bigPlayerStateDisplay.DecreaseHeartsAmount();
                 break;
             case Character.CharacterType.Small:
-                smallPlayerStateController.DecreaseHeartsAmount();
+                smallPlayerStateDisplay.DecreaseHeartsAmount();
                 break;
         }
     }
     
     public void IncreaseStarAmount()
     {
-        starDisplayer.ChangeStarsNumber();
+        achievedStarDisplay.ChangeStarsNumber();
     }
     
     public void SetLevelNumber(int levelNumber)

@@ -3,11 +3,10 @@ using UnityEngine;
 public class HUDPanel : Panel
 {
     [SerializeField] private HUDController controller;
-
-    public override void Show()
+    
+    public void SetLevelNumber(int levelNumber)
     {
-        base.Show();
-        controller.SetLevelNumber(GameManager.Instance.Data.CurrentLevel.LevelNumber + 1);
+        controller.SetLevelNumber(levelNumber);
     }
     
     public void UpdateTime(string time)

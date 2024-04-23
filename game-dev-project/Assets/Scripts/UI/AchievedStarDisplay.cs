@@ -1,9 +1,7 @@
-
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StarDisplayer : MonoBehaviour
+public class AchievedStarDisplay : MonoBehaviour
 {
     [SerializeField] private Image starImage;
     [SerializeField] private Sprite[] stars;
