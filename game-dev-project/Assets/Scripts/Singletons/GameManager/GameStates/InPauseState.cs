@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InPauseState : State
 {
-    private GameUIPanel panel;
+    private PausePanel panel;
     
     public override void OnEnter()
     {
@@ -24,10 +24,10 @@ public class InPauseState : State
     public override void OnExit()
     {
         base.OnExit();
-        panel.SetActivePausePanel(false);
         panel.onResumeLevel -= ResumeLevel;
         panel.onResetLevel -= ResetLevel;
-        panel.onBackToMenu -= BackToMenu;
+        panel.onReturnToMenu -= ReturnToMenu;
+        panel.Hide();
     }
 
     private static void StopGame()
@@ -38,14 +38,13 @@ public class InPauseState : State
 
     private void ShowPausePanel()
     {
-        panel = PanelManager.instance.GetPanel<GameUIPanel>();
-        panel.SetActivePausePanel(true);
+        panel = PanelManager.instance.ShowAdditionalPanel<PausePanel>();
         panel.onResumeLevel += ResumeLevel;
         panel.onResetLevel += ResetLevel;
-        panel.onBackToMenu += BackToMenu;
+        panel.onReturnToMenu += ReturnToMenu;
     }
 
-    private void BackToMenu()
+    private void ReturnToMenu()
     {
         GameManager.Instance.Data.Status = GameData.GameStatus.ReturnToMenu;
     }

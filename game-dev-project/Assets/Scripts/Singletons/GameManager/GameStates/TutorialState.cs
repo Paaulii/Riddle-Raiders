@@ -2,32 +2,36 @@ using UnityEngine;
 
 public class TutorialState : State
 { 
-    private GameUIPanel gamePanel;
+    private TutorialPanel tutorialPanel;
     
-    public override void OnEnter() 
+    public override void OnEnter()
     {
-        Time.timeScale = 0;
-        PlayersManager.instance.ForceStopPlayersMovement();
+        StopGame();
         OpenTutorialPanel();
-        Timer.instance.StopTimer();
     }
-
+    
     public override void OnExit()
     {
         base.OnExit();
-        gamePanel.onCloseTutorial -= ResumeGame;
+        tutorialPanel.onCloseTutorial -= ResumeGame;
+        tutorialPanel.Hide();
     }
 
+    private void StopGame()
+    {
+        Time.timeScale = 0;
+        Timer.instance.StopTimer();
+        PlayersManager.instance.ForceStopPlayersMovement();
+    }
+    
     private void OpenTutorialPanel()
     {
-        gamePanel = PanelManager.instance.ShowPanel<GameUIPanel>();
-        gamePanel.onCloseTutorial += ResumeGame;
-        gamePanel.OpenTutorialPanel();
+        tutorialPanel = PanelManager.instance.ShowPanel<TutorialPanel>();
+        tutorialPanel.onCloseTutorial += ResumeGame;
     }
 
     private void ResumeGame()
     {
         GameManager.Instance.Data.Status = GameData.GameStatus.InLevel;
     }
-    
 }

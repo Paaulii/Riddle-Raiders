@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,49 +13,57 @@ public class TutorialPanelController : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button rightButton;
     [SerializeField] private UnityEngine.UI.Button closeButton;
 
-    int currentIndexPanel = 0;
+    int currentIndexPanel;
     
     private void Start()
     {
-        closeButton.onClick.AddListener(() =>
-        {
-            gameObject.SetActive(false);
-            onPanelClose?.Invoke();
-        });
+        closeButton.onClick.AddListener(NotifyTutorialClosed);
         leftButton.onClick.AddListener(SetActivePreviousPanel);
         rightButton.onClick.AddListener(SetActiveNextPanel);
-        SetActivePanel(currentIndexPanel);
-        leftButton.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
     {
+        closeButton.onClick.RemoveListener(NotifyTutorialClosed);
         leftButton.onClick.RemoveListener(SetActivePreviousPanel);
         rightButton.onClick.RemoveListener(SetActiveNextPanel);
+    }
+    
+    public void ShowFirstPage()
+    {
+        currentIndexPanel = 0;
+        ShowCurrentIndexPanel();
+    }
+    
+    private void NotifyTutorialClosed()
+    {
+        onPanelClose?.Invoke();
     }
 
     private void SetActiveNextPanel()
     {
-        leftButton.gameObject.SetActive(true);
-        SetActivePanel(++currentIndexPanel);
-        
-        if (currentIndexPanel + 1 >= panels.Count) 
-        {
-            rightButton.gameObject.SetActive(false);
-        }
+        currentIndexPanel++;
+        ShowCurrentIndexPanel();
     }
-
+    
     private void SetActivePreviousPanel()
     {
-        rightButton.gameObject.SetActive(true);
-        SetActivePanel(--currentIndexPanel);
-        
-        if (currentIndexPanel - 1 < 0) 
-        {
-            leftButton.gameObject.SetActive(false);
-        }
+        currentIndexPanel--;
+        ShowCurrentIndexPanel();
+    }
+    
+    private void ShowCurrentIndexPanel()
+    {
+        SetActivePanel(currentIndexPanel);
+        RefreshButtons();
     }
 
+    private void RefreshButtons()
+    {
+        leftButton.gameObject.SetActive(currentIndexPanel - 1 >= 0);
+        rightButton.gameObject.SetActive(currentIndexPanel + 1 < panels.Count);
+    }
+    
     private void SetActivePanel(int index)
     {
         SetActivePanels(false);

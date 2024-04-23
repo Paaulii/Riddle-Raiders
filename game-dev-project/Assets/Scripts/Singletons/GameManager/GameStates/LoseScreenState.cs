@@ -1,14 +1,13 @@
 public class LoseScreenState : State
 {
-    private GameUIPanel panel;
+    private GameOverPanel panel;
     public override void OnEnter()
     {
         base.OnEnter();
         Timer.instance.StopTimer();
-        panel = PanelManager.instance.GetPanel<GameUIPanel>();
-        panel.SetActiveGameOverPanel(true);
+        panel = PanelManager.instance.ShowAdditionalPanel<GameOverPanel>();
         panel.onResetLevel += HandleResetLevel;
-        panel.onBackToMenu += HandleBackToMenu;
+        panel.onReturnToMenu += ReturnToMenu;
         PlayersManager.instance.ForceStopPlayersMovement();
     }
 
@@ -16,11 +15,11 @@ public class LoseScreenState : State
     {
         base.OnExit();
         panel.onResetLevel -= HandleResetLevel;
-        panel.onBackToMenu -= HandleBackToMenu;
-        panel.SetActiveGameOverPanel(false);
+        panel.onReturnToMenu -= ReturnToMenu;
+        panel.Hide();
     }
 
-    private void HandleBackToMenu()
+    private void ReturnToMenu()
     {
         GameManager.Instance.Data.Status = GameData.GameStatus.MainMenu;
     }

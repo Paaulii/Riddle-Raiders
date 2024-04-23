@@ -33,3 +33,23 @@ MonoBehaviour:
   - Level_14
   - Level_15
   playerSaveKey: playerSave
+  PauseButton: 27
+  notices:
+  - header: MAYBE NEXT TIME!
+    notice: You achieved less stars and your completion time is worse!
+    explanation: 0
+  - header: MAYBE NEXT TIME!
+    notice: You achieved the same amount of stars and your completion time is worse!
+    explanation: 1
+  - header: NEW HIGHSCORE!
+    notice: You achieved more stars!
+    explanation: 2
+  - header: MAYBE NEXT TIME!
+    notice: Your completion time is better, but you achieved less stars this time!
+    explanation: 3
+  - header: NEW HIGHSCORE!
+    notice: You beat completion time!
+    explanation: 4
+  - header: NEW HIGHSCORE!
+    notice: You beat completion time and achieved more stars!
+    explanation: 5

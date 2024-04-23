@@ -1,16 +1,15 @@
-
 using UnityEngine;
 public class SummaryScreenState : State
 {
     [SerializeField] private StarCollectDetector starCollectDetector;
-    private GameUIPanel panel;
+    private SummaryLevelPanel panel;
 
     public override void OnEnter()
     {
         base.OnEnter();
-        panel = PanelManager.instance.GetPanel<GameUIPanel>();
+        panel = PanelManager.instance.ShowAdditionalPanel<SummaryLevelPanel>();
         panel.onStartNextLevel += StartNextLevel;
-        panel.onBackToMenu += ReturnToMenu;
+        panel.onReturnToMenu += ReturnToMenu;
         panel.onResetLevel += ResetLevel;
         Timer.instance.StopTimer();
         SetupSummaryPanel();
@@ -20,10 +19,9 @@ public class SummaryScreenState : State
     {
         base.OnExit();
         panel.onStartNextLevel -= StartNextLevel;
-        panel.onBackToMenu -= ReturnToMenu;
+        panel.onReturnToMenu -= ReturnToMenu;
         panel.onResetLevel -= ResetLevel;
-        
-        panel.SetActiveSummaryPanel(false);
+        panel.Hide();
     }
     
     private void ResetLevel()

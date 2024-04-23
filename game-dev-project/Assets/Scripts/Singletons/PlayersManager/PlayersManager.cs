@@ -48,13 +48,13 @@ public class PlayersManager : Singleton<PlayersManager>
         onPlayersDeath?.Invoke();
     }
     
-    //TODO Add after passing/ not passing level
-    void DestroyPlayers(Character character) {
+    public void DestroyPlayers() {
         bigPlayer.onPlayersDeath -= HandlePlayerDeath;
         bigPlayer.onPlayerHit -= NotifyPlayerHit;
         smallPlayer.onPlayersDeath -= HandlePlayerDeath;
         smallPlayer.onPlayerHit -= NotifyPlayerHit;
         
-        Destroy(character.gameObject);
+        Destroy(bigPlayer.gameObject);
+        Destroy(smallPlayer.gameObject);
     }
 }

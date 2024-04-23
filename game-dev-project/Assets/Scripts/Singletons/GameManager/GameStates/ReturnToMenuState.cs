@@ -3,6 +3,7 @@ public class ReturnToMenuState : LoadUnloadLevelHandlerState
     public override void OnEnter()
     {
         base.OnEnter();
+        PlayersManager.instance.DestroyPlayers();
         UnloadScene(GameManager.Instance.Data.CurrentLevel.PathToScene);
     }
 
@@ -11,5 +12,4 @@ public class ReturnToMenuState : LoadUnloadLevelHandlerState
         base.OnUnloadingLevelComplete();
         GameManager.Instance.Data.Status = GameData.GameStatus.MainMenu;
     }
-
 }

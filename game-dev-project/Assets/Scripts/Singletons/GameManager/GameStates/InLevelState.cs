@@ -4,7 +4,7 @@ public class InLevelState : State
 {
     [SerializeField] StarCollectDetector starCollectDetector;
     private LevelController levelController;
-    private GameUIPanel panel;
+    private HUDPanel panel;
     
     public override void OnEnter()
     {
@@ -16,7 +16,7 @@ public class InLevelState : State
             return;
         }
 
-        panel = PanelManager.instance.ShowPanel<GameUIPanel>();
+        panel = PanelManager.instance.ShowPanel<HUDPanel>();
         KeyBindingsManager.instance.LoadKeyBindings();
         SetupTimer();
         GetLevelController();

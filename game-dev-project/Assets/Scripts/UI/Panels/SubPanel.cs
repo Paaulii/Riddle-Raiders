@@ -1,8 +1,11 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SubPanel : Panel
 {
+    public event Action onBackToMenu;
     [SerializeField] private Button returnToMenuButton;
 
     protected override void Start() 
@@ -20,5 +23,6 @@ public class SubPanel : Panel
     protected virtual void ReturnToMenu()
     {
         PanelManager.instance.ShowPanel<MenuPanel>();
+        onBackToMenu?.Invoke();
     }
 }

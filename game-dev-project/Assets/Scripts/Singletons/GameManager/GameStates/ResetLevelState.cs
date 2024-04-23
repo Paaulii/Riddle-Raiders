@@ -3,6 +3,7 @@ public class ResetLevelState : LoadUnloadLevelHandlerState
     public override void OnEnter()
     {
         base.OnEnter();
+        PlayersManager.instance.DestroyPlayers();
         UnloadScene(GameManager.Instance.Data.CurrentLevel.PathToScene);
     }
     
