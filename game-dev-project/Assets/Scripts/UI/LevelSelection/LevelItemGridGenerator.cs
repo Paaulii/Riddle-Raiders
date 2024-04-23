@@ -1,48 +1,37 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 public class LevelItemGridGenerator : MonoBehaviour
 {
-    public Action<int> onSelectLevel;
+    public Action<int> onLevelSelected;
+    [SerializeField] private LevelGridItem levelGridItemPrefab;
     
-    [SerializeField] private LevelItem levelItemPrefab;
     public void GenerateLevelItems(List<LevelData> levelsData)
     {
-        LevelItem[] childObjects = GetComponentsInChildren<LevelItem>(false);
-        childObjects.ToList().ForEach(childObject => Destroy(childObject.gameObject));
-        
+        DeleteGridElements();
+
         foreach (var levelData in levelsData)
         {
-            LevelItem newLevelItem = Instantiate(levelItemPrefab);
-            newLevelItem.transform.SetParent(gameObject.transform, false);
-            newLevelItem.SetData(levelData.StarsAmount, levelData.LevelNumber, levelData.IsLocked, GetFormatedTimeText(levelData.CompletionTime));
-            newLevelItem.onLevelClicked += (levelItem) =>
-            {
-                onSelectLevel?.Invoke(levelItem.LevelNumber);
-            };
+            LevelGridItem newLevelGridItem = Instantiate(levelGridItemPrefab, gameObject.transform, false);
+            newLevelGridItem.Init(levelData);
+            newLevelGridItem.onLevelItemClicked += NotifyLevelItemClicked;
         }
     }
 
-    string GetFormatedTimeText(float completionTime)
+    private void DeleteGridElements()
     {
-        if (completionTime == -1) {
-            return "--:--";
+        LevelGridItem[] gridItems = GetComponentsInChildren<LevelGridItem>(false);
+        
+        foreach (var gridItem in gridItems)
+        {
+            gridItem.onLevelItemClicked -= NotifyLevelItemClicked;
+            Destroy(gridItem.gameObject);
         }
-        
-        int minutes = Mathf.FloorToInt(completionTime / 60);
-        int seconds = Mathf.FloorToInt(completionTime % 60);
-        
-        StringBuilder builder = new StringBuilder();
-        builder.Append(minutes < 10 ? "0" : "");
-        builder.Append(minutes);
-        builder.Append(":");
-        builder.Append(seconds < 10 ? "0" : "");
-        builder.Append(seconds);
+    }
 
-        return builder.ToString();
+    private void NotifyLevelItemClicked(int levelNumber)
+    {
+        onLevelSelected?.Invoke(levelNumber);
     }
 }

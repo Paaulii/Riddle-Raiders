@@ -3,8 +3,11 @@ public class LoadLevelState : LoadUnloadLevelHandlerState
 {
     public override void OnEnter()
     {
-        string sceneToLoad = GameManager.Instance.Data.LastStatus == GameData.GameStatus.ResetLevel ? 
-            GameManager.Instance.Data.CurrentLevel.PathToScene : GetLevelData().PathToScene;
+        string sceneToLoad = GameManager.Instance.Data.LastStatus switch {
+            GameData.GameStatus.ResetLevel or GameData.GameStatus.LevelSelection => GameManager.Instance.Data.CurrentLevel.PathToScene,
+            _ => GetLevelData().PathToScene
+        };
+        
         LoadScene(sceneToLoad);
     }
 

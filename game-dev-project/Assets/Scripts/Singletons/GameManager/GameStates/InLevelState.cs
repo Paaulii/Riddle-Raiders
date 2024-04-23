@@ -4,8 +4,6 @@ public class InLevelState : State
 {
     [SerializeField] StarCollectDetector starCollectDetector;
     private LevelController levelController;
-    private bool wasTutorialShown;
-    private bool wasInPauseState;
     private GameUIPanel panel;
     
     public override void OnEnter()
@@ -21,10 +19,9 @@ public class InLevelState : State
         panel = PanelManager.instance.ShowPanel<GameUIPanel>();
         KeyBindingsManager.instance.LoadKeyBindings();
         SetupTimer();
-        GetLevelData();
+        GetLevelController();
         SetupPlayerManager();
         SetupStarDetector();
-        wasInPauseState = false;
     }
     
     public override void OnUpdate()
@@ -33,7 +30,6 @@ public class InLevelState : State
         
         if (Input.GetKeyDown(GameManager.Instance.GameSettings.PauseButton))
         {
-            wasInPauseState = true;
             GameManager.Instance.Data.Status = GameData.GameStatus.InPause;
         }
     }
@@ -41,9 +37,13 @@ public class InLevelState : State
     public override void OnExit()
     {
         base.OnExit();
-        PlayersManager playersManager = PlayersManager.instance;
-        playersManager.onPlayerHit -= HandlePlayerHit;
-        playersManager.onPlayersDeath -= HandlePlayerDeath;
+        
+        if (PlayersManager.instanceExists)
+        {        
+            PlayersManager playersManager = PlayersManager.instance;
+            playersManager.onPlayerHit -= HandlePlayerHit;
+            playersManager.onPlayersDeath -= HandlePlayerDeath;
+        }
 
         Timer.instance.onTimeTick -= HandleTimeTick;
         starCollectDetector.onStarCollected -= HandleStarCollected;
@@ -58,7 +58,7 @@ public class InLevelState : State
     {
         Time.timeScale = 1;
         
-        if (!wasInPauseState)
+        if (GameManager.Instance.Data.LastStatus != GameData.GameStatus.InPause)
         {
             Timer.instance.ResetTimer();
         }
@@ -92,10 +92,14 @@ public class InLevelState : State
         playersManager.onPlayersDeath += HandlePlayerDeath;
     }
     
-    private void GetLevelData()
+    private void GetLevelController()
     {
         levelController = FindObjectOfType<LevelController>();
-        levelController.onEnterDoor += HandleEndLevel;
+        
+        if (levelController) 
+        {
+            levelController.onEnterDoor += HandleEndLevel;
+        }
     }
 
     private void HandleEndLevel()
@@ -116,9 +120,10 @@ public class InLevelState : State
 
     private bool OpenTutorialIfFirstLevel()
     {
-        if (GameManager.Instance.Data.CurrentLevel.LevelNumber == 0 && !wasTutorialShown) 
+        if (GameManager.Instance.Data.CurrentLevel.LevelNumber == 0 && 
+            GameManager.Instance.Data.LastStatus != GameData.GameStatus.Tutorial && 
+            GameManager.Instance.Data.LastStatus != GameData.GameStatus.InPause) 
         {
-            wasTutorialShown = true;
             OpenTutorial();
             return true;
         }

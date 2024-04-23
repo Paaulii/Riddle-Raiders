@@ -9,6 +9,7 @@ public class GameData
     {
         MainMenu,
         ExitGame,
+        LevelSelection,
         LoadLevel,
         Tutorial,
         InLevel,

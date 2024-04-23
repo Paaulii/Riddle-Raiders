@@ -10,10 +10,11 @@ public class MainMenuState : State
         menuPanel = PanelManager.instance.ShowPanel<MenuPanel>();
         menuPanel.onExitGame += HandleExitGame;
         menuPanel.onStartGame += HandleStartGame;
+        menuPanel.onEnterLevelSelection += HandleEnterLevelSelection;
+
         SoundManager.Instance.PlayMusic(SoundManager.MusicType.Menu);
     }
-
-
+    
     public override void OnExit()
     {
         base.OnExit();
@@ -29,5 +30,10 @@ public class MainMenuState : State
     private void HandleExitGame() 
     {
         GameManager.Instance.Data.Status = GameData.GameStatus.ExitGame;
+    }
+    
+    private void HandleEnterLevelSelection()
+    {
+        GameManager.Instance.Data.Status = GameData.GameStatus.LevelSelection;
     }
 }

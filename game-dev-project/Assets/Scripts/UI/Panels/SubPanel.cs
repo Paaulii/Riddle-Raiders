@@ -1,24 +1,23 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SubPanel : Panel
 {
-    [SerializeField] private Button backToMenuButton;
+    [SerializeField] private Button returnToMenuButton;
 
-    protected override void Start()
+    protected override void Start() 
     {
         base.Start();
-        backToMenuButton.onClick.AddListener(GoBackToMenu);
+        returnToMenuButton.onClick.AddListener(ReturnToMenu);
     }
 
     protected override void OnDestroy()
     {
         base.Start();
-        backToMenuButton.onClick.RemoveListener(GoBackToMenu);
+        returnToMenuButton.onClick.RemoveListener(ReturnToMenu);
     }
 
-    protected void GoBackToMenu()
+    protected virtual void ReturnToMenu()
     {
         PanelManager.instance.ShowPanel<MenuPanel>();
     }

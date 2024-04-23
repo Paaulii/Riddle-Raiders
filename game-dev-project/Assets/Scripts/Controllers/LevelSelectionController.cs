@@ -1,41 +1,40 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class LevelSelectionController : MonoBehaviour
 {
+    public event Action<int> onLevelSelected;
+    public event Action onResetData;
+    
     [SerializeField] private LevelItemGridGenerator levelItemGridGenerator;
-    [SerializeField] private UnityEngine.UI.Button resetDataButton;
-    PlayerGameProgress playerGameProgress;
+    [SerializeField] private Button resetDataButton;
     
     private void Start() 
     {
-        playerGameProgress = SaveSystemManager.instance.LoadData();
-        levelItemGridGenerator.GenerateLevelItems(playerGameProgress.LevelsData);
-        levelItemGridGenerator.onSelectLevel += HandleLevelSelect;
-
-        resetDataButton.onClick.AddListener(() =>
-        {
-            playerGameProgress = SaveSystemManager.instance.ResetData();
-            levelItemGridGenerator.GenerateLevelItems(playerGameProgress.LevelsData);
-        });
+        levelItemGridGenerator.onLevelSelected += HandleLevelSelect;
+        resetDataButton.onClick.AddListener(NotifyResetData);
     }
-
+    
     private void OnDestroy()
     {
-        levelItemGridGenerator.onSelectLevel -= HandleLevelSelect;
+        levelItemGridGenerator.onLevelSelected -= HandleLevelSelect;
+        resetDataButton.onClick.RemoveListener(NotifyResetData);
     }
 
+    public void Init(List<LevelData> levelsData)
+    {
+        levelItemGridGenerator.GenerateLevelItems(levelsData);
+    }
+    
+    private void NotifyResetData()
+    {
+        onResetData?.Invoke();
+    }
+    
     private void HandleLevelSelect(int levelNumber) 
     {
-        if (levelNumber >= 0)
-        {
-            //TODO: it shouldnt be like this
-            //GameManager.Instance.Data.CurrentLvl = levelNumber ;
-            SceneManager.LoadScene(playerGameProgress.LevelsData[levelNumber].PathToScene);
-        }
+        onLevelSelected?.Invoke(levelNumber);
     }
 }

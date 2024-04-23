@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuPanelController : MonoBehaviour
 {
     public event Action onExitButtonClick; 
     public event Action onStartButtonClick; 
+    public event Action onEnterLevelSelection; 
     
     [SerializeField] private Button startGameTriggerButton;
     [SerializeField] private Button chooseLevelTriggerButton;
@@ -54,7 +54,7 @@ public class MenuPanelController : MonoBehaviour
 
     private void ShowLevelSelectionPanel()
     {
-        ShowPanel(typeof(LevelSelectionPanel));
+        onEnterLevelSelection?.Invoke();
     }
 
     private void ShowPanel(Type type)

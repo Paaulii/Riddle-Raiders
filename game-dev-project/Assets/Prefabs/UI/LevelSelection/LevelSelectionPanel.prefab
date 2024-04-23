@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df8bf1aeb75a2f418bfbace9e0af945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelItemPrefab: {fileID: 3023869955530183033, guid: 728325adce5e1d54a842bdb03b30cf2b, type: 3}
+  levelGridItemPrefab: {fileID: 3023869955530183033, guid: 728325adce5e1d54a842bdb03b30cf2b, type: 3}
 --- !u!1 &6206254071707731804
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,8 +837,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6206254072445745462}
   m_HandleRect: {fileID: 6206254072445745463}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1142,8 +1142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b8e41a46547164f99df231c7bbcccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backToMenuButton: {fileID: 2829914442496963387}
-  controller: {fileID: 0}
+  returnToMenuButton: {fileID: 2829914442496963387}
+  controller: {fileID: 6377060774435367206}
 --- !u!223 &8937511114072960822
 Canvas:
   m_ObjectHideFlags: 0

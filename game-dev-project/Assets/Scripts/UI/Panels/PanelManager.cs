@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PanelManager : Singleton<PanelManager>
@@ -16,7 +17,7 @@ public class PanelManager : Singleton<PanelManager>
 
     public T GetPanel<T> () where T : Panel
     {
-        return currentPanel as T;
+        return panels.FirstOrDefault(panel => panel is T) as T;
     }
     
     public T ShowPanel<T>() where T : Panel {

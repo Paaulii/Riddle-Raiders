@@ -67,35 +67,35 @@ public class SummaryScreenState : State
         GameManager.Instance.Data.Status = GameData.GameStatus.NextLevel;
     }
 
-    private Explanation OpenLevelCompletePanel(int levelIndex, float currentCompleteTime)
+    private Explanation OpenLevelCompletePanel(int levelIndex, float currentCompletionTime)
     {
         LevelData currentLevel = SaveSystemManager.instance.GetLevelByIndex(levelIndex);
         int lastCollectedStars = currentLevel.StarsAmount;
         int currentCollectedStars = starCollectDetector.StarsAmount;
-        float lastCompleteTime = currentLevel.CompletionTime;
+        float lastCompletionTime = currentLevel.CompletionTime;
 		
         Explanation explanation;
         if (lastCollectedStars < currentCollectedStars)
         {
-            explanation = lastCompleteTime == -1 || lastCompleteTime > currentCompleteTime ? 
+            explanation = lastCompletionTime == -1 || lastCompletionTime > currentCompletionTime ? 
                 Explanation.BetterTimeMoreStars : Explanation.WorseTimeMoreStars;
         }
         else if (lastCollectedStars == currentCollectedStars)
         {
-            explanation = lastCompleteTime == -1 || lastCompleteTime > currentCompleteTime ? 
+            explanation = lastCompletionTime == -1 || lastCompletionTime > currentCompletionTime ? 
                 Explanation.BetterTimeEqualStars : Explanation.WorseTimeEqualStars;
         }
         else
         {
-            explanation = lastCompleteTime == -1 || lastCompleteTime > currentCompleteTime ? 
+            explanation = lastCompletionTime == -1 || lastCompletionTime > currentCompletionTime ? 
                 Explanation.BetterTimeLessStars : Explanation.WorseTimeLessStars;
         }
 		
         panel.OpenLevelCompletePanel(explanation, 
             lastCollectedStars,
             currentCollectedStars,
-            TimerUtils.GetFormatedTime(lastCompleteTime),
-            TimerUtils.GetFormatedTime(currentCompleteTime));
+            TimerUtils.GetFormatedTime(lastCompletionTime),
+            TimerUtils.GetFormatedTime(currentCompletionTime));
         return explanation;
     }
 }

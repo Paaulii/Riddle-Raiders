@@ -2098,7 +2098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d4431783e37964daeb62b184b44994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backToMenuButton: {fileID: 3667550251807541414}
+  returnToMenuButton: {fileID: 3667550251807541414}
   panelController: {fileID: 3377471304893327163}
 --- !u!223 &7937876593498195303
 Canvas:
