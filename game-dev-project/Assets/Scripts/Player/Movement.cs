@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +11,6 @@ public class Movement : MonoBehaviour
     public Action onCatch;
     public Action onSlide;
     public Action onEscPressed;
-    public PlayerInput PlayerInput => playerInput;
     
     [Header("Movement")] 
     [SerializeField] private PlayerInput playerInput;

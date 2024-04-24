@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsPanelController : MonoBehaviour
 {
-    [SerializeField] private UnityEngine.UI.Button resetDataButton;
-    [SerializeField] private UnityEngine.UI.Button saveButton;
+    [SerializeField] private Button resetDataButton;
+    [SerializeField] private Button saveButton;
     [SerializeField] private PlayerKeys bigPlayerKeys;
     [SerializeField] private PlayerKeys smallPlayerKeys;
 

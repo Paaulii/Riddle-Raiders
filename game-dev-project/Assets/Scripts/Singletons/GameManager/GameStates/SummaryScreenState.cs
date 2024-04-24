@@ -24,16 +24,21 @@ public class SummaryScreenState : State
         panel.Hide();
     }
     
+    private void StartNextLevel()
+    {
+        GameManager.Instance.Data.Status = GameData.GameStatus.NextLevel;
+    }
+    
+    private void ReturnToMenu()
+    {
+        GameManager.Instance.Data.Status = GameData.GameStatus.ReturnToMenu;
+    }
+
     private void ResetLevel()
     {
         GameManager.Instance.Data.Status = GameData.GameStatus.ResetLevel;
     }
 
-    private void ReturnToMenu()
-    {
-        GameManager.Instance.Data.Status = GameData.GameStatus.ReturnToMenu;
-    }
-    
     private void SetupSummaryPanel()
     {
         int currentLevel = GameManager.Instance.Data.CurrentLevel.LevelNumber;
@@ -45,6 +50,7 @@ public class SummaryScreenState : State
         if (explanation == Explanation.WorseTimeEqualStars || explanation == Explanation.BetterTimeLessStars || explanation == Explanation.WorseTimeLessStars)
         {
             SoundManager.Instance.PlayUISound(SoundManager.UISoundType.GameOver);
+            //TODO : add game effect manager singleton
             //Instantiate(smokeEffect, endDoor.transform.position + new Vector3(2, 0, 0), Quaternion.identity);
         }
         else
@@ -60,10 +66,6 @@ public class SummaryScreenState : State
         }
     }
 
-    private void StartNextLevel()
-    {
-        GameManager.Instance.Data.Status = GameData.GameStatus.NextLevel;
-    }
 
     private Explanation OpenLevelCompletePanel(int levelIndex, float currentCompletionTime)
     {
