@@ -238,9 +238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d274833e1a9f198449a30f94ca8de720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skullEffect: {fileID: 4521946699179212529, guid: 8bf03c93987ca0844b3f23ef79debcbd, type: 3}
-  bloodEffect: {fileID: 2119927291796682321, guid: 482fe05dc551ea649aca8d64a219692b, type: 3}
-  smokeEffect: {fileID: 4368098709314299244, guid: 160ff0a38ec44a34ab2a73c91dd208f3, type: 3}
+  decreaseHealthOverTimeInterval: 1
+  health: 3
+  hitDetector: {fileID: 7843424188918738969}
 --- !u!114 &833953708522277823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,3 +286,15 @@ MonoBehaviour:
   <Type>k__BackingField: 1
   movement: {fileID: 799507798}
   healthManager: {fileID: 526853667583535797}
+--- !u!114 &7843424188918738969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5503595213375055802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36b940c82f33424793454b90d09d531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

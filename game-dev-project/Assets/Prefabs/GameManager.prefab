@@ -508,6 +508,7 @@ Transform:
   - {fileID: 6510523945376623995}
   - {fileID: 8627462934014597501}
   - {fileID: 4430913529513691376}
+  - {fileID: 829462958405081708}
   m_Father: {fileID: 7600431336427365100}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -601,6 +602,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bigPlayerPrefab: {fileID: 2350048302865948547, guid: b917be9edec551042a231db6b27408dc, type: 3}
   smallPlayerPrefab: {fileID: 5507325348091092747, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
+--- !u!1 &7463080200010186460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 829462958405081708}
+  - component: {fileID: 5721462552154509965}
+  m_Layer: 0
+  m_Name: EffectsParticleSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &829462958405081708
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463080200010186460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5273875933030936221}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5721462552154509965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7463080200010186460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63474a957a8ee21429cbd45f2019dc20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - particles:
+    - {fileID: 2119927291796682321, guid: 482fe05dc551ea649aca8d64a219692b, type: 3}
+    type: 0
+  - particles:
+    - {fileID: 6339293061518331769, guid: b513180a11d262248a4e2e8ac7fa5ab4, type: 3}
+    type: 1
+  - particles:
+    - {fileID: 4521946699179212529, guid: 8bf03c93987ca0844b3f23ef79debcbd, type: 3}
+    type: 2
 --- !u!1 &7600431336427365102
 GameObject:
   m_ObjectHideFlags: 0

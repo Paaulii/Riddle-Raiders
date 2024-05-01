@@ -1,52 +1,76 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using TMPro;
 
 public class HealthManager : MonoBehaviour
 {
+    public Action onSpikeHit;
     public Action onPlayersDeath;
     public Action onPlayerHit;
+
+    [SerializeField] private float decreaseHealthOverTimeInterval;
+    [SerializeField] private int health;
+    [SerializeField] private HitDetector hitDetector;
+
+    private bool healthDecreasing;
+    private WaitForSeconds decreaseHealthInterval;
     
-    [Header("Health value")]
-    private int health = 3;
-    [SerializeField] private GameObject skullEffect;
-    [SerializeField] private GameObject bloodEffect;
-    [SerializeField] private GameObject smokeEffect;
-
-    private void OnTriggerEnter2D(Collider2D col)
+    private void Start()
     {
-        Spikes spikes = col.GetComponent<Spikes>();
-        Lava lava = col.GetComponent<Lava>();
+        decreaseHealthInterval = new WaitForSeconds(decreaseHealthOverTimeInterval);
+        hitDetector.onSpikeHit += HandleSpikeHit;
+        hitDetector.onLavaEnter += StartDecreasingHealth;
+        hitDetector.onLavaExit += StopDecreasingHealth;
+    }
 
-        if (spikes)
-        {
-            Instantiate(bloodEffect, transform.position, Quaternion.identity);
-            DecreaseHealth();
-        }
-        if (lava)
-        {
-            while(health > 0)
-            {
-                DecreaseHealth();
-            }
-            Instantiate(smokeEffect, transform.position, Quaternion.identity);
-        }
+    private void OnDestroy()
+    {
+        hitDetector.onSpikeHit -= HandleSpikeHit;
+        hitDetector.onLavaEnter -= StartDecreasingHealth;
+        hitDetector.onLavaExit -= StopDecreasingHealth;
+    }
+
+    private void HandleSpikeHit()
+    {
+        onSpikeHit?.Invoke();
+        DecreaseHealth();
+    }
+    
+    private void StopDecreasingHealth()
+    {
+        healthDecreasing = false;
+    }
+
+    private void StartDecreasingHealth()
+    {
+        healthDecreasing = true;
+        StartCoroutine(DecreaseHealthOverTime());
     }
 
     private void DecreaseHealth()
     {
-        if (--health == 0)
+        health--;
+        VerifyHit();
+    }
+
+    private void VerifyHit()
+    {
+        if (health == 0)
         {
             Destroy(gameObject);
             onPlayersDeath?.Invoke();
-            Instantiate(skullEffect, transform.position, Quaternion.identity);
         }
         gameObject.GetComponent<Animator>().SetTrigger("attack");
         onPlayerHit?.Invoke();
-        
+    }
+    
+    //TODO: add effect based on kind of death
+    private IEnumerator DecreaseHealthOverTime()
+    {
+        while (healthDecreasing && health > 0)
+        {
+            DecreaseHealth();
+            yield return decreaseHealthInterval;
+        }
     }
 }
