@@ -61,7 +61,7 @@ public class SummaryScreenState : State
             ParticleEffectsSystem.instance.SpawnEffect(EffectType.FireworkShoot, levelController.EndDoorPosition + new Vector2(1, 0));
         }
 
-        if (currentLevel == GameManager.Instance.GameSettings.LevelCount)
+        if (currentLevel == GameManager.Instance.GameSettings.LevelCount - 1)
         {
             panel.HandleGameComplete();
         }

@@ -666,7 +666,7 @@ MonoBehaviour:
     - {fileID: 9036601164526154956, guid: 27167cc1c5796104f885f41de698b2da, type: 3}
     type: 5
   - particles:
-    - {fileID: 6696221279463763936, guid: f8cdb0df49560394d8d99bff2fe8e526, type: 3}
+    - {fileID: 5021417866994837888, guid: 5d76d20adfb43174f83c4dca92f6fce7, type: 3}
     type: 6
 --- !u!1 &7600431336427365102
 GameObject:

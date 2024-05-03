@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LaserInitiator : MonoBehaviour
@@ -7,6 +8,11 @@ public class LaserInitiator : MonoBehaviour
    [SerializeField] private float raycastDistance;
    [SerializeField] private float laserWidth;
    private LaserBeam beam;
+
+   private void OnDestroy()
+   {
+      Destroy(beam?.LaserObj);
+   }
 
    private void Update()
    {
