@@ -16,9 +16,9 @@ public class StarCollectDetector : MonoBehaviour
             star.onStarCollect += HandleStarCollection;
         }
     }
-
     private void Deinit()
     {
+        StarsAmount = 0;
         if (stars == null || stars?.Length == 0)
         {
             return;

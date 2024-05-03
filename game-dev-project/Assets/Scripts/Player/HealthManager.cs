@@ -63,7 +63,6 @@ public class HealthManager : MonoBehaviour
         onPlayerHit?.Invoke();
     }
     
-    //TODO: add effect based on kind of death
     private IEnumerator DecreaseHealthOverTime()
     {
         while (healthDecreasing && health > 0)

@@ -28,7 +28,6 @@ public class LoadUnloadLevelHandlerState : State
     
     IEnumerator LoadSceneAsync(string levelName)
     {
-        //TODO: add screen loader
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
 
         while (!asyncLoad.isDone)

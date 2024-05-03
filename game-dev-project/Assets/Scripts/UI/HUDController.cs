@@ -32,13 +32,15 @@ public class HUDController : MonoBehaviour
         collectedStarsDisplay.IncreaseStars();
     }
 
-    public void ResetCollectedStars()
-    {
-        collectedStarsDisplay.ResetStars();
-    }
-    
     public void SetLevelNumber(int levelNumber)
     {
         levelText.text = "Level " + levelNumber;
+    }
+
+    public void ResetUI()
+    {
+        collectedStarsDisplay.ResetStars();
+        bigPlayerStateDisplay.ResetHearts();
+        smallPlayerStateDisplay.ResetHearts();
     }
 }
