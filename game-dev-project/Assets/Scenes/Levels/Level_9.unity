@@ -6338,7 +6338,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8445159064057004319, guid: 7bf10c5f6f7c3a54e9d0779a079d3851, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf10c5f6f7c3a54e9d0779a079d3851, type: 3}
 --- !u!1001 &917489990
 PrefabInstance:
@@ -9262,6 +9263,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1662178073}
     m_Modifications:
+    - target: {fileID: 2785634857904510517, guid: 7bf10c5f6f7c3a54e9d0779a079d3851, type: 3}
+      propertyPath: platformColor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8445159064057004306, guid: 7bf10c5f6f7c3a54e9d0779a079d3851, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -10.717732
@@ -9322,7 +9327,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8445159064057004319, guid: 7bf10c5f6f7c3a54e9d0779a079d3851, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7bf10c5f6f7c3a54e9d0779a079d3851, type: 3}
 --- !u!4 &1898776281 stripped
 Transform:

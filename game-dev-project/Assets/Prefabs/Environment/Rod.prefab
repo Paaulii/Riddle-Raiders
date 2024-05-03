@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1080568552335921350}
   - component: {fileID: 1080568552335921349}
   - component: {fileID: 1080568552335921348}
-  - component: {fileID: 1080568552335921353}
   m_Layer: 0
   m_Name: Rod
   m_TagString: Untagged
@@ -150,7 +149,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.5, y: 0}
-  m_ConnectedAnchor: {x: -12.56, y: -2.677904}
+  m_ConnectedAnchor: {x: -1.2719232, y: 1.9608517}
   m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
@@ -159,17 +158,3 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: -50
     m_UpperAngle: 50
---- !u!114 &1080568552335921353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1080568552335921347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e9d8b42a2b27e24092f750c4505267f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  platformColor: 2
-  hingeJoint2D: {fileID: 1080568552335921348}

@@ -4,7 +4,7 @@ using UnityEngine;
 public class Lever : PlatformActivator
 {
     [SerializeField] private HingeJoint2D hingeJoint2D;
-    private float pullThreshold = 10.0f;
+    [SerializeField] private float pullThreshold;
     
     void Update()
     {

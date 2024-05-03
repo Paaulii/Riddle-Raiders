@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformColor: 0
   hingeJoint2D: {fileID: 8445159064057004306}
+  pullThreshold: 30
 --- !u!1001 &8921006558959702486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,11 +180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1080568552335921348, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -6.1200004
+      value: -8.447732
       objectReference: {fileID: 0}
     - target: {fileID: 1080568552335921348, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -2.7287598
+      value: 3.5408583
       objectReference: {fileID: 0}
     - target: {fileID: 1080568552335921352, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
       propertyPath: m_RootOrder
