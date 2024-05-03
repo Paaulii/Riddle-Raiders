@@ -600,8 +600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118b12671b2abbc43a02427143402c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bigPlayerPrefab: {fileID: 2350048302865948547, guid: b917be9edec551042a231db6b27408dc, type: 3}
-  smallPlayerPrefab: {fileID: 5507325348091092747, guid: b9930610c9ae2ec4e87e421089984769, type: 3}
+  bigPlayerPrefab: {fileID: 3219500573360614756, guid: 41bd06a91b0a1124a91e243622e82eff, type: 3}
+  smallPlayerPrefab: {fileID: 1053064581700374316, guid: 48820ef3e749eef4ba2e9d037fcdbebe, type: 3}
 --- !u!1 &7463080200010186460
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +665,9 @@ MonoBehaviour:
   - particles:
     - {fileID: 9036601164526154956, guid: 27167cc1c5796104f885f41de698b2da, type: 3}
     type: 5
+  - particles:
+    - {fileID: 6696221279463763936, guid: f8cdb0df49560394d8d99bff2fe8e526, type: 3}
+    type: 6
 --- !u!1 &7600431336427365102
 GameObject:
   m_ObjectHideFlags: 0
