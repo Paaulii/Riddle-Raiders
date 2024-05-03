@@ -23,4 +23,9 @@ public class HUDPanel : Panel
     {
         controller.DecreasePlayersHealth(characterType);
     }
+
+    public void ResetStarsDisplayed()
+    {
+        controller.ResetCollectedStars();
+    }
 }

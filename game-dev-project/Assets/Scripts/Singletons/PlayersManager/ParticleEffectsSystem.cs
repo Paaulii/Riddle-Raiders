@@ -15,7 +15,7 @@ public class ParticleEffectsSystem : Singleton<ParticleEffectsSystem>
         activeParticles = new List<GameObject>();
     }
 
-    public void SpawnEffect(EffectType effectType, Vector3 pos)
+    public void SpawnEffect(EffectType effectType, Vector2 pos)
     {
         GameObject[] foundParticles = GetParticlesByType(effectType);
 

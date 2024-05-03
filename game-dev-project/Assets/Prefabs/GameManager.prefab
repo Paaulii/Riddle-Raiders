@@ -656,6 +656,15 @@ MonoBehaviour:
   - particles:
     - {fileID: 4521946699179212529, guid: 8bf03c93987ca0844b3f23ef79debcbd, type: 3}
     type: 2
+  - particles:
+    - {fileID: 4669740794443463157, guid: 6c57a2b56453af440a7137bac9f83e6f, type: 3}
+    type: 3
+  - particles:
+    - {fileID: 1714513133734682684, guid: 02bda087f3ed40b4fb55b688ae247125, type: 3}
+    type: 4
+  - particles:
+    - {fileID: 9036601164526154956, guid: 27167cc1c5796104f885f41de698b2da, type: 3}
+    type: 5
 --- !u!1 &7600431336427365102
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starCollectDetector: {fileID: 2973028735812386773}
+  escapeButton: {fileID: 0}
 --- !u!1 &7600431336633437993
 GameObject:
   m_ObjectHideFlags: 0

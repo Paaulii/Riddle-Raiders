@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InLevelState : State
 {
     [SerializeField] StarCollectDetector starCollectDetector;
+    [SerializeField] InputActionReference escapeButton;
     private LevelController levelController;
     private HUDPanel panel;
     
@@ -18,6 +20,7 @@ public class InLevelState : State
 
         panel = PanelManager.instance.ShowPanel<HUDPanel>();
         panel.SetLevelNumber(GameManager.Instance.Data.CurrentLevel.LevelNumber + 1);
+        panel.ResetStarsDisplayed();
         KeyBindingsManager.instance.LoadKeyBindings();
         SetupTimer();
         GetLevelController();
@@ -82,6 +85,7 @@ public class InLevelState : State
     private void HandleStarCollected(Vector2 starPosition)
     {
         SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Collect, starPosition);
+        ParticleEffectsSystem.instance.SpawnEffect(EffectType.PickupStar, starPosition);
         panel.IncreaseStarAmount();
     }
     

@@ -5,7 +5,7 @@ public class HUDController : MonoBehaviour
 {
     [SerializeField] private PlayerStateDisplay smallPlayerStateDisplay;
     [SerializeField] private PlayerStateDisplay bigPlayerStateDisplay;
-    [SerializeField] private AchievedStarDisplay achievedStarDisplay;
+    [SerializeField] private CollectedStarsDisplay collectedStarsDisplay;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI timeText;
     
@@ -29,7 +29,12 @@ public class HUDController : MonoBehaviour
     
     public void IncreaseStarAmount()
     {
-        achievedStarDisplay.ChangeStarsNumber();
+        collectedStarsDisplay.IncreaseStars();
+    }
+
+    public void ResetCollectedStars()
+    {
+        collectedStarsDisplay.ResetStars();
     }
     
     public void SetLevelNumber(int levelNumber)

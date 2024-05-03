@@ -555,7 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smallPlayerStateDisplay: {fileID: 2715718769881227613}
   bigPlayerStateDisplay: {fileID: 1443983908212613655}
-  achievedStarDisplay: {fileID: 6265749862392048373}
+  collectedStarsDisplay: {fileID: 6265749862392048373}
   levelText: {fileID: 4241326005020385617}
   timeText: {fileID: 8001799461167589179}
 --- !u!114 &762026147910033957

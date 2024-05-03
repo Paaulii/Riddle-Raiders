@@ -3,11 +3,13 @@ public class SummaryScreenState : State
 {
     [SerializeField] private StarCollectDetector starCollectDetector;
     private SummaryLevelPanel panel;
-
+    private LevelController levelController;
+    
     public override void OnEnter()
     {
         base.OnEnter();
         panel = PanelManager.instance.ShowAdditionalPanel<SummaryLevelPanel>();
+        levelController = FindObjectOfType<LevelController>();
         panel.onStartNextLevel += StartNextLevel;
         panel.onReturnToMenu += ReturnToMenu;
         panel.onResetLevel += ResetLevel;
@@ -50,14 +52,13 @@ public class SummaryScreenState : State
         if (explanation == Explanation.WorseTimeEqualStars || explanation == Explanation.BetterTimeLessStars || explanation == Explanation.WorseTimeLessStars)
         {
             SoundManager.Instance.PlayUISound(SoundManager.UISoundType.GameOver);
-            //TODO : add game effect manager singleton
-            //Instantiate(smokeEffect, endDoor.transform.position + new Vector3(2, 0, 0), Quaternion.identity);
+            ParticleEffectsSystem.instance.SpawnEffect(EffectType.Smoke, levelController.EndDoorPosition + new Vector2(2, 0));
         }
         else
         {
             SoundManager.Instance.PlayUISound(SoundManager.UISoundType.EndLevel);
-            // Instantiate(fireworkEffect, endDoor.transform.position + new Vector3(1, 0, 0), Quaternion.identity);
-            // Instantiate(fireworkShootEffect, endDoor.transform.position + new Vector3(1, 0, 0), Quaternion.identity);
+            ParticleEffectsSystem.instance.SpawnEffect(EffectType.Firework, levelController.EndDoorPosition + new Vector2(1, 0));
+            ParticleEffectsSystem.instance.SpawnEffect(EffectType.FireworkShoot, levelController.EndDoorPosition + new Vector2(1, 0));
         }
 
         if (currentLevel == GameManager.Instance.GameSettings.LevelCount)
