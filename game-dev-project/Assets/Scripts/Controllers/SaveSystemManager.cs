@@ -13,7 +13,7 @@ public class SaveSystemManager : Singleton<SaveSystemManager> {
     public LevelData GetLastUnlockedLevel()
     {
         PlayerGameProgress playerGameProgress = LoadData();
-        LevelData previousLevel = playerGameProgress.LevelsData.FindLast(level => level.IsLocked == false);// getLevelData(playerGameProgress);
+        LevelData previousLevel = playerGameProgress.LevelsData.FindLast(level => level.IsLocked == false);
         return previousLevel;
     }
 
@@ -61,7 +61,7 @@ public class SaveSystemManager : Singleton<SaveSystemManager> {
         return playerGameProgress.LevelsData[levelIndex];
     }
     
-    void SaveDataToPlayerPrefs(PlayerGameProgress playerGameProgress) 
+    private void SaveDataToPlayerPrefs(PlayerGameProgress playerGameProgress) 
     {
         string json = JsonUtility.ToJson(playerGameProgress);
         PlayerPrefs.SetString(playerSaveKey, json);

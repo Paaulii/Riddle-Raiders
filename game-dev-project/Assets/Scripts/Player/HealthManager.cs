@@ -57,10 +57,9 @@ public class HealthManager : MonoBehaviour
     {
         if (health == 0)
         {
-            Destroy(gameObject);
             onPlayersDeath?.Invoke();
         }
-        gameObject.GetComponent<Animator>().SetTrigger("attack");
+        
         onPlayerHit?.Invoke();
     }
     

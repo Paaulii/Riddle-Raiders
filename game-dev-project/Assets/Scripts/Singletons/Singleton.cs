@@ -1,11 +1,7 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 public abstract class Singleton<T> : SingletonBase where T : SingletonBase {
-
-	public static event Action<T> onInstanceChanged;
-
 	[NotNull]
 	public static T instance {
 		get {
@@ -18,7 +14,6 @@ public abstract class Singleton<T> : SingletonBase where T : SingletonBase {
 				Debug.Log("#Singleton# New instance: " + typeof(T).Name, _instance);
 				_instance.InitNewInstance();
 			}
-			//Debug.Log("Singleton instance reference: " + typeof(T).Name);
 
 			return _instance;
 		}
@@ -26,17 +21,9 @@ public abstract class Singleton<T> : SingletonBase where T : SingletonBase {
 	}
 	static T _instance {
 		get => __instance;
-		set {
-			bool emitEvent = value != __instance;
-			__instance = value;
-			if (emitEvent && value != null) {
-				onInstanceChanged?.Invoke(__instance);
-			}
-		}
+		set => __instance = value;
 	}
 	static T __instance;
-
-	public static T instanceNullable => instanceExists ? instance : null;
 
 	public static bool instanceExists {
 		get {

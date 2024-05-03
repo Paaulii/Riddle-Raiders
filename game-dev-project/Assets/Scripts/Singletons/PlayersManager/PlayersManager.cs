@@ -43,7 +43,7 @@ public class PlayersManager : Singleton<PlayersManager>
         if (character != null)
         { 
             character.onPlayersDeath -= HandlePlayerDeath;
-            character.onPlayerHit -= NotifyPlayerHit;
+            character.onPlayerHit -= HandlePlayerHit;
             Destroy(character.gameObject);
         }
     }
@@ -52,7 +52,7 @@ public class PlayersManager : Singleton<PlayersManager>
     {
         spawnedCharacter = Instantiate(prefab, spawnPos, Quaternion.identity, parent);
         spawnedCharacter.onPlayersDeath += HandlePlayerDeath;
-        spawnedCharacter.onPlayerHit += NotifyPlayerHit;
+        spawnedCharacter.onPlayerHit += HandlePlayerHit;
         spawnedCharacter.onSpikeHit += HandlePlayerSpikeHit;
         spawnedCharacter.onCatch += HandlePlayerCatchObject;
         spawnedCharacter.onJump += HandlePlayerJump;
@@ -92,15 +92,17 @@ public class PlayersManager : Singleton<PlayersManager>
         ParticleEffectsSystem.instance.SpawnEffect(EffectType.Blood, character.transform.position);
     }
 
-    private void NotifyPlayerHit(Character character)
+    private void HandlePlayerHit(Character character)
     {
-        SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Hit, character.transform.position);
-       onPlayerHit?.Invoke(character);
+        SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Hit, character.transform.position); 
+        character.GetComponent<Animator>().SetTrigger("attack");
+        onPlayerHit?.Invoke(character);
     }
 
     private void HandlePlayerDeath(Character character)
     {
         ParticleEffectsSystem.instance.SpawnEffect(EffectType.Skull, character.transform.position);
         onPlayersDeath?.Invoke();
+        Destroy(character.gameObject);
     }
 }

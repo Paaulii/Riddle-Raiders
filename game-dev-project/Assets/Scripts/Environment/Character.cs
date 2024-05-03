@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class Character : MonoBehaviour
 {
@@ -13,33 +15,44 @@ public class Character : MonoBehaviour
     public Action<Character> onStopClimb;
     
     [field:SerializeField] public CharacterType Type { get; private set; }
-    [SerializeField] Movement movement;
+    [SerializeField] MovementController movementController;
     [SerializeField] HealthManager healthManager;
+    [SerializeField] Animator animator;
     
     private void Start()
     {
         healthManager.onSpikeHit += NotifySpikeHit;
         healthManager.onPlayersDeath += NotifyOnDeath;
         healthManager.onPlayerHit += NotifyOnHit;
-        movement.onCatch += NotifyOnCatch; 
-        movement.onJump += NotifyOnJump;
-        movement.onSlide += NotifyOnSlide;
-        movement.onStartClimb += NotifyOnStartClimb;
-        movement.onStopClimb += NotifyOnStopClimb;
+        movementController.onCatch += NotifyOnCatch; 
+        movementController.onJump += NotifyOnJump;
+        movementController.onSlide += NotifyOnSlide;
+        movementController.onStartClimb += NotifyOnStartClimb;
+        movementController.onStopClimb += NotifyOnStopClimb;
     }
-
+    
     private void OnDestroy()
     {
         healthManager.onSpikeHit -= NotifySpikeHit;
         healthManager.onPlayersDeath -= NotifyOnDeath;
         healthManager.onPlayerHit-= NotifyOnHit;
-        movement.onCatch -= NotifyOnCatch; 
-        movement.onJump -= NotifyOnJump;
-        movement.onSlide -= NotifyOnSlide;
-        movement.onStartClimb -= NotifyOnStartClimb;
-        movement.onStopClimb -= NotifyOnStopClimb;
+        movementController.onCatch -= NotifyOnCatch; 
+        movementController.onJump -= NotifyOnJump;
+        movementController.onSlide -= NotifyOnSlide;
+        movementController.onStartClimb -= NotifyOnStartClimb;
+        movementController.onStopClimb -= NotifyOnStopClimb;
     }
-    
+
+    private void Update()
+    {
+        RunAnimation();
+    }
+
+    private void RunAnimation()
+    {
+        animator.SetBool("isMoving", movementController.IsMoving);
+    }
+
     private void NotifyOnCatch()
     {
         onCatch?.Invoke(this);
@@ -82,12 +95,12 @@ public class Character : MonoBehaviour
     
     public void ForceStopMovement()
     {
-        movement.ForceStopPlayer();
+        movementController.ForceStopPlayer();
     }
 
     public void ForceStartMovement()
     {
-        movement.ForceStartPlayer();
+        movementController.ForceStartPlayer();
     }
     
     public enum CharacterType 

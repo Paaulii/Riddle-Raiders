@@ -165,6 +165,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
+--- !u!95 &3421448863415647430 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 68082740759749513, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
+  m_PrefabInstance: {fileID: 3425706018529369935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3734142118793364512 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2042623225147202415, guid: 39385abaa1419dd49a82630f158c9b93, type: 3}
@@ -252,11 +257,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1978948260169094492}
   speed: 5
-  jumpForce: 8
   slideForce: 1
+  jumpForce: 8
   groundDistance: 0.3
   canCarry: 1
   collider: {fileID: 1486613340}
+  rb: {fileID: 1486613341}
   rotateSpeed: 1
 --- !u!114 &1453374042422934432
 MonoBehaviour:
@@ -316,8 +322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 0
-  movement: {fileID: 1486613342}
+  movementController: {fileID: 1486613342}
   healthManager: {fileID: 1453374042422934432}
+  animator: {fileID: 3421448863415647430}
 --- !u!114 &7689848629165012730
 MonoBehaviour:
   m_ObjectHideFlags: 0
