@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformActivatorsController : MonoBehaviour {
@@ -11,16 +9,27 @@ public class PlatformActivatorsController : MonoBehaviour {
         GetActivatorsReference();
     }
 
+    private void OnDestroy()
+    {
+        foreach (var activator in platformActivators)
+        {
+            activator.onChangeState -= NotifyActivatorStateChange;
+        }
+    }
+
     private void GetActivatorsReference()
     {
         platformActivators = GetComponentsInChildren<PlatformActivator>(true);
         
         foreach (var activator in platformActivators)
         {
-            activator.onChangeState += (state, color) =>
-            {
-                onStateChange?.Invoke(state, color);
-            };
+            activator.onChangeState += NotifyActivatorStateChange;
         }
+    }
+
+    private void NotifyActivatorStateChange(PlatformActivator.State state, 
+        Platform.PlatformColor platformGroup)
+    {
+        onStateChange?.Invoke(state, platformGroup);
     }
 }

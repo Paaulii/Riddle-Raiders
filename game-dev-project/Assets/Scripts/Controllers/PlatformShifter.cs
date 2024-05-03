@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlatformMover : MonoBehaviour
+public class PlatformShifter : MonoBehaviour
 {
     [SerializeField] private PlatformController platformController;
     [SerializeField] private PlatformActivatorsController platformActivatorsController;

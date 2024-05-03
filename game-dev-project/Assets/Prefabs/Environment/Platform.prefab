@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731087588738322118}
-  - component: {fileID: 6731087588738322121}
   - component: {fileID: 6731087588738322119}
+  - component: {fileID: 6731087588738322121}
   - component: {fileID: 7921436074901958368}
   - component: {fileID: 3804536580854452666}
   m_Layer: 0
@@ -36,6 +36,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6731087588738322119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731087588738322120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2f2a817d532a244bf3b68f9a7128b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shiftTransform: {fileID: 6731087589329769257}
+  platformColor: 2
+  shiftDuration: 1
 --- !u!212 &6731087588738322121
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,21 +103,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6731087588738322119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6731087588738322120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e2f2a817d532a244bf3b68f9a7128b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shiftTransform: {fileID: 6731087589329769257}
-  platformColor: 2
-  shiftingSpeed: 0.01
 --- !u!61 &7921436074901958368
 BoxCollider2D:
   m_ObjectHideFlags: 0

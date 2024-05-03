@@ -1,28 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 public class LaserReciever : PlatformActivator
 {
-    public Action onLaserActivation;
-    public bool isActive = false;
-    private bool wasActivationEventSent = false;
-    private bool wasInactivationEventSent = false;
-    [SerializeField] private GameObject laserEffect;
+    public bool isActive;
+    private bool wasActivationEventSent;
+    private bool wasInactivationEventSent;
 
     void Update() {
         if (isActive)
         {
             if (!wasActivationEventSent) 
             {
-                Instantiate(laserEffect, transform.position, Quaternion.identity);
-                onLaserActivation?.Invoke();
+                ParticleEffectsSystem.instance.SpawnEffect(EffectType.LaserEffect, transform.position);
+                SoundManager.Instance.PlaySound(SoundManager.GameSoundType.Laser, transform.position);
                 wasActivationEventSent = true;
                 wasInactivationEventSent = false;
-                onChangeState?.Invoke(State.On, platformColor);
+                ChangeState(State.On);
             }
         }
         else 
@@ -31,7 +23,7 @@ public class LaserReciever : PlatformActivator
             {
                 wasInactivationEventSent = true;
                 wasActivationEventSent = false;
-                onChangeState?.Invoke(State.Off, platformColor);
+                ChangeState(State.Off);
             }
         }
         

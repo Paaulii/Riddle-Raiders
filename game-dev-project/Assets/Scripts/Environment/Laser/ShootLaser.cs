@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class ShootLaser : MonoBehaviour
@@ -11,7 +7,7 @@ public class ShootLaser : MonoBehaviour
 
    private void Update()
    {
-      Destroy(GameObject.Find("Laser Beam"));
+      Destroy(beam?.LaserObj);
       beam = new LaserBeam(transform.position, transform.up, material);
    }
 }

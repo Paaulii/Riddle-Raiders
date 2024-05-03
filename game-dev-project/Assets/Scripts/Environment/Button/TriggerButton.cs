@@ -1,7 +1,10 @@
+using System.Linq;
 using UnityEngine;
 
 public class TriggerButton : PlatformActivator
 {
+    [SerializeField] protected Character.CharacterType[] allowedPlayersToActivate;
+
     [Header("Appearance")] 
     [SerializeField] private SpriteRenderer renderer;
     [SerializeField] private Sprite pressedButton;
@@ -9,25 +12,23 @@ public class TriggerButton : PlatformActivator
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Character player = collision.GetComponent<Character>();
-        if (player == null) return;
-        
-        if (player.Type == Character.CharacterType.Big)
-        {
-            renderer.sprite = pressedButton;
-            onChangeState?.Invoke(State.On, platformColor);
-        }
+        TryChangeState(collision, true);
     }
     
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Character player = collision.GetComponent<Character>();
-        if (player == null) return;
-        
-        if (player.Type == Character.CharacterType.Big)
+        TryChangeState(collision, false);
+    }
+
+    private void TryChangeState(Collider2D collision, bool onTriggerEnter)
+    {
+        if (!collision.TryGetComponent(out Character player) || 
+            !allowedPlayersToActivate.Contains(player.Type))
         {
-            renderer.sprite = releasedButton;
-            onChangeState?.Invoke(State.Off, platformColor);
+            return;
         }
+        
+        renderer.sprite = onTriggerEnter? pressedButton : releasedButton;
+        ChangeState(onTriggerEnter? State.On : State.Off);
     }
 }

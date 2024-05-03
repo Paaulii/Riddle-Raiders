@@ -1,15 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformActivator : MonoBehaviour 
 {
-    public Action<State, Platform.PlatformColor> onChangeState;
-    protected State state = State.None;
+    public event Action<State, Platform.PlatformColor> onChangeState;
+    
     [SerializeField] protected Platform.PlatformColor platformColor;
+    
+    protected State state = State.None;
 
-    protected void ChangeState(State state) {
+    protected void ChangeState(State state)
+    {
+        if (state == this.state)
+        {
+            return;
+        }
+        
         this.state = state;
         onChangeState?.Invoke(state, platformColor);
     }

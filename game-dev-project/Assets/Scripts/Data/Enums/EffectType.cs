@@ -8,5 +8,6 @@ public enum EffectType
     Skull,
     PickupStar,
     Firework,
-    FireworkShoot
+    FireworkShoot,
+    LaserEffect
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,21 +11,21 @@ public class PlatformController : MonoBehaviour
         platforms = GetComponentsInChildren<Platform>(true);
     }
 
-    public void MovePlatforms(Lever.State state, Platform.PlatformColor color)
+    public void MovePlatforms(PlatformActivator.State state, Platform.PlatformColor group)
     {
-        IEnumerable<Platform> sameColorPlatform = platforms.Where(x => x.Color == color);
+        IEnumerable<Platform> sameGroupPlatforms = platforms.Where(x => x.Color == group);
 
-        bool inShiftState = state == Lever.State.On;
+        bool inShiftState = state == PlatformActivator.State.On;
         
-        foreach (var platform in sameColorPlatform)
+        foreach (var platform in sameGroupPlatforms)
         {
             if (inShiftState)
             {
-                platform.StartShifting();
+                platform.Shift();
             }
             else 
             {
-                platform.StopShifting();
+                platform.Return();
             }
         }
     }

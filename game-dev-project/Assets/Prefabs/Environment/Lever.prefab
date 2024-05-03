@@ -127,6 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8921006558603527809}
+  - component: {fileID: 2785634857904510517}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -151,6 +152,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2785634857904510517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8921006558603527806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e9d8b42a2b27e24092f750c4505267f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformColor: 0
+  hingeJoint2D: {fileID: 8445159064057004306}
 --- !u!1001 &8921006558959702486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161,6 +176,14 @@ PrefabInstance:
     - target: {fileID: 1080568552335921347, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
       propertyPath: m_Name
       value: Rod
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080568552335921348, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -6.1200004
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080568552335921348, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -2.7287598
       objectReference: {fileID: 0}
     - target: {fileID: 1080568552335921352, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
       propertyPath: m_RootOrder
@@ -208,6 +231,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
+--- !u!233 &8445159064057004306 stripped
+HingeJoint2D:
+  m_CorrespondingSourceObject: {fileID: 1080568552335921348, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
+  m_PrefabInstance: {fileID: 8921006558959702486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8445159064057004318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1080568552335921352, guid: 47f6e7a360ea70940a0765e81c57cfe8, type: 3}
