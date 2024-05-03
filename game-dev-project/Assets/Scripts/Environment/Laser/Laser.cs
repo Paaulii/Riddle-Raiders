@@ -1,15 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public enum Direction
-{
-   Left,
-   Right,
-   Up,
-   Down
-}
 
 public class Laser : MonoBehaviour
 {
@@ -21,6 +10,7 @@ public class Laser : MonoBehaviour
    {
       laser.SetPosition(0, transform.position);
    }
+   
    private void Update()
    {
       Vector3 dir = GetLaserDirection(direction);
@@ -29,14 +19,10 @@ public class Laser : MonoBehaviour
       if (Physics.Raycast(transform.position,dir, out hit, Mathf.Infinity, layersToHit))
       {
          laser.SetPosition(1, hit.point);
-         //Debug.DrawRay(transform.position, dir * hit.distance, Color.yellow);
-         Debug.Log("Did Hit");
       }
       else
       {
          laser.SetPosition(1, transform.position + dir * 1000);
-         //Debug.DrawRay(transform.position, dir * 1000, Color.white);
-         Debug.Log("Did not Hit");
       }
    }
 

@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnterEndDoor : MonoBehaviour
@@ -9,8 +7,8 @@ public class EnterEndDoor : MonoBehaviour
 
     [SerializeField] GameObject openDoorSprite;
     [SerializeField] GameObject closeDoorSprite;
-    private bool smallPlayerAtDoor = false;
-    private bool bigPlayerAtDoor = false;
+    private bool smallPlayerAtDoor;
+    private bool bigPlayerAtDoor;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -20,21 +18,20 @@ public class EnterEndDoor : MonoBehaviour
             return;
         }
         
-        if (character.Type == Character.CharacterType.Small)
+        switch (character.Type)
         {
-            smallPlayerAtDoor = true;
-        }
-        else if (character.Type == Character.CharacterType.Big)
-        {
-            bigPlayerAtDoor = true;
+            case Character.CharacterType.Small:
+                smallPlayerAtDoor = true;
+                break;
+            case Character.CharacterType.Big:
+                bigPlayerAtDoor = true;
+                break;
         }
 
-        if (smallPlayerAtDoor && bigPlayerAtDoor)
-        {
-            openDoorSprite.SetActive(true);
-            closeDoorSprite.SetActive(false);
-            onEnterEndDoor?.Invoke();
-        }
+        if (!smallPlayerAtDoor || !bigPlayerAtDoor) return;
+        openDoorSprite.SetActive(true);
+        closeDoorSprite.SetActive(false);
+        onEnterEndDoor?.Invoke();
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -45,14 +42,15 @@ public class EnterEndDoor : MonoBehaviour
         {
             return;
         }
-        
-        if (character.Type == Character.CharacterType.Small)
+
+        switch (character.Type)
         {
-            smallPlayerAtDoor = false;
-        }
-        else if (character.Type == Character.CharacterType.Big)
-        {
-            bigPlayerAtDoor = false;
+            case Character.CharacterType.Small:
+                smallPlayerAtDoor = false;
+                break;
+            case Character.CharacterType.Big:
+                bigPlayerAtDoor = false;
+                break;
         }
     }
 }
