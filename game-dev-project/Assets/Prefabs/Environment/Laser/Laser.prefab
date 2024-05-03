@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: de82479fdcb59994fa7496b531817691, type: 2}
+  laserColor: {r: 0.9607843, g: 0.8117647, b: 0.50980395, a: 1}
+  raycastDistance: 30
+  laserWidth: 0.1
 --- !u!1001 &822292893640573251
 PrefabInstance:
   m_ObjectHideFlags: 0

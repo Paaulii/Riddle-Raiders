@@ -8,20 +8,23 @@ public class LaserBeam
     private GameObject laserObj;
     private LineRenderer laser;
     private List<Vector3> laserPositions = new();
+    private float raycastDistance;
 
-    public LaserBeam(Vector3 pos, Vector3 dir, Material material)
+    public LaserBeam(Vector3 pos, Vector3 dir, Material material, 
+        Color laserColor, float laserWidth, float raycastDistance)
     {
+        this.pos = pos;
+        this.dir = dir;
+        this.raycastDistance = raycastDistance; 
         laser = new LineRenderer();
         laserObj = new GameObject();
         laserObj.name = "Laser Beam";
-        this.pos = pos;
-        this.dir = dir;
         laser = laserObj.AddComponent(typeof(LineRenderer)) as LineRenderer;
-        laser.startWidth = 0.1f;
-        laser.endWidth = 0.1f;
+        laser.startWidth = laserWidth;
+        laser.endWidth = laserWidth;
         laser.material = material;
-        laser.startColor = new Color32(245, 207, 130, 255);
-        laser.endColor = new Color32(245, 207, 130, 255);
+        laser.startColor = laserColor;
+        laser.endColor = laserColor;
         laser.sortingLayerName = "Laser line";
         CastRay(pos, dir);
     }
@@ -32,13 +35,13 @@ public class LaserBeam
         Ray ray = new Ray(pos, dir);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 30, 1))
+        if (Physics.Raycast(ray, out hit, raycastDistance, 1))
         {
             CheckHit(hit, dir);
         }
         else
         {
-           laserPositions.Add(ray.GetPoint(30));
+           laserPositions.Add(ray.GetPoint(raycastDistance));
            UpdateLaser();
         }
     }
