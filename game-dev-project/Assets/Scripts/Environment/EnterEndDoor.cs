@@ -28,7 +28,11 @@ public class EnterEndDoor : MonoBehaviour
                 break;
         }
 
-        if (!smallPlayerAtDoor || !bigPlayerAtDoor) return;
+        if (!smallPlayerAtDoor || !bigPlayerAtDoor)
+        {
+            return;
+        }
+        
         openDoorSprite.SetActive(true);
         closeDoorSprite.SetActive(false);
         onEnterEndDoor?.Invoke();
