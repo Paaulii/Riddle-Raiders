@@ -190,8 +190,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Credits
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
-  m_sharedMaterial: {fileID: 7156042201353082294, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
+  m_sharedMaterial: {fileID: -8093135981523716660, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -698,8 +698,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Choose level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
-  m_sharedMaterial: {fileID: 7156042201353082294, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
+  m_sharedMaterial: {fileID: -8093135981523716660, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1324,8 +1324,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
-  m_sharedMaterial: {fileID: 7156042201353082294, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
+  m_sharedMaterial: {fileID: -8093135981523716660, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1467,7 +1467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -63}
   m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4891081613777105373
@@ -1500,8 +1500,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: RIDDLE RAIDERS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e886bb1fc5c84674f92e31e04a824159, type: 2}
-  m_sharedMaterial: {fileID: 8128650550895049755, guid: e886bb1fc5c84674f92e31e04a824159, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5fd09a3a68cb5594eb9ceceb21422441, type: 2}
+  m_sharedMaterial: {fileID: 2450878864446471374, guid: 5fd09a3a68cb5594eb9ceceb21422441, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1525,8 +1525,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 180
+  m_fontSizeBase: 180
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1635,8 +1635,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Exit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
-  m_sharedMaterial: {fileID: 7156042201353082294, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
+  m_sharedMaterial: {fileID: -8093135981523716660, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2257,8 +2257,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
-  m_sharedMaterial: {fileID: 7156042201353082294, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
+  m_sharedMaterial: {fileID: -8093135981523716660, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

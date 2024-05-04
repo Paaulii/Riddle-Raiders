@@ -95,13 +95,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 8ad7e4e9e2639654bba64b24efbc2550, type: 3}
     gameSoundType: 1
   - clips:
-    - {fileID: 8300000, guid: 625a7ac98401ae44494b7998d08eded1, type: 3}
+    - {fileID: 8300000, guid: bac68cbd7bec9fc448fa91aba18318d8, type: 3}
     gameSoundType: 2
   - clips:
     - {fileID: 8300000, guid: 617ca0f7a57288f49905b73085e3cef3, type: 3}
     gameSoundType: 3
   - clips:
-    - {fileID: 8300000, guid: dd12033e0eec36b40889aa0d96fef113, type: 3}
+    - {fileID: 8300000, guid: f525a5b9805bf2c4cb4dfd076fb0819c, type: 3}
     gameSoundType: 4
   - clips:
     - {fileID: 8300000, guid: bf493e2d779725147ac79e807d7d00fa, type: 3}
@@ -117,18 +117,16 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 947d59a45b0f0db4ba7c58ca6a6401fc, type: 3}
     uiSoundType: 0
   - clips:
-    - {fileID: 8300000, guid: 6532935488f6e794bb47ed6bde7ad74e, type: 3}
+    - {fileID: 8300000, guid: 08da57185e4892c438d91db2bc9422c9, type: 3}
     uiSoundType: 1
   - clips:
     - {fileID: 8300000, guid: 22b6831d3a12e7d4a9673db93b9adf90, type: 3}
     uiSoundType: 2
-  spawnedAudioSourcePool: []
-  spawnedAudioSourceUsed: []
   audioSource2D: {fileID: 4020610342523502826}
   musicAudioSource: {fileID: 6140864506452191982}
+  audioSourceTemplate: {fileID: 4386595980271442374, guid: 1da19cf947add244a8f5a47da9d4d6a3, type: 3}
   poolSize: 30
   parent: {fileID: 7673898443085460768}
-  audioSourceTemplate: {fileID: 4386595980271442374, guid: 1da19cf947add244a8f5a47da9d4d6a3, type: 3}
 --- !u!1 &5921735841892675936
 GameObject:
   m_ObjectHideFlags: 0

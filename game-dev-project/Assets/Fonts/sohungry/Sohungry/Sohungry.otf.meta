@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 2d3dcd47b7308c34d943ece97ac96ca9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Sohungry
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: fa70ef727a486d84a8548c101dba86d4, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

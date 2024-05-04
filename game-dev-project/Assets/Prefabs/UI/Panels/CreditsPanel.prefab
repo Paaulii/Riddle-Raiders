@@ -189,8 +189,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Paulina Ha\u0142atek\nZuzanna Radosz\nKamil Maciantowicz"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 15b48942526149b4fa395493922c5280, type: 2}
-  m_sharedMaterial: {fileID: 78096291226609469, guid: 15b48942526149b4fa395493922c5280, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
+  m_sharedMaterial: {fileID: -8093135981523716660, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -722,8 +722,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: created by
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
-  m_sharedMaterial: {fileID: 7156042201353082294, guid: 272c7a5dad507f849ab46f8bfa99066c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
+  m_sharedMaterial: {fileID: -8093135981523716660, guid: b085a1bb90e607542b37ef811bac1d2f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
