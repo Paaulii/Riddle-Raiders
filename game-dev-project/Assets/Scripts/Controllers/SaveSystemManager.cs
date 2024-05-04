@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class SaveSystemManager : Singleton<SaveSystemManager> {
@@ -16,7 +17,7 @@ public class SaveSystemManager : Singleton<SaveSystemManager> {
         LevelData previousLevel = playerGameProgress.LevelsData.FindLast(level => level.IsLocked == false);
         return previousLevel;
     }
-
+    
     public void SaveData(Explanation explanation, int starsAmount, int levelNumber, float completionTime)
     {
         PlayerGameProgress playerGameProgress = LoadData();

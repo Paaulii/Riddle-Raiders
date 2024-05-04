@@ -3,12 +3,13 @@ public class LoadLevelState : LoadUnloadLevelHandlerState
 {
     public override void OnEnter()
     {
-        string sceneToLoad = GameManager.Instance.Data.LastStatus switch {
-            GameData.GameStatus.ResetLevel or GameData.GameStatus.LevelSelection => GameManager.Instance.Data.CurrentLevel.PathToScene,
-            _ => GetLevelData().PathToScene
+        LevelData levelToLoad = GameManager.Instance.Data.LastStatus switch {
+            GameData.GameStatus.ResetLevel or GameData.GameStatus.LevelSelection => GameManager.Instance.Data.CurrentLevel,
+            GameData.GameStatus.MainMenu => SaveSystemManager.instance.GetLastUnlockedLevel(),
+            _ => SaveSystemManager.instance.GetLevelByIndex(GameManager.Instance.Data.CurrentLevel.LevelNumber + 1)
         };
-        
-        LoadScene(sceneToLoad);
+        GameManager.Instance.Data.CurrentLevel = levelToLoad;
+        LoadScene(levelToLoad.PathToScene);
     }
 
     protected override void OnLoadingLevelComplete()
@@ -16,13 +17,6 @@ public class LoadLevelState : LoadUnloadLevelHandlerState
         base.OnLoadingLevelComplete();
         PlayersManager.instance.SpawnPlayers();
         GameManager.Instance.Data.Status = GameData.GameStatus.InLevel;
-    }
-    
-    private LevelData GetLevelData()
-    {
-        LevelData data = SaveSystemManager.instance.GetLastUnlockedLevel();
-        GameManager.Instance.Data.CurrentLevel = data;
-        return data;
     }
 }
 
