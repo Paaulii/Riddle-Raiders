@@ -25,3 +25,8 @@ Level 13                    |  Level 14                  |  Level 15
 :-------------------------:|:-------------------------:|:-------------------------:
 ![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/ed30b904-b0c0-4252-a408-f7c0ce8c9a7b) | ![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/dcbeac35-45ab-4f42-a522-949dc806e758) | ![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/07a34f53-c347-404b-8b33-276c9af0b3ee)
 
+Level Selection             |  Settings                  
+:-------------------------:|:-------------------------:|
+![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/cc3a296d-8102-4236-8b04-f137089302a8) | ![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/f7466810-a134-4f29-8f4e-3865e5db3927) | 
+
+
