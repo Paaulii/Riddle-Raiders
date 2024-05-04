@@ -83,7 +83,7 @@ https://mixkit.co/free-sound-effects/wind/
 - On or off light switch tap by Mixkit licensed Mixkit License.
 https://mixkit.co/free-sound-effects/tap/
 
--UI Sound Effects Collection Pack 2: Buttons by Nectar Sonic Lab.
+- UI Sound Effects Collection Pack 2: Buttons by Nectar Sonic Lab.
 https://assetstore.unity.com/packages/audio/sound-fx/ui-sound-effects-collection-pack-2-buttons-27803#content
 
 
