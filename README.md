@@ -1,7 +1,8 @@
 # 🎮 Riddle Raiders ♟
 
 ## A puzzle coop game, two players need to figure out how to pass levels using different size abilities.
-![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/265f606d-4a9f-4a01-b0b3-3507adaba4fe)
+![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/0e02a8e9-4533-483a-ae6e-4e8b04174ebd)
+
 
 Level 1                    |  Level 2                  |  Level 3
 :-------------------------:|:-------------------------:|:-------------------------:
@@ -32,6 +33,82 @@ Level 13                    |  Level 14                  |  Level 15
 
 Level selection             |  Settings                  |  Level complete
 :-------------------------:|:-------------------------:|:-------------------------:
-![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/cc3a296d-8102-4236-8b04-f137089302a8) | ![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/f7466810-a134-4f29-8f4e-3865e5db3927) | ![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/f075f0c2-c82a-4851-b034-cecaf60828fe)
+![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/9530f961-282e-451d-9fd1-d7a1f6177df6)| ![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/f7466810-a134-4f29-8f4e-3865e5db3927) | ![image](https://github.com/Paaulii/Riddle-Raiders/assets/71827160/183d82f9-fa7f-4d01-8d73-30f7c69a8eea)
 
 
+### Used assets in game:
+
+
+#### Music / Sounds:
+
+- With Love From Vertex Studio (16) by Vertex Studio
+https://soundcloud.com/en7ity/with-love-from-vertex-15?in=en7ity/sets/vertex-studio-music 
+
+- With Love From Vertex Studio (4) by Vertex Studio
+https://soundcloud.com/en7ity/with-love-from-vertex-27?in=en7ity/sets/vertex-studio-music 
+
+- With Love From Vertex Studio (11) by Vertex Studio
+https://soundcloud.com/en7ity/with-love-from-vertex-20?in=en7ity/sets/vertex-studio-music
+
+- With Love From Vertex Studio (25) by Vertex Studio
+https://soundcloud.com/en7ity/with-love-from-vertex-6?in=en7ity/sets/vertex-studio-music
+
+- Tap Notification - Sound Effect by Luca Di Alessandro from Pixabay
+https://pixabay.com/sound-effects/search/tap/
+
+- Cartoon jump - Sound Effect from Pixabay
+https://pixabay.com/sound-effects/search/jump/
+
+- Cardboard_Small Impact_06 -  Sound Effect from Pixabay 
+https://pixabay.com/sound-effects/search/cardboard/
+
+- Movement Swipe Whoosh 4 - Sound Effect by floraphonic from Pixabay
+https://pixabay.com/sound-effects/search/swipe/?pagi=2
+
+- Swing Whoosh 5 - floraphonic - Sound Effect by floraphonic from Pixabay 
+https://pixabay.com/sound-effects/search/whoosh/
+
+- Sad game over trombone by Mixkit licensed Mixkit License. 
+https://mixkit.co/free-sound-effects/game-over/
+
+- Game level complete by Mixkit licensed Mixkit License. 
+https://mixkit.co/free-sound-effects/game-over/
+
+- Short laser gun shot by Mixkit licensed Mixkit License. 
+https://mixkit.co/free-sound-effects/laser/
+
+- Cinematic transition wind swoosh by Mixkit licensed Mixkit License. 
+https://mixkit.co/free-sound-effects/wind/
+
+- On or off light switch tap by Mixkit licensed Mixkit License.
+https://mixkit.co/free-sound-effects/tap/
+
+-UI Sound Effects Collection Pack 2: Buttons by Nectar Sonic Lab.
+https://assetstore.unity.com/packages/audio/sound-fx/ui-sound-effects-collection-pack-2-buttons-27803#content
+
+
+#### GUI assets:
+- 2d Casual UI HD by MiMU STUDIO - https://assetstore.unity.com/packages/2d/gui/icons/2d-casual-ui-hd-82080#asset_quality
+ 
+ - Simple Gems Ultimate Animated Customizable Pack  by AurynSky - https://assetstore.unity.com/packages/3d/props/simple-gems-ultimate-animated-customizable-pack-73764#reviews
+
+- Cartoon FX Remaster Free by Jean Moreno - https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565
+
+- Pixel Art Platformer - Village Props by Cainos - https://assetstore.unity.com/packages/2d/environments/pixel-art-platformer-village-props-166114
+
+- Puzzle stage & settings GUI Pack by Chocoball - https://assetstore.unity.com/packages/2d/gui/puzzle-stage-settings-gui-pack-147389
+
+#### Fonts:
+- Puffy by Stefie Justprince licensed OFL:
+https://fontesk.com/puffy-font/
+
+- Catfiles by Syafrizal a.k.a. Khurasan licensed OFL:
+https://fontesk.com/catfiles-font/
+
+- Sohungry by Syafrizal a.k.a. Khurasan licensed OFL:
+https://fontesk.com/sohungry-font/
+
+
+#### Plugins:
+- DOTween by Demigiant 
+https://github.com/Demigiant/dotween
